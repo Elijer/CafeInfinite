@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-   <!--Caveat Font Link-->
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/7.14.4/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -12,8 +12,6 @@
     <script defer src="/__/firebase/7.14.4/firebase-firestore.js"></script>
     <script defer src="/__/firebase/7.14.4/firebase-messaging.js"></script>
     <script defer src="/__/firebase/7.14.4/firebase-storage.js"></script>
-
-    
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
@@ -32,8 +30,8 @@
   <body>
     <!--HTML-->
     <div id="banner">
-      <button id="banner-title" class = "top" onclick = "uploadClick()">
-        <input id = "uploadInput" type = "file" onchange = "uploadFile(this.files)">
+      <button id="banner-title" class = "top">
+        <input id = "uploadInput" type = "file">
         <span id = "fade-in"> cafe infinite </span>
       </button>
       <button id="banner-login" class = "top" onclick = "googleLogin()">
@@ -43,16 +41,18 @@
 
     <img id = "imgUpload" src = "" width = "100">
     
-    <div id = "theList"></div>
+    <div id = "theList"> This is an empty div </div>
 
     <div id="map">
     </div>
 
 
     <!--JS-->
-    <script src = "/app.js">
-    </script>
+    <script src = "/app.js"> </script>
+
+    <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcFvCdo_5DPAUfRdhVq8sttNxwLAhLpUI&callback=initMap"
     async defer></script>
+
   </body>
 </html>
