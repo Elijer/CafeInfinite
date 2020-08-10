@@ -8,7 +8,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "browserify public/app.js --debug | exorcist public/bundle.map.js > public/bundle.js & firebase emulators:start"
+    "test": "watchify public/app.js -o 'exorcist public/bundle.js.map > public/bundle.js' -d & firebase emulators:start "
   },
   "repository": {
     "type": "git",
