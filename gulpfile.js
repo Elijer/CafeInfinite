@@ -8,36 +8,38 @@ var gulp = require('gulp'),
     gulp       = require('gulp'),
     source     = require('vinyl-source-stream');
  
+var buildDirectory = 'dist/';
+var sourceDirectory = 'public/'
     
 async function html(){
-    gulp.src('public/*.html', {allowEmpty: true})
-    .pipe(gulp.dest('dist/'));
+    gulp.src(sourceDirectory + '*.html', {allowEmpty: true})
+    .pipe(gulp.dest(buildDirectory));
 }
 
 async function css(){
-    gulp.src('public/*/*.css', {allowEmpty: true})
-    .pipe(gulp.dest('dist/'));
+    gulp.src(sourceDirectory + '*/*.css', {allowEmpty: true})
+    .pipe(gulp.dest(buildDirectory));
 }
 
 async function bundle(){
     //gulp.task('browserify', function() {
-    return browserify('./public/app.js')
+    return browserify(sourceDirectory + 'app.js')
         .transform(babelify, {presets: ["@babel/preset-env"]})
         .transform('uglifyify', { global: true  })
         .bundle()
         //Pass desired output filename to vinyl-source-stream
         .pipe(source('bundle.js'))
         // Start piping stream to tasks! Other stuff can go here
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest(buildDirectory));
 };
 
 
 async function minify(){
     return pipeline(
         // gulp.src(badInvalidGlobs, { allowEmpty: true })
-        gulp.src('dist/bundle.js', {allowEmpty: true}),
+        gulp.src(buildDirectory + 'bundle.js', {allowEmpty: true}),
         uglify(),
-        gulp.dest('dist/')
+        gulp.dest(buildDirectory)
   );
 }
 
