@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     gulp       = require('gulp'),
     source     = require('vinyl-source-stream');
  
-
+    
 async function html(){
     gulp.src('public/*.html')
     .pipe(gulp.dest('dist/'));
