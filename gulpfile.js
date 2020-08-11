@@ -1,20 +1,12 @@
-var gulp = require('gulp');
-var { series } = require('gulp')
-var uglify = require('gulp-uglify');
-var uglifyify = require('uglifyify')
-var pipeline = require('readable-stream').pipeline;
-
-var    babelify     = require('babelify'),
-        browserify = require('browserify'),
-        buffer     = require('vinyl-buffer'),
-        gulp       = require('gulp'),
-        gutil      = require('gulp-util'),
-        //livereload = require('gulp-livereload'),
-        merge      = require('merge'),
-        rename     = require('gulp-rename'),
-        source     = require('vinyl-source-stream'),
-        sourceMaps = require('gulp-sourcemaps'),
-        watchify   = require('watchify');
+var gulp = require('gulp'),
+    { series } = require('gulp'),
+    uglify = require('gulp-uglify'),
+    uglifyify = require('uglifyify'),
+    pipeline = require('readable-stream').pipeline,
+    babelify     = require('babelify'),
+    browserify = require('browserify'),
+    gulp       = require('gulp'),
+    source     = require('vinyl-source-stream');
  
 
 async function html(){
@@ -48,8 +40,14 @@ async function minify(){
   );
 }
 
-/* exports.html = html;
-exports.css = css;
-exports.minify = minify;
-exports.bundle = bundle; */
 exports.dist = series(html, css, bundle, minify);
+
+
+// Unused gulp modules
+//buffer     = require('vinyl-buffer'),
+//gutil      = require('gulp-util'),
+//livereload = require('gulp-livereload'),
+//merge      = require('merge'),
+//rename     = require('gulp-rename'),
+//sourceMaps = require('gulp-sourcemaps');
+//watchify   = require('watchify');
