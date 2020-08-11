@@ -6,9 +6,25 @@
   "dependencies": {
     "es-abstract": "^1.17.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.2",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^2.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.8",
+    "merge": "^1.2.1",
+    "readable-stream": "^3.6.0",
+    "uglify": "^0.1.5",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0",
+    "watchify": "^3.11.1"
+  },
   "scripts": {
-    "test": "watchify public/app.js -o 'exorcist public/bundle.js.map > public/bundle.js' -d & firebase emulators:start "
+    "test": "watchify public/app.js -o 'exorcist public/bundle.js.map > public/bundle.js' -d & firebase emulators:start ",
+    "deploy": "gulp production; firebase deploy --public dist"
   },
   "repository": {
     "type": "git",

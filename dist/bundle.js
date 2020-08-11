@@ -37,5 +37,4 @@ var test = function(){
 }
 
 module.exports = test
-},{}]},{},[1])
-//# sourceMappingURL=bundle.js.map
+},{}]},{},[1]);
