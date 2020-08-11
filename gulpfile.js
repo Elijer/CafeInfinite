@@ -15,7 +15,7 @@ async function html(){
 }
 
 async function css(){
-    gulp.src('public/*.css')
+    gulp.src('public/*/*.css')
     .pipe(gulp.dest('dist/'));
 }
 
