@@ -22,6 +22,11 @@ async function transfer(){
     .pipe(gulp.dest('dist/'));
 }
 
+async function transferCSS(){
+    gulp.src('public/*.css')
+    .pipe(gulp.dest('dist/'));
+}
+
 async function compress(){
     return pipeline(
         gulp.src('public/bundle.js'),
@@ -80,6 +85,7 @@ gulp.task('browserify', function() {
 
 //exports.browserify = browserify;
 exports.transfer = transfer;
+exports.css = transferCSS;
 exports.compress = compress;
 exports.compress2 = compress2;
 exports.production = series(transfer, browserify, compress2);
