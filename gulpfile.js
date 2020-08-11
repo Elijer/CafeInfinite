@@ -22,21 +22,17 @@ async function css(){
 }
 
 async function bundle(){
-    //gulp.task('browserify', function() {
     return browserify(sourceDirectory + 'app.js')
         .transform(babelify, {presets: ["@babel/preset-env"]})
         .transform('uglifyify', { global: true  })
-        .bundle()
-        //Pass desired output filename to vinyl-source-stream
-        .pipe(source('bundle.js'))
-        // Start piping stream to tasks! Other stuff can go here
+        .bundle()                    //Pass desired output filename to vinyl-source-stream
+        .pipe(source('bundle.js'))  // Start piping stream to tasks! Other stuff can go here
         .pipe(gulp.dest(buildDirectory));
 };
 
 
 async function minify(){
     return pipeline(
-        // gulp.src(badInvalidGlobs, { allowEmpty: true })
         gulp.src(buildDirectory + 'bundle.js', {allowEmpty: true}),
         uglify(),
         gulp.dest(buildDirectory)
