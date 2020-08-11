@@ -58,6 +58,7 @@ async function applyBundle(){
 
 gulp.task('browserify', function() {
     return browserify('./public/app.js')
+        .transform(babelify, {presets: ["@babel/preset-env"]})
         .bundle()
         //Pass desired output filename to vinyl-source-stream
         .pipe(source('bundle.js'))
