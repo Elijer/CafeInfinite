@@ -8,6 +8,7 @@ firebase-debug.log*
 
 # Gulp
 dist/
+dist
 
 # Firebase cache
 .firebase/

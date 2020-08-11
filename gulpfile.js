@@ -62,6 +62,7 @@ async function minify(){
   );
 }
 
+exports.scrap = scrap;
 exports.dist = series(scrap, html, css, bundle, minify);
 exports.distTest = series(scrap, html, css, bundleAndMap, minify);
 
