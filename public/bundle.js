@@ -38,4 +38,4 @@ var test = function(){
 
 module.exports = test
 },{}]},{},[1])
-//# sourceMappingURL=bundle.js.map
+//# sourceMappingURL=bundle.map.js

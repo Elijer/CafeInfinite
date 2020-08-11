@@ -12,6 +12,7 @@
     "@babel/preset-env": "^7.11.0",
     "babelify": "^10.0.0",
     "browserify": "^16.5.2",
+    "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-rename": "^2.0.0",
     "gulp-sourcemaps": "^2.6.5",
@@ -26,7 +27,10 @@
   },
   "scripts": {
     "test": "watchify public/app.js -o 'exorcist public/bundle.js.map > public/bundle.js' -d & firebase emulators:start ",
-    "deploy": "gulp dist; firebase deploy --public dist"
+    "deploy": "gulp dist; firebase deploy --public dist",
+    "devploy": "gulp distTest; firebase deploy --public dist",
+    "quick": "gulp dist; firebase deploy --only hosting --public dist",
+    "dev": "gulp distTest; firebase deploy --only hosting --public dist"
   },
   "repository": {
     "type": "git",

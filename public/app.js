@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", event => {
     const app = firebase.app();
     const db = firebase.firestore();
     console.log("dom is loaded");
-
-    setupMap();
     test();
 });
+
+setupMap();
+
+// browserify --debug public/app.js -o public/bundle.js
