@@ -65,6 +65,7 @@ async function applyBundle(){
 // Good question
 //var bundle = browserify('.public/app.js').bundle()
 
+//async function browserify(){
 gulp.task('browserify', function() {
     return browserify('./public/app.js')
         .transform(babelify, {presets: ["@babel/preset-env"]})
@@ -77,7 +78,8 @@ gulp.task('browserify', function() {
         .pipe(gulp.dest('./dist/'));
 });
 
+//exports.browserify = browserify;
 exports.transfer = transfer;
 exports.compress = compress;
 exports.compress2 = compress2;
-exports.production = series(transfer, compress);
+exports.production = series(transfer, browserify, compress2);

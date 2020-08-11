@@ -25,7 +25,7 @@
   },
   "scripts": {
     "test": "watchify public/app.js -o 'exorcist public/bundle.js.map > public/bundle.js' -d & firebase emulators:start ",
-    "deploy": "gulp production; firebase deploy --public dist"
+    "deploy": "gulp transfer; gulp browserify; gulp compress2; firebase deploy --public dist"
   },
   "repository": {
     "type": "git",
