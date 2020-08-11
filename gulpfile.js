@@ -10,12 +10,12 @@ var gulp = require('gulp'),
  
     
 async function html(){
-    gulp.src('public/*.html')
+    gulp.src('public/*.html', {allowEmpty: true})
     .pipe(gulp.dest('dist/'));
 }
 
 async function css(){
-    gulp.src('public/*/*.css')
+    gulp.src('public/*/*.css', {allowEmpty: true})
     .pipe(gulp.dest('dist/'));
 }
 
@@ -34,7 +34,8 @@ async function bundle(){
 
 async function minify(){
     return pipeline(
-        gulp.src('dist/bundle.js'),
+        // gulp.src(badInvalidGlobs, { allowEmpty: true })
+        gulp.src('dist/bundle.js', {allowEmpty: true}),
         uglify(),
         gulp.dest('dist/')
   );
