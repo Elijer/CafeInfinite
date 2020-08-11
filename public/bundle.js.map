@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": [
-    "../../../.npm-global/lib/node_modules/watchify/node_modules/browser-pack/_prelude.js",
+    "node_modules/browser-pack/_prelude.js",
     "public/app.js",
     "public/components/setupMap.js",
     "public/components/test.js"

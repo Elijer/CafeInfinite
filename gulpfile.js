@@ -17,25 +17,18 @@ var    babelify     = require('babelify'),
         watchify   = require('watchify');
  
 
-async function transfer(){
+async function html(){
     gulp.src('public/*.html')
     .pipe(gulp.dest('dist/'));
 }
 
-async function transferCSS(){
+async function css(){
     gulp.src('public/*.css')
     .pipe(gulp.dest('dist/'));
 }
 
-async function compress(){
-    return pipeline(
-        gulp.src('public/bundle.js'),
-        uglify(),
-        gulp.dest('dist/')
-  );
-}
 
-async function compress2(){
+async function minify(){
     return pipeline(
         gulp.src('dist/bundle.js'),
         uglify(),
@@ -43,34 +36,6 @@ async function compress2(){
   );
 }
 
-/*
-async function bundle(bundle){
-    // first make babel transform using etry point
-    bundle
-    // then do the browserify shit with the same entry point
-    .pipe(buffer())  
-    .pipe(source('./public/app.js'))
-    .pipe(buffer())                              // Convert to gulp pipeline
-    .pipe(rename('bundle.js'))                   // rename to bundle.js
-    .pipe(sourceMaps.init({ loadMaps : true }))  // Strip inline source maps
-    .pipe(sourceMaps.write('./maps'))            // Save source maps to their own directory
-    .pipe(gulp.dest('./dist'))                  // Save 'bundle' to dist folder/
-    //.pipe(gulp.dest(config.js.outputDir))      // Save 'bundle' to build/
-}
-
-async function applyBundle(){
-    var bundler = browserify('./public/app.js')
-    .transform(babelify, {presets : ['es2015']})
-    bundle(bundler);
-}
-*/
-
-// this does the bundle just like the CLI
-// But where is the output?
-// Good question
-//var bundle = browserify('.public/app.js').bundle()
-
-//async function browserify(){
 gulp.task('browserify', function() {
     return browserify('./public/app.js')
         .transform(babelify, {presets: ["@babel/preset-env"]})
@@ -78,14 +43,12 @@ gulp.task('browserify', function() {
         .bundle()
         //Pass desired output filename to vinyl-source-stream
         .pipe(source('bundle.js'))
-        // Start piping stream to tasks!
-        // so I guess other stuff can go here
+        // Start piping stream to tasks! Other stuff can go here
         .pipe(gulp.dest('./dist/'));
 });
 
 //exports.browserify = browserify;
-exports.transfer = transfer;
-exports.css = transferCSS;
-exports.compress = compress;
-exports.compress2 = compress2;
-exports.production = series(transfer, browserify, compress2);
+exports.html = html;
+exports.css = css;
+exports.minify = minify;
+exports.production = series(html, browserify, minify);
