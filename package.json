@@ -4,7 +4,8 @@
   "description": "Cafe Infinite is the working title I have for a project I've been thinking about for a long time. It's a simple platform I'd like to build to help connect people with their local businesses. With COVID, I don't see that being useful anytime soon, but hopefully I'll have it done by the time things return to normal, or to a new-normal.",
   "main": "inspo.js",
   "dependencies": {
-    "es-abstract": "^1.17.6"
+    "es-abstract": "^1.17.6",
+    "uglifyify": "^5.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",

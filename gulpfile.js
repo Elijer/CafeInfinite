@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var { series } = require('gulp')
 var uglify = require('gulp-uglify');
-//var uglifyify = require('uglifyify')
+var uglifyify = require('uglifyify')
 var pipeline = require('readable-stream').pipeline;
 
 var    babelify     = require('babelify'),
@@ -31,7 +31,7 @@ async function bundle(){
     //gulp.task('browserify', function() {
     return browserify('./public/app.js')
         .transform(babelify, {presets: ["@babel/preset-env"]})
-        //.transform('uglifyify', { global: true  })
+        .transform('uglifyify', { global: true  })
         .bundle()
         //Pass desired output filename to vinyl-source-stream
         .pipe(source('bundle.js'))
