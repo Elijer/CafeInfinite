@@ -36,7 +36,8 @@ async function minify(){
   );
 }
 
-gulp.task('browserify', function() {
+async function bundle(){
+//gulp.task('browserify', function() {
     return browserify('./public/app.js')
         .transform(babelify, {presets: ["@babel/preset-env"]})
         //.transform('uglifyify', { global: true  })
@@ -45,10 +46,11 @@ gulp.task('browserify', function() {
         .pipe(source('bundle.js'))
         // Start piping stream to tasks! Other stuff can go here
         .pipe(gulp.dest('./dist/'));
-});
+};
 
 //exports.browserify = browserify;
 exports.html = html;
 exports.css = css;
 exports.minify = minify;
-exports.production = series(html, browserify, minify);
+exports.bundle = bundle;
+exports.production = series(html, bundle, minify);
