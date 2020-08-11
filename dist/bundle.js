@@ -1,1 +1,50 @@
-!function i(s,c,a){function p(t,e){if(!c[t]){if(!s[t]){var n="function"==typeof require&&require;if(!e&&n)return n(t,!0);if(u)return u(t,!0);var o=new Error("Cannot find module '"+t+"'");throw o.code="MODULE_NOT_FOUND",o}var r=c[t]={exports:{}};s[t][0].call(r.exports,function(e){return p(s[t][1][e]||e)},r,r.exports,i,s,c,a)}return c[t].exports}for(var u="function"==typeof require&&require,e=0;e<a.length;e++)p(a[e]);return p}({1:[function(e,t,n){"use strict";var o=e("./components/setupMap"),r=e("./components/test");document.addEventListener("DOMContentLoaded",function(e){firebase.app(),firebase.firestore();console.log("dom is loaded"),o(),r()})},{"./components/setupMap":2,"./components/test":3}],2:[function(e,t,n){"use strict";t.exports=function(){var e=document.createElement("script");e.src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcFvCdo_5DPAUfRdhVq8sttNxwLAhLpUI&callback=initMap",e.defer=!0;var t={lat:40.6215,lng:-79.1525};window.initMap=function(){map=new google.maps.Map(document.getElementById("map"),{center:t,zoom:16})},document.head.appendChild(e)}},{}],3:[function(e,t,n){"use strict";t.exports=function(){console.log("testies")}},{}]},{},[1]);
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+"use strict";
+
+var setupMap = require('./components/setupMap');
+
+var test = require('./components/test');
+
+document.addEventListener("DOMContentLoaded", function (event) {
+  var app = firebase.app();
+  var db = firebase.firestore();
+  console.log("dom is loaded");
+  setupMap();
+  test();
+});
+
+},{"./components/setupMap":2,"./components/test":3}],2:[function(require,module,exports){
+"use strict";
+
+function setupMap() {
+  var script = document.createElement('script');
+  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCcFvCdo_5DPAUfRdhVq8sttNxwLAhLpUI&callback=initMap';
+  script.defer = true;
+  var IndianaPA = {
+    lat: 40.6215,
+    lng: -79.1525
+  }; // Attach your callback function to the `window` object
+
+  window.initMap = function () {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: IndianaPA,
+      zoom: 16
+    });
+  }; // Append the 'script' element to 'head'
+
+
+  document.head.appendChild(script);
+}
+
+module.exports = setupMap;
+
+},{}],3:[function(require,module,exports){
+"use strict";
+
+var test = function test() {
+  console.log("testies");
+};
+
+module.exports = test;
+
+},{}]},{},[1]);

@@ -27,17 +27,8 @@ async function css(){
     .pipe(gulp.dest('dist/'));
 }
 
-
-async function minify(){
-    return pipeline(
-        gulp.src('dist/bundle.js'),
-        uglify(),
-        gulp.dest('dist/')
-  );
-}
-
 async function bundle(){
-//gulp.task('browserify', function() {
+    //gulp.task('browserify', function() {
     return browserify('./public/app.js')
         .transform(babelify, {presets: ["@babel/preset-env"]})
         //.transform('uglifyify', { global: true  })
@@ -48,9 +39,17 @@ async function bundle(){
         .pipe(gulp.dest('./dist/'));
 };
 
-//exports.browserify = browserify;
-exports.html = html;
+
+async function minify(){
+    return pipeline(
+        gulp.src('dist/bundle.js'),
+        uglify(),
+        gulp.dest('dist/')
+  );
+}
+
+/* exports.html = html;
 exports.css = css;
 exports.minify = minify;
-exports.bundle = bundle;
-exports.production = series(html, bundle, minify);
+exports.bundle = bundle; */
+exports.dist = series(html, css, bundle, minify);
