@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var { series } = require('gulp')
 var uglify = require('gulp-uglify');
+//var uglifyify = require('uglifyify')
 var pipeline = require('readable-stream').pipeline;
 
 var    babelify     = require('babelify'),
@@ -24,6 +25,14 @@ async function transfer(){
 async function compress(){
     return pipeline(
         gulp.src('public/bundle.js'),
+        uglify(),
+        gulp.dest('dist/')
+  );
+}
+
+async function compress2(){
+    return pipeline(
+        gulp.src('dist/bundle.js'),
         uglify(),
         gulp.dest('dist/')
   );
@@ -59,6 +68,7 @@ async function applyBundle(){
 gulp.task('browserify', function() {
     return browserify('./public/app.js')
         .transform(babelify, {presets: ["@babel/preset-env"]})
+        //.transform('uglifyify', { global: true  })
         .bundle()
         //Pass desired output filename to vinyl-source-stream
         .pipe(source('bundle.js'))
@@ -69,4 +79,5 @@ gulp.task('browserify', function() {
 
 exports.transfer = transfer;
 exports.compress = compress;
+exports.compress2 = compress2;
 exports.production = series(transfer, compress);
