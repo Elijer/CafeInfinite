@@ -26,7 +26,7 @@
     "watchify": "^3.11.1"
   },
   "scripts": {
-    "test": "watchify public/app.js -o 'exorcist public/bundle.js.map > public/bundle.js' -d & firebase emulators:start ",
+    "test": "watchify --debug public/app.js -o public/bundle.js & firebase emulators:start ",
     "deploy": "gulp dist; firebase deploy --public dist",
     "devploy": "gulp distTest; firebase deploy --public dist",
     "quick": "gulp dist; firebase deploy --only hosting --public dist",
