@@ -1,13 +1,11 @@
 var mapStyle = require('./mapStyles/dark_cities');
+let IndianaPA = {lat: 40.6215, lng: -79.1525}
 
 function newMap(){
 
   loadGoogleMaps();
-
-  let IndianaPA = {lat: 40.6215, lng: -79.1525}
-
-  // Attach your callback function to the `window` object
-  window.initMap = function() {
+  
+  window.initMap = function() {   // Callback must be attached to the `window` object
     map = new google.maps.Map(document.getElementById('map'), {
       center: IndianaPA,
       styles: mapStyle,

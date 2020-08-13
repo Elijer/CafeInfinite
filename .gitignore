@@ -9,6 +9,7 @@ firebase-debug.log*
 # Gulp
 dist/
 dist
+public/bundle.js
 
 # Firebase cache
 .firebase/
