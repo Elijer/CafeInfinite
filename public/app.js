@@ -1,3 +1,4 @@
+/* New code
 let newMap = require('./components/geo/newMap');
 let test = require('./components/test');
 
@@ -9,5 +10,10 @@ document.addEventListener("DOMContentLoaded", event => {
 });
 
 newMap();
+*/
+
+var geo     =       require('./geographicFunctionality/1__geo');
+
+geo();
 
 // browserify --debug public/app.js -o public/bundle.js
