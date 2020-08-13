@@ -1,4 +1,4 @@
-let newMap = require('./components/newMap');
+let newMap = require('./components/geo/newMap');
 let test = require('./components/test');
 
 document.addEventListener("DOMContentLoaded", event => {
