@@ -1,11 +1,19 @@
 var firebase = require('firebase/app');
 var firestore = require('firebase/firestore'); // yes this is needed
+var functions = require('firebase/functions');
 var firebaseConfig = require('./firebaseConfig');
 var geo = require('./geographicFunctionality/1__geo');
 
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 let flames = db.collection('flames');
+
+var getFlames = firebase.functions().httpsCallable('getFlames');
+  getFlames({whatever: 'whatever'})
+  .then(function(result){
+      console.log(result);
+})
+
 
 geo(flames);
 
