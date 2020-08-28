@@ -1,8 +1,8 @@
 var     buildMap            = require('./2__buildMap'),
         geolocation         = require ('./geolocation');
 
-var geo = function(_db1){
-  buildMap(_db1);
+var geo = function(_db){
+  buildMap(_db);
 };
 geolocation();
 

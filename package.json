@@ -5,6 +5,7 @@
   "main": "inspo.js",
   "dependencies": {
     "es-abstract": "^1.17.6",
+    "firebase": "^7.19.1",
     "jquery": "^3.5.1",
     "load-google-maps-api-2": "^1.0.2",
     "uglifyify": "^5.0.2"

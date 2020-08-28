@@ -7,7 +7,7 @@ var newMap              = require('./createMap/newMap');
 
 loadGoogleMapsApi.key   = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 
-buildMap = function(_db1){
+buildMap = function(_db){
   loadGoogleMapsApi().then(function (googleMaps) {
     console.log("db1 variable made it to the buildMap scope!!!")
 
@@ -20,7 +20,7 @@ buildMap = function(_db1){
     //mapClick(googleMaps); //marker gets added to map
     //boundsPrinter(googleMaps, 1); //tool for viewing the previous bounds of a screen
 
-    getMapData(googleMaps, _db1);
+    getMapData(googleMaps, _db);
 
   }).catch(function (err) {
     console.error(err);

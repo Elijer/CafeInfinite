@@ -1,10 +1,17 @@
 var firebase = require('firebase/app');
 var firestore = require('firebase/firestore'); // yes this is needed
 var firebaseConfig = require('./firebaseConfig');
+var geo = require('./geographicFunctionality/1__geo');
 
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
-db.collection("users").add({
+let flames = db.collection('flames');
+
+geo(flames);
+
+// browserify --debug public/app.js -o public/bundle.js
+
+/* db.collection("users").add({
     first: "Ada",
     last: "Lovelace",
     born: 1815
@@ -14,16 +21,7 @@ db.collection("users").add({
 })
 .catch(function(error) {
     console.error("Error adding document: ", error);
-});
-
-
-
-
-var geo     =       require('./geographicFunctionality/1__geo');
-
-geo();
-
-// browserify --debug public/app.js -o public/bundle.js
+}); */
 
 
 

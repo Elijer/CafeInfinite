@@ -7,7 +7,8 @@ var onBoundsChange      = require('./onBoundsChange_v1.0');
 var scaleCalculator     = require('./common/scaleCalculator');
 
 
-var mapData = function(googleMaps, _db1){
+var mapData = function(googleMaps, _db){
+  console.log(_db);
 
 
   /*
