@@ -7,7 +7,8 @@ var onBoundsChange      = require('./onBoundsChange_v1.0');
 var scaleCalculator     = require('./common/scaleCalculator');
 
 
-var mapData = function(googleMaps){
+var mapData = function(googleMaps, _db1){
+
 
   /*
   $.getJSON('api/flames')
