@@ -10,8 +10,8 @@ let flames = db.collection('flames');
     return flames;
 });*/
 
-export const getFlames = functions.https.onRequest(async(req, res) => {
+exports.getFlames = functions.https.onRequest(async(req, res) => {
     const collections = await flames.getCollections()
     res.status(200).send(collections)
     //https://stackoverflow.com/questions/49217090/how-to-iterate-through-every-document-in-every-collection-in-firestore
-  })
+})
