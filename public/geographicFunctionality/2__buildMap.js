@@ -9,7 +9,6 @@ loadGoogleMapsApi.key   = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 
 buildMap = function(_db){
   loadGoogleMapsApi().then(function (googleMaps) {
-    console.log("db1 variable made it to the buildMap scope!!!")
 
     map = newMap(googleMaps);
     masterArray = [];

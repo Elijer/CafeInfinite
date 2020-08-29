@@ -8,7 +8,6 @@ var scaleCalculator     = require('./common/scaleCalculator');
 
 
 var mapData = function(googleMaps, _db){
-  console.log(_db);
 
 
   // gonna build an https function for this

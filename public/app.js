@@ -4,18 +4,33 @@ var functions = require('firebase/functions');
 var firebaseConfig = require('./firebaseConfig');
 var geo = require('./geographicFunctionality/1__geo');
 
-firebase.initializeApp(firebaseConfig);
-var db = firebase.firestore();
-let flames = db.collection('flames');
+document.addEventListener("DOMContentLoaded", event => {
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
 
-var getFlames = firebase.functions().httpsCallable('getFlames');
-  getFlames({whatever: 'whatever'})
-  .then(function(result){
-      console.log(result);
-})
+    // enforce use of EMULATED firestore and functions if app is local
+    if (window.location.hostname === "localhost") {
+      console.log("localhost detected! Using functions and firestore emulators instead of live instances");
+      firebase.functions().useFunctionsEmulator("http://localhost:5001");
+      db.settings({ 
+        host: "localhost:8080",
+        ssl: false
+      });
+    }
+
+    let flames = db.collection('flames');
+
+    // get flames
+    var getFlames = firebase.functions().httpsCallable('getFlames');
+    getFlames({whatever: 'whatever'})
+    .then(function(result){
+        //console.log(result);
+    })
 
 
-geo(flames);
+    geo(flames);
+
+});
 
 // browserify --debug public/app.js -o public/bundle.js
 
