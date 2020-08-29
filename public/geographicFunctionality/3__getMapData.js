@@ -7,8 +7,10 @@ var onBoundsChange      = require('./onBoundsChange_v1.0');
 var scaleCalculator     = require('./common/scaleCalculator');
 
 
-var mapData = function(googleMaps, _db){
-
+var mapData = function(googleMaps, flames){
+  flames.forEach(doc => {
+    console.log(doc.id, '=>', doc.data());
+  })
 
   // gonna build an https function for this
   /*

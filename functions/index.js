@@ -7,7 +7,7 @@ let flames = db.collection('flames');
 //let db2 = db.collection('verifiedCustomers');
 
 exports.getFlames = functions.https.onCall (async(data, context) => {
-    return flames;
+    return flames.get();
 });
 
 /* exports.getFlames = functions.https.onRequest(async(req, res) => {

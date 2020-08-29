@@ -24,12 +24,8 @@ document.addEventListener("DOMContentLoaded", event => {
     var getFlames = firebase.functions().httpsCallable('getFlames');
     getFlames({whatever: 'whatever'})
     .then(function(result){
-        //console.log(result);
+        geo(result);
     })
-
-
-    geo(flames);
-
 });
 
 // browserify --debug public/app.js -o public/bundle.js
