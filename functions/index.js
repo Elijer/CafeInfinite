@@ -7,7 +7,16 @@ let flames = db.collection('flames');
 //let db2 = db.collection('verifiedCustomers');
 
 exports.getFlames = functions.https.onCall (async(data, context) => {
-    return flames.get();
+    const flamesRef = db.collection('flames');
+    const snapshot = await flamesRef.get();
+    if (snapshot.empty) {
+        console.log('No matching documents.');
+        return;
+    }
+
+    snapshot.forEach(doc => {
+        console.log(doc.id, '=>', doc.data());
+    });
 });
 
 /* exports.getFlames = functions.https.onRequest(async(req, res) => {
