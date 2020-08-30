@@ -14,9 +14,16 @@ exports.getFlames = functions.https.onCall (async(data, context) => {
         return;
     }
 
-    snapshot.forEach(doc => {
+    var data = [];
+
+/*     snapshot.forEach(doc => {
+        var thisDoc = doc.data();
+        thisDoc.id = doc.id;
+        data.push(thisDoc)
         console.log(doc.id, '=>', doc.data());
-    });
+    }); */
+
+    return data;
 });
 
 /* exports.getFlames = functions.https.onRequest(async(req, res) => {
