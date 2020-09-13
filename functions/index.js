@@ -21,7 +21,6 @@ exports.getFlames = functions.https.onCall (async(data, context) => {
 
     snapshot.forEach(doc => {
         var thisDoc = doc.data();
-        thisDoc = doc.id;
         dataRay.push(thisDoc)
         //console.log(doc.id, '=>', doc.data());
     });

@@ -7,7 +7,20 @@ var onBoundsChange      = require('./onBoundsChange_v1.0');
 var scaleCalculator     = require('./common/scaleCalculator');
 
 
-var mapData = function(googleMaps, flames){
+var mapData = function(googleMaps, _flames){
+  var flames = _flames.data;
+  console.log(flames[1]);
+  //flames.forEach(element => console.log(element));
+
+  for (var i = 0; i < flames.length; i++){
+    console.log(flames[i])
+    var flame = flames[i];
+    var zoomLvl = map.getZoom();
+    var scalingCoefficient = scaleCalculator(zoomLvl);
+    newMarker(googleMaps, flame.lat, flame.lng, flame._id, i, scalingCoefficient);
+  }
+
+
   //console.log(flames);
 
   // gonna build an https function for this

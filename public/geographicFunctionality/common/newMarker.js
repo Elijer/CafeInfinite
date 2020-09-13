@@ -47,7 +47,7 @@ var newMarker = function(googleMaps, lat, lng, id, index, scalingCoefficient){
 
 
   scale(googleMaps, masterArray[index], scalingCoefficient);
-  markerOnClick(masterArray[index], rootURL, id);
+  //markerOnClick(masterArray[index], rootURL, id);
 
 };
 
