@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", event => {
     getFlames({whatever: 'whatever'})
     .then(function(result){
         geo(result);
+        console.log(result);
     })
 });
 

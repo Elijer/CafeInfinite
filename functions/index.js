@@ -7,6 +7,9 @@ let flames = db.collection('flames');
 //let db2 = db.collection('verifiedCustomers');
 
 exports.getFlames = functions.https.onCall (async(data, context) => {
+
+    var dataRay = [];
+
     const flamesRef = db.collection('flames');
     const snapshot = await flamesRef.get();
     if (snapshot.empty) {
@@ -14,16 +17,16 @@ exports.getFlames = functions.https.onCall (async(data, context) => {
         return;
     }
 
-    var data = [];
+    //var data = ['hello'];
 
-/*     snapshot.forEach(doc => {
+    snapshot.forEach(doc => {
         var thisDoc = doc.data();
-        thisDoc.id = doc.id;
-        data.push(thisDoc)
-        console.log(doc.id, '=>', doc.data());
-    }); */
+        thisDoc = doc.id;
+        dataRay.push(thisDoc)
+        //console.log(doc.id, '=>', doc.data());
+    });
 
-    return data;
+    return dataRay;
 });
 
 /* exports.getFlames = functions.https.onRequest(async(req, res) => {

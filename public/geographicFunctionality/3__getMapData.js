@@ -8,7 +8,7 @@ var scaleCalculator     = require('./common/scaleCalculator');
 
 
 var mapData = function(googleMaps, flames){
-  console.log(flames);
+  //console.log(flames);
 
   // gonna build an https function for this
   /*
