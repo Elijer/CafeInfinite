@@ -1,10 +1,11 @@
-var     buildMap            = require('./2__buildMap'),
-        geolocation         = require ('./geolocation');
+var     buildMap            = require('./2__buildMap')
+        //geolocation         = require ('./geolocation');
 
 var geo = function(_db, db){
   buildMap(_db, db);
 };
-geolocation();
+
+//geolocation();
 
 module.exports = geo;
 

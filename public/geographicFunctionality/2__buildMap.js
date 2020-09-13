@@ -1,6 +1,7 @@
 var loadGoogleMapsApi   = require ('load-google-maps-api-2'); //use googleMaps, not google.maps w/ this module
 var getMapData          = require('./3__getMapData'); //has two underscores
 var newMap              = require('./createMap/newMap');
+var geolocation         = require ('./geolocation');
 // var boundsPrinter       = require('./tools/boundsPrinter');
 // var $                   = require ('jquery');
 var mapClick            = require ('./mapClick');
@@ -20,6 +21,7 @@ buildMap = function(_db, db){
     //boundsPrinter(googleMaps, 1); //tool for viewing the previous bounds of a screen
 
     getMapData(googleMaps, _db);
+    geolocation(map);
 
   }).catch(function (err) {
     console.error(err);
