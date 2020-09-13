@@ -16,22 +16,6 @@ var mapData = function(googleMaps, _flames){
     var scalingCoefficient = scaleCalculator(zoomLvl);
     newMarker(googleMaps, flame.lat, flame.lng, flame._id, i, scalingCoefficient);
   }
-
-
-  //console.log(flames);
-
-  // gonna build an https function for this
-  /*
-  $.getJSON('api/flames')
-  .then(function(data){
-    for (var i = 0; i < data.length; i++){
-      var flame = data[i];
-      var zoomLvl = map.getZoom();
-      var scalingCoefficient = scaleCalculator(zoomLvl);
-      newMarker(googleMaps, flame.lat, flame.lng, flame._id, i, scalingCoefficient);
-    };
-  });
-  */
  
   //onZoomChange(googleMaps);
   onBoundsChange(googleMaps);
@@ -57,3 +41,21 @@ stuff I want the file structure to support:
 
 
 */
+
+
+
+
+  //console.log(flames);
+
+  // gonna build an https function for this
+  /*
+  $.getJSON('api/flames')
+  .then(function(data){
+    for (var i = 0; i < data.length; i++){
+      var flame = data[i];
+      var zoomLvl = map.getZoom();
+      var scalingCoefficient = scaleCalculator(zoomLvl);
+      newMarker(googleMaps, flame.lat, flame.lng, flame._id, i, scalingCoefficient);
+    };
+  });
+  */
