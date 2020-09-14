@@ -10,6 +10,9 @@ const geolocation = require('./geographicFunctionality/geolocation');
 
 document.addEventListener("DOMContentLoaded", event => {
 
+    var loader = document.getElementById("loading");
+    loader.style.visibility = "visible";
+
     firebase.initializeApp(firebaseConfig);
 
     var db = firebase.firestore();
@@ -19,6 +22,7 @@ document.addEventListener("DOMContentLoaded", event => {
     var gmapsAPIkey = firebase.functions().httpsCallable('gmapsAPIkey');
     gmapsAPIkey({whatever: "this doesn't matter"}).
     then(function(key){
+        loader.style.visibility = "hidden";
 
         buildMap(db, key.data);
 

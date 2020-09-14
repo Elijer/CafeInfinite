@@ -60,7 +60,11 @@ body {
   bottom:0;
 }
 
-#center-map:hover {
-  background: orange;
-  color: white;
+#loading {
+  position: fixed;
+  z-index: 1000;
+  font-size: 250%;
+  left: 15px;
+  top: 145px;
+  visibility: hidden;
 }

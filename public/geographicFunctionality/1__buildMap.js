@@ -9,6 +9,9 @@ var mapClick            = require ('./mapClick');
 //loadGoogleMapsApi.key   = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 
 buildMap = function(db, key){
+  var loader = document.getElementById("loading");
+  loader.style.visibility = "visible";
+
   loadGoogleMapsApi.key = key;
   /* should asyncronously load googleMaps AND getMapData
   so that they can load in either order, but for now I am not */
@@ -29,6 +32,7 @@ buildMap = function(db, key){
 
     getMapData(googleMaps, db); // this is what should be done asynchronously independently of loading google maps
     geolocation(map);
+    loader.style.visibility = "hidden";
 
   }).catch(function (err) {
     console.error(err);
