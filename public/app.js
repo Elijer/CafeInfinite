@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", event => {
     var db = firebase.firestore();
     handleEmulators(firebase, db);
 
+    // get googleMaps API key where it is saved on server in order to use googleMaps
     var gmapsAPIkey = firebase.functions().httpsCallable('gmapsAPIkey');
     gmapsAPIkey({whatever: "this doesn't matter"}).
     then(function(key){

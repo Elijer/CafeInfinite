@@ -15,7 +15,7 @@ buildMap = function(db, key){
   loadGoogleMapsApi().then(function (googleMaps) {
 
     // create map
-    map = newMap(googleMaps);
+    map = newMap(googleMaps); // googleMaps is definitely needed here
 
     //setup empty arrays
     masterArray = [];
