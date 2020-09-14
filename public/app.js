@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", event => {
     // Gets all the flames
     var getFlames = firebase.functions().httpsCallable('getFlames');
     getFlames({whatever: 'whatever'})
-    .then(function(result){
-        buildMap(result, db);
+    .then(function(flames){
+        buildMap(flames, db);
     })
 
 });

@@ -9,11 +9,11 @@ var scaleCalculator     = require('./common/scaleCalculator');
 
 var mapData = function(googleMaps, _flames){
   var flames = _flames.data;
+  var zoomLvl = map.getZoom();
+  var scalingCoefficient = scaleCalculator(zoomLvl);
 
   for (var i = 0; i < flames.length; i++){
     var flame = flames[i];
-    var zoomLvl = map.getZoom();
-    var scalingCoefficient = scaleCalculator(zoomLvl);
     newMarker(googleMaps, flame.lat, flame.lng, flame._id, i, scalingCoefficient);
   }
  
@@ -38,24 +38,4 @@ stuff I want the file structure to support:
     --a user
     --a timeRange
     --a type, etc.
-
-
 */
-
-
-
-
-  //console.log(flames);
-
-  // gonna build an https function for this
-  /*
-  $.getJSON('api/flames')
-  .then(function(data){
-    for (var i = 0; i < data.length; i++){
-      var flame = data[i];
-      var zoomLvl = map.getZoom();
-      var scalingCoefficient = scaleCalculator(zoomLvl);
-      newMarker(googleMaps, flame.lat, flame.lng, flame._id, i, scalingCoefficient);
-    };
-  });
-  */
