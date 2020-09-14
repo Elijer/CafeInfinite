@@ -33,6 +33,11 @@ buildMap = function(db, key){
     getMapData(googleMaps, db); // this is what should be done asynchronously independently of loading google maps
     geolocation(map);
     loader.style.visibility = "hidden";
+    var centerMap = document.getElementById("center-map");
+    centerMap.addEventListener("click", function(){
+      geolocation();
+    })
+    //document.getElementById("myBtn").addEventListener("click", displayDate);
 
   }).catch(function (err) {
     console.error(err);
