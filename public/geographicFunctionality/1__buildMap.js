@@ -14,6 +14,8 @@ buildMap = function(db, key){
   so that they can load in either order, but for now I am not */
   loadGoogleMapsApi().then(function (googleMaps) {
 
+    gMaps = googleMaps;
+
     // create map
     map = newMap(googleMaps); // googleMaps is definitely needed here
 

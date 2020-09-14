@@ -7,7 +7,7 @@ var makeFuego = function(googleMaps, scale){
       anchorX = 150/scale, //so 30/15; in the middle of the X axis
       anchorY = 450/scale; //and 55-10 = 45, not quite at the bottom of the y axis, as the fire floats a bit
 
-      //seems to put actual size of the file of 300x500 pixels at around zoom level 20
+  //seems to put actual size of the file of 300x500 pixels at around zoom level 20
   //console.log(scale);
 
   var size = new googleMaps.Size(markerX, markerY);

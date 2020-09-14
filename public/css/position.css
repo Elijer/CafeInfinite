@@ -48,3 +48,19 @@ body {
   #uploadInput {
     display: none;
   }
+
+/* FOOTER */
+
+#center-map {
+  position:fixed;
+  font-size: 20px;
+  padding: 20px;
+  margin: 40px;
+  right:0;
+  bottom:0;
+}
+
+#center-map:hover {
+  background: orange;
+  color: white;
+}
