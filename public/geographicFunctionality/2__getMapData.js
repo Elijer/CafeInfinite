@@ -7,20 +7,33 @@ var onBoundsChange      = require('./onBoundsChange_v1.0');
 var scaleCalculator     = require('./common/scaleCalculator');
 
 
-var mapData = function(googleMaps, _flames){
-  var flames = _flames.data;
+var mapData = function(googleMaps, db){
+  
+  var flames = [];
   var zoomLvl = map.getZoom();
   var scalingCoefficient = scaleCalculator(zoomLvl);
 
-  for (var i = 0; i < flames.length; i++){
-    var flame = flames[i];
-    newMarker(googleMaps, flame.lat, flame.lng, flame._id, i, scalingCoefficient);
-  }
- 
-  //onZoomChange(googleMaps);
-  onBoundsChange(googleMaps);
-  /* wait to call onZoomChange until after markers created; onZoomChange resizes them
-  and there's nothing to resize until they exist */
+  // Get all documents in the flames collection
+  db.collection('flames').get()
+  .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          flames.push(doc.data());
+      });
+    
+      for (var i = 0; i < flames.length; i++){
+        var flame = flames[i];
+        newMarker(googleMaps, flame.lat, flame.lng, flame._id, i, scalingCoefficient);
+      }
+     
+      //onZoomChange(googleMaps);
+      onBoundsChange(googleMaps);
+      /* wait to call onZoomChange until after markers created; onZoomChange resizes them
+      and there's nothing to resize until they exist */
+
+  })
+  .catch(function(error) {
+      console.log("Error getting flames from 'flames' collection: ", error);
+  });
 }
 
 

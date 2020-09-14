@@ -7,16 +7,21 @@ var handleEmulators = require('./utility/helpers');
 var buildMap = require('./geographicFunctionality/1__buildMap')
 
 document.addEventListener("DOMContentLoaded", event => {
+
     firebase.initializeApp(firebaseConfig);
     var db = firebase.firestore();
     handleEmulators(firebase, db);
-    let flames = db.collection('flames'); // this must go after handleEmulators for some reason
-
-    // Gets all the flames
-    var getFlames = firebase.functions().httpsCallable('getFlames');
-    getFlames({whatever: 'whatever'})
-    .then(function(flames){
-        buildMap(flames, db);
-    })
-
+    buildMap(db);
+    
 });
+
+
+
+/* OR: Get all flames indirectly through an https call like this:
+
+var getFlames = firebase.functions().httpsCallable('getFlames');
+getFlames({whatever: 'whatever'})
+.then(function(flames){
+    console.log(flames);
+    //buildMap(flames, db);
+}) */

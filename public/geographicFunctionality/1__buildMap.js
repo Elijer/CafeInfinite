@@ -8,7 +8,9 @@ var mapClick            = require ('./mapClick');
 
 loadGoogleMapsApi.key   = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 
-buildMap = function(flames, db){
+buildMap = function(db){
+  /* should asyncronously load googleMaps AND getMapData
+  so that they can load in either order, but for now I am not */
   loadGoogleMapsApi().then(function (googleMaps) {
 
     // create map
@@ -22,7 +24,7 @@ buildMap = function(flames, db){
     mapClick(googleMaps, db); //marker gets added to map
     //boundsPrinter(googleMaps, 1); //tool for viewing the previous bounds of a screen
 
-    getMapData(googleMaps, flames);
+    getMapData(googleMaps, db); // this is what should be done asynchronously independently of loading google maps
     geolocation(map);
 
   }).catch(function (err) {
