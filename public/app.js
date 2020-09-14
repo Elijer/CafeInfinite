@@ -9,16 +9,23 @@ var buildMap = require('./geographicFunctionality/1__buildMap')
 document.addEventListener("DOMContentLoaded", event => {
 
     firebase.initializeApp(firebaseConfig);
+
     var db = firebase.firestore();
     handleEmulators(firebase, db);
-    buildMap(db);
-    
+
+    var gmapsAPIkey = firebase.functions().httpsCallable('gmapsAPIkey');
+    gmapsAPIkey({whatever: "this doesn't matter"}).
+    then(function(key){
+
+        buildMap(db, key.data);
+
+    })
+
 });
 
 
 
 /* OR: Get all flames indirectly through an https call like this:
-
 var getFlames = firebase.functions().httpsCallable('getFlames');
 getFlames({whatever: 'whatever'})
 .then(function(flames){

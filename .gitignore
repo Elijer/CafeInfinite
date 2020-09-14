@@ -12,6 +12,8 @@ firebaseConfig.js
 dist/
 dist
 public/bundle.js
+public/bundle.map.js
+
 
 # Firebase cache
 .firebase/

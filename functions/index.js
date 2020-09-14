@@ -27,8 +27,14 @@ exports.getFlames = functions.https.onCall (async(data, context) => {
     return dataRay;
 });
 
-/* exports.getFlames = functions.https.onRequest(async(req, res) => {
-    const collections = await flames.getCollections()
-    res.status(200).send(collections)
-    //https://stackoverflow.com/questions/49217090/how-to-iterate-through-every-document-in-every-collection-in-firestore
-}) */
+// this returns the active googlemapsAPI key that is saved in the firebase functions environmental variables
+exports.gmapsAPIkey = functions.https.onCall (async(data, context) => {
+    return functions.config().googlemaps.key;
+});
+
+/*
+firebase functions:config:get > .runtimeconfig.json
+firebase functions:config:set service.value="something" (sets a value, or multiple even)
+firebase functions:config:get service.value (gets specific value)
+firebase functions:config:get (gets all values)
+*/

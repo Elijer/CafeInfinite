@@ -6,9 +6,10 @@ var geolocation         = require ('./geolocation');
 // var $                   = require ('jquery');
 var mapClick            = require ('./mapClick');
 
-loadGoogleMapsApi.key   = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
+//loadGoogleMapsApi.key   = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 
-buildMap = function(db){
+buildMap = function(db, key){
+  loadGoogleMapsApi.key = key;
   /* should asyncronously load googleMaps AND getMapData
   so that they can load in either order, but for now I am not */
   loadGoogleMapsApi().then(function (googleMaps) {
