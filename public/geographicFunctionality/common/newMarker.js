@@ -4,7 +4,6 @@ var markerOnClick       = require('./markerOnClick');
 //flame Gif
 var gif_FLAME = "./geographicFunctionality/gifs/flames/flame.gif"
 
-
 var newMarker = function(googleMaps, lat, lng, id, index, scalingCoefficient){
 
   masterArray[index] = new googleMaps.Marker({
@@ -22,7 +21,6 @@ var newMarker = function(googleMaps, lat, lng, id, index, scalingCoefficient){
     any performance improvements optimization achieves anyways.
     */
   });
-
 
 
 
