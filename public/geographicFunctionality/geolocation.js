@@ -4,6 +4,7 @@ var geolocation = function(){
 
   function getLocation(map) {
     if (navigator.geolocation) {
+      console.log("geolocation is available");
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
       console.log("Geolocation is not supported by this browser.");
@@ -13,6 +14,8 @@ var geolocation = function(){
   function showPosition(position) {
     var lat = position.coords.latitude,
         lng = position.coords.longitude;
+
+    console.log(lat, lng);
 
     map.setCenter({lat: lat, lng: lng});
     console.log("Latitude: " + lat +

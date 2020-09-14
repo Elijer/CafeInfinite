@@ -24,9 +24,10 @@ document.addEventListener("DOMContentLoaded", event => {
 
     })
 
-    document.getElementById("center-map").addEventListener("click", function(){
+/*     document.getElementById("center-map").addEventListener("click", function(){
+        console.log("geolocation");
         geolocation();
-    });
+    }); */
     //$("center-map").onClick(console.log("yo"));
 
     

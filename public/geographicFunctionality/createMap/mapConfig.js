@@ -10,6 +10,7 @@ var mapConfig = {
     backgroundColor: "#212121",
     fullscreenControl: false,
     streetViewControl: false,
+    disableDoubleClickZoom: true,
     disableDefaultUI: true //gets rid of all the buttons on the map
 };
 
