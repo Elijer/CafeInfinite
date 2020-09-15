@@ -7,6 +7,7 @@ var mapClick = function(googleMaps, db){
     //google maps stores click lat & lng in a weird way;
     var lat = e.latLng.lat();
     var lng = e.latLng.lng();
+    //console.log("their style", lat, lng)
 
     createFlame(googleMaps, lat, lng, db/*, rootURL*/);
 

@@ -2,6 +2,8 @@ var loadGoogleMapsApi   = require ('load-google-maps-api-2'); //use googleMaps, 
 var getMapData          = require('./2__getMapData'); //has two underscores
 var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./geolocation');
+var geolocation2         = require ('./geolocation2');
+var createFlame         = require ('./createFlame')
 // var boundsPrinter       = require('./tools/boundsPrinter');
 // var $                   = require ('jquery');
 var mapClick            = require ('./mapClick');
@@ -33,11 +35,28 @@ buildMap = function(db, key){
     getMapData(googleMaps, db); // this is what should be done asynchronously independently of loading google maps
     geolocation(map);
     loader.style.visibility = "hidden";
+
+    /* CREATE CENTER MAP LISTENER */
     var centerMap = document.getElementById("center-map");
     centerMap.addEventListener("click", function(){
       geolocation();
     })
-    //document.getElementById("myBtn").addEventListener("click", displayDate);
+
+    /* CREATE NEW MARKER BUTTON LISTENER */
+    var centerMap = document.getElementById("new-marker");
+    centerMap.addEventListener("click", function(){
+      var lat = parseFloat(localStorage.getItem('lat'));
+      var lng = parseFloat(localStorage.getItem('lng'));
+      if (lat && lng){
+        //console.log("my style", lat, lng);
+        createFlame(googleMaps, lat, lng, db);
+
+      }
+      //console.log("New Marker!");
+      //createFlame(googleMaps)
+      //console.log(position);
+    })
+
 
   }).catch(function (err) {
     console.error(err);

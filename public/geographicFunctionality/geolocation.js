@@ -7,7 +7,6 @@ var geolocation = function(){
   function getLocation(map) {
     if (navigator.geolocation) {
       console.log("geolocation is available");
-      console.log(navigator.geolocation);
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
       loader.style.visibility = "hidden";
@@ -16,16 +15,23 @@ var geolocation = function(){
   }
   
   function showPosition(position) {
-    console.log("this is runnin");
     var lat = position.coords.latitude,
         lng = position.coords.longitude;
 
-    console.log(lat, lng);
+    var data = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    }
+
+    localStorage.setItem('lat', position.coords.latitude);
+    localStorage.setItem('lng', position.coords.longitude);
 
     map.setCenter({lat: lat, lng: lng});
     loader.style.visibility = "hidden";
-    console.log("Latitude: " + lat +
-    "<br>Longitude: " + lng);
+/*     console.log("Latitude: " + lat +
+    "<br>Longitude: " + lng); */
+
+    return position.coords
   }
 
 };

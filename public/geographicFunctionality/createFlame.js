@@ -2,7 +2,7 @@ var scaleCalculator     = require('./common/scaleCalculator');
 var newMarker           = require('./common/newMarker');
 
 var createFlame = function(googleMaps, lat, lng, db /*, rootUrl*/){
-
+//
   db.collection("flames").add({
     lat: lat,
     lng: lng,

@@ -53,6 +53,17 @@
   color: white;
 }
 
+#new-marker {
+  border: 0px;
+  background: green;
+  color: white;
+}
+
+#new-marker:hover {
+  background: orange;
+  color: white;
+}
+
 #loading {
   color: orange;
 }
