@@ -50,7 +50,7 @@ function geo(db, key){
       var lat = parseFloat(localStorage.getItem('lat'));
       var lng = parseFloat(localStorage.getItem('lng'));
       if (lat && lng){
-        createBeacon(googleMaps, lat, lng, db);
+        createBeacon(googleMaps, lat, lng, gifs.flame, db);
       }
     })
 
