@@ -4,9 +4,9 @@ var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./geolocation');
 var createBeacon        = require ('./createBeacon')
 var mapClick            = require ('./mapClick');
-var mainLoader          = require('../utility/mainLoader');
+var { mainLoader }         = require('../utility/utility');
 
-buildMap = function(db, key){
+geo = function(db, key){
   
   mainLoader(true);
 
@@ -50,4 +50,4 @@ buildMap = function(db, key){
   });
 };
 
-module.exports = buildMap;
+module.exports = geo;

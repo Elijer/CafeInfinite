@@ -5,7 +5,7 @@ const {firebaseConfig,
        handleEmulators,
        mainLoader}      = require('./utility/utility')
 
-var buildMap = require('./geographicFunctionality/1__buildMap');
+var geo = require('./geographicFunctionality/1__geo');
 
 document.addEventListener("DOMContentLoaded", event => {
 
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", event => {
     then(function(key){
         mainLoader(false);
 
-        buildMap(db, key.data);
+        geo(db, key.data);
 
     })
 
