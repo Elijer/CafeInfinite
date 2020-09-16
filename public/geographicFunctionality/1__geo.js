@@ -6,23 +6,20 @@ var createBeacon        = require ('./createBeacon')
 var mapClick            = require ('./mapClick');
 var { mainLoader }         = require('../utility/utility');
 
-geo = function(db, key){
+function geo(db, key){
   
   mainLoader(true);
 
   loadGoogleMapsApi.key = key;
   loadGoogleMapsApi().then(function (googleMaps) {
 
-    // CREATE MAP
+    // CREATE GLOBALS: MAP AND ARRAYS
     map = newMap(googleMaps); // googleMaps is definitely needed here
-
-    //setup empty arrays
     masterArray = [];
     gifArray = [];
 
-    //CLICK EVENTS: SELECT ONE;
-    mapClick(googleMaps, db); //marker gets added to map
-    //boundsPrinter(googleMaps, 1); //tool for viewing the previous bounds of a screen
+    // ASSIGN CLICK EVENTS
+    mapClick(googleMaps, db);
 
     getMapData(googleMaps, db);
     geolocation(map);
