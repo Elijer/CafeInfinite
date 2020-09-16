@@ -4,11 +4,11 @@ var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./geolocation');
 var createBeacon         = require ('./createBeacon')
 var mapClick            = require ('./mapClick');
+var mainLoader = require('../utility/mainLoader');
 
 buildMap = function(db, key){
   
-  var loader = document.getElementById("loading");
-  loader.style.visibility = "visible";
+  mainLoader(true);
 
   loadGoogleMapsApi.key = key;
   loadGoogleMapsApi().then(function (googleMaps) {
@@ -26,7 +26,7 @@ buildMap = function(db, key){
 
     getMapData(googleMaps, db);
     geolocation(map);
-    loader.style.visibility = "hidden";
+    mainLoader(false);
 
     /* CREATE CENTER MAP LISTENER */
     var centerMap = document.getElementById("center-map");

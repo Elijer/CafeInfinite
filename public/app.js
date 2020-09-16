@@ -3,13 +3,13 @@ var firestore = require('firebase/firestore'); // yes this is needed
 var functions = require('firebase/functions');
 var firebaseConfig = require('./utility/firebaseConfig');
 var handleEmulators = require('./utility/helpers');
+var mainLoader = require('./utility/mainLoader');
 
 var buildMap = require('./geographicFunctionality/1__buildMap');
 
 document.addEventListener("DOMContentLoaded", event => {
 
-    var loader = document.getElementById("loading");
-    loader.style.visibility = "visible";
+    mainLoader(true);
 
     firebase.initializeApp(firebaseConfig);
 
@@ -20,19 +20,11 @@ document.addEventListener("DOMContentLoaded", event => {
     var gmapsAPIkey = firebase.functions().httpsCallable('gmapsAPIkey');
     gmapsAPIkey({whatever: "this doesn't matter"}).
     then(function(key){
-        loader.style.visibility = "hidden";
+        mainLoader(false);
 
         buildMap(db, key.data);
 
     })
-
-/*     document.getElementById("center-map").addEventListener("click", function(){
-        console.log("geolocation");
-        geolocation();
-    }); */
-    //$("center-map").onClick(console.log("yo"));
-
-    
 
 });
 
