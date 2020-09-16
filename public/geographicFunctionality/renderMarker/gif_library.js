@@ -8,8 +8,8 @@ var gifs = {
 
     cat: {
         url: "./geographicFunctionality/gifs/menu/cat.gif",
-        stroke: '#f9371c',
-        fill: '#fed130'
+        stroke: '#5a4a3f',
+        fill: '#dcd7d1'
     }
 }
 
