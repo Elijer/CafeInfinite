@@ -1,4 +1,5 @@
 var makeFuego           = require('./fuego');
+var gifs                = require('./gif_library');
 
 var scale = function(googleMaps, markerInstance, scalingCoefficient){
     var fuego = makeFuego(googleMaps, scalingCoefficient);

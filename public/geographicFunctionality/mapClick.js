@@ -1,6 +1,9 @@
 var $                   = require('jquery');
 //var rootURL             = require ('../rootURL');
 var createFlame         = require('./createFlame');
+var gifs                = require('./common/gif_library');
+
+var flame = "./geographicFunctionality/gifs/flames/flame.gif";
 
 var mapClick = function(googleMaps, db){
     map.addListener('click', function(e) {
@@ -9,7 +12,7 @@ var mapClick = function(googleMaps, db){
     var lng = e.latLng.lng();
     //console.log("their style", lat, lng)
 
-    createFlame(googleMaps, lat, lng, db/*, rootURL*/);
+    createFlame(googleMaps, lat, lng, gifs.cat, db/*, rootURL*/);
 
   });
 };

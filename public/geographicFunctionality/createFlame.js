@@ -1,21 +1,23 @@
 var scaleCalculator     = require('./common/scaleCalculator');
 var newMarker           = require('./common/newMarker');
+const { cat } = require('./common/gif_library');
 
-var createFlame = function(googleMaps, lat, lng, db /*, rootUrl*/){
+var createFlame = function(googleMaps, lat, lng, icon, db /*, rootUrl*/){
 //
   db.collection("flames").add({
     lat: lat,
     lng: lng,
+    icon: icon,
     created_at: new Date()
   })
   .then(function(docRef) {
-
+    
     // Render onto Map
     const newID =  docRef.id
     const position = masterArray.length;
     const zoomLvl = map.getZoom();
     const scalingCoefficient = scaleCalculator(zoomLvl);
-    newMarker(googleMaps, lat, lng, newID, position, scalingCoefficient);
+    newMarker(googleMaps, lat, lng, icon, newID, position, scalingCoefficient);
 
   })
   .catch(function(error) {

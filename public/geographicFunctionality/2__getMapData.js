@@ -5,6 +5,7 @@ var newMarker           = require('./common/newMarker');
 //var onBoundsChange      = require('./onBoundsChange_v2.0');
 var onBoundsChange      = require('./onBoundsChange_v1.0');
 var scaleCalculator     = require('./common/scaleCalculator');
+var gifs                = require('./common/gif_library');
 
 
 var mapData = function(googleMaps, db){
@@ -22,7 +23,8 @@ var mapData = function(googleMaps, db){
     
       for (var i = 0; i < flames.length; i++){
         var flame = flames[i];
-        newMarker(googleMaps, flame.lat, flame.lng, flame._id, i, scalingCoefficient);
+        console.log(gifs.cat);
+        newMarker(googleMaps, flame.lat, flame.lng, gifs.cat, flame._id, i, scalingCoefficient);
       }
      
       //onZoomChange(googleMaps);

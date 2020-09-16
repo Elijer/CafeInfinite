@@ -1,7 +1,10 @@
 var scale               = require('./scale');
 var markerOnClick       = require('./markerOnClick');
+var gifs                = require('./gif_library');
 
 var newMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoefficient){
+
+  console.log(icon);
 
   masterArray[index] = new googleMaps.Marker({
     elijahPosition: {lat: lat, lng: lng},
