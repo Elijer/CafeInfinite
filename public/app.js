@@ -1,7 +1,7 @@
 var firebase = require('firebase/app');
 var firestore = require('firebase/firestore'); // yes this is needed
 var functions = require('firebase/functions');
-var firebaseConfig = require('./firebaseConfig');
+var firebaseConfig = require('./utility/firebaseConfig');
 var handleEmulators = require('./utility/helpers');
 
 var buildMap = require('./geographicFunctionality/1__buildMap');
