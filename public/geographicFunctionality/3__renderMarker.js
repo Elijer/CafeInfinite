@@ -7,7 +7,7 @@ var renderMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoeffi
     elijahPosition: {lat: lat, lng: lng},
     position: {lat: lat, lng: lng},
     map: map,
-    icon: {url: icon},
+    icon: {url: icon.url},
     iterationID: id,
     optimized: false, // increases performance, but prevents re-scaling
     visible: false
@@ -18,10 +18,10 @@ var renderMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoeffi
   var h = r / .83333333333;
   gifArray[index] = new google.maps.Rectangle({
     elijahPosition: {lat: lat, lng: lng},
-    strokeColor: '#f9371c',
+    strokeColor: icon.stroke,
+    fillColor: icon.fill,
     strokeOpacity: 0.8,
     strokeWeight: 1.4,
-    fillColor: '#fed130',
     fillOpacity: 1,
     map: map,
     bounds: {

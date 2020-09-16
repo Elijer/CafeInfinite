@@ -10,7 +10,6 @@ var createBeacon = function(googleMaps, lat, lng, icon, db /*, rootUrl*/){
     created_at: new Date()
   })
   .then(function(docRef) {
-    
     // Render onto Map
     const newID =  docRef.id
     const position = masterArray.length;
