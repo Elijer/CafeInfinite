@@ -1,6 +1,6 @@
 var $                   = require('jquery');
 //var rootURL             = require ('../rootURL');
-var createFlame         = require('./createBeacon');
+var createBeacon         = require('./createBeacon');
 var gifs                = require('./common/gif_library');
 
 var flame = "./geographicFunctionality/gifs/flames/flame.gif";
