@@ -3,8 +3,11 @@ var getMapData          = require('./2__getMapData'); //has two underscores
 var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./geolocation');
 var createBeacon        = require ('./createBeacon')
-var mapClick            = require ('./mapClick');
 var { mainLoader }         = require('../utility/utility');
+var createBeacon         = require('./createBeacon');
+var gifs                = require('./common/gif_library');
+//var onZoomChange        = require('./onZoomChange');
+//var onBoundsChange      = require('./onBoundsChange_v2.0');
 
 function geo(db, key){
   
@@ -18,12 +21,22 @@ function geo(db, key){
     masterArray = [];
     gifArray = [];
 
-    // ASSIGN CLICK EVENTS
-    mapClick(googleMaps, db);
+    // MAP CLICK
+    map.addListener('click', function(e) {
+      var lat = e.latLng.lat();
+      var lng = e.latLng.lng();
+      createBeacon(googleMaps, lat, lng, gifs.flame, db);
+    });
 
+    // populate map with beacons
     getMapData(googleMaps, db);
+
+    // 
     geolocation(map);
     mainLoader(false);
+
+
+    /* ***** HTML ELEMENT EVENTS **** */
 
     /* CREATE CENTER MAP LISTENER */
     var centerMap = document.getElementById("center-map");
@@ -46,5 +59,6 @@ function geo(db, key){
   });
 
 };
+
 
 module.exports = geo;

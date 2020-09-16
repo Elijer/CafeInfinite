@@ -4,17 +4,27 @@ var geolocation = function(){
   //var x = document.getElementById("demo");
   getLocation();
 
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+
   function getLocation(map) {
     if (navigator.geolocation) {
       console.log("geolocation is available");
-      navigator.geolocation.getCurrentPosition(showPosition);
+      navigator.geolocation.getCurrentPosition(success, error, options);
     } else {
       loader.style.visibility = "hidden";
       alert("Geolocation is not supported by this browser.");
     }
   }
   
-  function showPosition(position) {
+  function success(position) {
     var lat = position.coords.latitude,
         lng = position.coords.longitude;
 

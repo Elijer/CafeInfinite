@@ -1,35 +1,36 @@
-var $                   = require('jquery');
-
 var newMarker           = require('./common/newMarker');
-//var onZoomChange        = require('./onZoomChange');
-//var onBoundsChange      = require('./onBoundsChange_v2.0');
 var onBoundsChange      = require('./onBoundsChange_v1.0');
 var scaleCalculator     = require('./common/scaleCalculator');
 var gifs                = require('./common/gif_library');
 
 
-var mapData = function(googleMaps, db){
+var getMapData = function(googleMaps, db){
   
-  var flames = [];
+  var beacons = [];
   var zoomLvl = map.getZoom();
   var scalingCoefficient = scaleCalculator(zoomLvl);
 
-  // Get all documents in the flames collection
+  // Get all documents in the beacons (flames) collection
   db.collection('flames').get()
   .then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-          flames.push(doc.data());
-      });
-    
-      for (var i = 0; i < flames.length; i++){
-        var flame = flames[i];
-        newMarker(googleMaps, flame.lat, flame.lng, gifs.flame, flame._id, i, scalingCoefficient);
-      }
+
+    // load each beacon from db into an array called 'beacons'
+    querySnapshot.forEach(function(doc) {
+      let beacon = doc.data();
+      beacons.push(beacon);
+    });
+      
+    // then for each item in the new array, run newMarker()
+    for (var i = 0; i < beacons.length; i++){
+      var beacon = beacons[i];
+      newMarker(
+        googleMaps, beacon.lat, beacon.lng, gifs.flame, beacon._id, i, scalingCoefficient);
+    }
      
-      //onZoomChange(googleMaps);
-      onBoundsChange(googleMaps);
-      /* wait to call onZoomChange until after markers created; onZoomChange resizes them
-      and there's nothing to resize until they exist */
+    //onZoomChange(googleMaps);
+    onBoundsChange(googleMaps);
+    /* wait to call onZoomChange until after markers created; onZoomChange resizes them
+    and there's nothing to resize until they exist */
 
   })
   .catch(function(error) {
@@ -38,7 +39,7 @@ var mapData = function(googleMaps, db){
 }
 
 
-module.exports = mapData;
+module.exports = getMapData;
 
 /*
 stuff I want the file structure to support:
