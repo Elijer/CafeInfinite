@@ -27,10 +27,7 @@ var getMapData = function(googleMaps, db){
         googleMaps, beacon.lat, beacon.lng, gifs.flame, beacon._id, i, scalingCoefficient);
     }
      
-    //onZoomChange(googleMaps);
     onBoundsChange(googleMaps);
-    /* wait to call onZoomChange until after markers created; onZoomChange resizes them
-    and there's nothing to resize until they exist */
 
   })
   .catch(function(error) {
