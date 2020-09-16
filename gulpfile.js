@@ -7,10 +7,12 @@ var gulp = require('gulp'),
     babelify     = require('babelify'),
     browserify = require('browserify'),
     gulp       = require('gulp'),
-    source     = require('vinyl-source-stream');
+    source     = require('vinyl-source-stream'),
+    strip = require('gulp-strip-comments');
  
 var buildDirectory = 'dist/';
 var sourceDirectory = 'public/'
+
     
 // Moves all top-level html files from source directory to build directory
 // If I ever put html into folder it won't move them, but I don't plan on doing that
@@ -29,6 +31,7 @@ async function css(){
 async function scrap(){
     return del(buildDirectory, {force:true});
 };
+
 
 // Runs browserify to bundle the JS and save the bundle in build directory
 async function bundle(){
@@ -49,6 +52,7 @@ async function bundleAndMap(){
         .transform(babelify, {presets: ["@babel/preset-env"]})
         .transform('uglifyify', { global: true  })
         .bundle()                    //Pass desired output filename to vinyl-source-stream
+        //.pipe(strip())               // strip comments
         .pipe(source('bundle.js'))  // Start piping stream to tasks! Other stuff can go here
         .pipe(gulp.dest(buildDirectory));
 };
