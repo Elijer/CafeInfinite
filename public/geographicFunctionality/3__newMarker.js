@@ -1,6 +1,5 @@
-var scale               = require('./scale');
-var markerOnClick       = require('./markerOnClick');
-var gifs                = require('./gif_library');
+var scale               = require('./common/scale');
+var markerOnClick       = require('./common/markerOnClick');
 
 var newMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoefficient){
 
@@ -10,18 +9,11 @@ var newMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoefficie
     map: map,
     icon: {url: icon},
     iterationID: id,
-    optimized: false,
+    optimized: false, // increases performance, but prevents re-scaling
     visible: false
-    /*optimize is a useful, complicated option that will take still gifs and pngs and save them
-    into one image or something, drastically increasing performance. However, if markers are created as
-    optimized, it seems impossible to change them later. If they are created with optimized: false,
-    it is possible then to change them to 'true' and back again, but doing this seems to sacrifice
-    any performance improvements optimization achieves anyways.
-    */
   });
 
-
-
+  
   var r = .00005;
   var h = r / .83333333333;
   gifArray[index] = new google.maps.Rectangle({
@@ -40,10 +32,7 @@ var newMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoefficie
     }
   });
 
-
-
   scale(googleMaps, masterArray[index], scalingCoefficient);
-  //markerOnClick(masterArray[index], rootURL, id);
 
 };
 
