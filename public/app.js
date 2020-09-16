@@ -3,10 +3,8 @@ var firestore = require('firebase/firestore'); // yes this is needed
 var functions = require('firebase/functions');
 var firebaseConfig = require('./firebaseConfig');
 var handleEmulators = require('./utility/helpers');
-var $ = require('jquery');
 
 var buildMap = require('./geographicFunctionality/1__buildMap');
-const geolocation = require('./geographicFunctionality/geolocation');
 
 document.addEventListener("DOMContentLoaded", event => {
 

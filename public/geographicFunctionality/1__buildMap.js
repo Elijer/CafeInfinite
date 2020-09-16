@@ -3,20 +3,15 @@ var getMapData          = require('./2__getMapData'); //has two underscores
 var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./geolocation');
 var createBeacon         = require ('./createBeacon')
-// var boundsPrinter       = require('./tools/boundsPrinter');
-// var $                   = require ('jquery');
 var mapClick            = require ('./mapClick');
 
-//loadGoogleMapsApi.key   = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
-
 buildMap = function(db, key){
+  
   var loader = document.getElementById("loading");
   loader.style.visibility = "visible";
 
   loadGoogleMapsApi.key = key;
   loadGoogleMapsApi().then(function (googleMaps) {
-
-    gMaps = googleMaps;
 
     // CREATE MAP
     map = newMap(googleMaps); // googleMaps is definitely needed here
@@ -51,7 +46,7 @@ buildMap = function(db, key){
 
 
   }).catch(function (err) {
-    console.error(err);
+    console.error("There was a problem building the map", err);
   });
 };
 
