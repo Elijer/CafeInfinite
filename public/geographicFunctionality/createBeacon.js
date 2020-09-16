@@ -1,7 +1,7 @@
 var scaleCalculator     = require('./common/scaleCalculator');
 var newMarker           = require('./common/newMarker');
 
-var createFlame = function(googleMaps, lat, lng, icon, db /*, rootUrl*/){
+var createBeacon = function(googleMaps, lat, lng, icon, db /*, rootUrl*/){
 //
   db.collection("flames").add({
     lat: lat,
@@ -24,4 +24,4 @@ var createFlame = function(googleMaps, lat, lng, icon, db /*, rootUrl*/){
   });
 };
 
-module.exports = createFlame;
+module.exports = createBeacon;

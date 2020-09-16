@@ -41,10 +41,10 @@ function geo(db, key){
       }
     })
 
-
   }).catch(function (err) {
-    console.error("There was a problem building the map", err);
+    console.error("There was a problem in the geo file", err);
   });
+
 };
 
 module.exports = geo;
