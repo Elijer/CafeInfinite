@@ -4,7 +4,7 @@ var createBeacon        = require ('./2b__createBeacon')
 var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./tools/geolocation');
 var { mainLoader }      = require('../utility/utility');
-var gifs                = require('./common/gif_library');
+var gifs                = require('./renderMarker/gif_library');
 //var onZoomChange        = require('./onZoomChange');
 //var onBoundsChange      = require('./onBoundsChange_v2.0');
 

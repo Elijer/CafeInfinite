@@ -1,7 +1,7 @@
-var newMarker           = require('./common/newMarker');
+var renderMarker        = require('./3__renderMarker');
 var onBoundsChange      = require('./onBoundsChange_v1.0');
-var scaleCalculator     = require('./common/scaleCalculator');
-var gifs                = require('./common/gif_library');
+var scaleCalculator     = require('./renderMarker/scaleCalculator');
+var gifs                = require('./renderMarker/gif_library');
 
 
 var getMapData = function(googleMaps, db){
@@ -20,10 +20,10 @@ var getMapData = function(googleMaps, db){
       beacons.push(beacon);
     });
       
-    // then for each item in the new array, run newMarker()
+    // then for each item in the new array, run renderMarker()
     for (var i = 0; i < beacons.length; i++){
       var beacon = beacons[i];
-      newMarker(
+      renderMarker(
         googleMaps, beacon.lat, beacon.lng, gifs.flame, beacon._id, i, scalingCoefficient);
     }
      

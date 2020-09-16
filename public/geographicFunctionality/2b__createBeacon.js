@@ -1,5 +1,5 @@
-var scaleCalculator     = require('./common/scaleCalculator');
-var newMarker           = require('./common/newMarker');
+var scaleCalculator     = require('./renderMarker/scaleCalculator');
+var renderMarker           = require('./3__renderMarker');
 
 var createBeacon = function(googleMaps, lat, lng, icon, db /*, rootUrl*/){
 //
@@ -16,7 +16,7 @@ var createBeacon = function(googleMaps, lat, lng, icon, db /*, rootUrl*/){
     const position = masterArray.length;
     const zoomLvl = map.getZoom();
     const scalingCoefficient = scaleCalculator(zoomLvl);
-    newMarker(googleMaps, lat, lng, icon, newID, position, scalingCoefficient);
+    renderMarker(googleMaps, lat, lng, icon, newID, position, scalingCoefficient);
 
   })
   .catch(function(error) {

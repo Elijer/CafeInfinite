@@ -1,7 +1,7 @@
-var scale               = require('./common/scale');
-var markerOnClick       = require('./common/markerOnClick');
+var scale               = require('./renderMarker/scale');
+var markerOnClick       = require('./renderMarker/markerOnClick');
 
-var newMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoefficient){
+var renderMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoefficient){
 
   masterArray[index] = new googleMaps.Marker({
     elijahPosition: {lat: lat, lng: lng},
@@ -36,4 +36,4 @@ var newMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoefficie
 
 };
 
-module.exports = newMarker;
+module.exports = renderMarker;

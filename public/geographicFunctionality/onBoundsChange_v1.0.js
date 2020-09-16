@@ -1,5 +1,5 @@
-var scale               = require('./common/scale');
-var scaleCalculator     = require('./common/scaleCalculator');
+var scale               = require('./renderMarker/scale');
+var scaleCalculator     = require('./renderMarker/scaleCalculator');
 
 //var scaleAnimator       = require('./common/scaleAnimator');
 //var renderLoop          = require('./tools/renderLoop');
