@@ -1,6 +1,5 @@
 var scaleCalculator     = require('./common/scaleCalculator');
 var newMarker           = require('./common/newMarker');
-const { cat } = require('./common/gif_library');
 
 var createFlame = function(googleMaps, lat, lng, icon, db /*, rootUrl*/){
 //

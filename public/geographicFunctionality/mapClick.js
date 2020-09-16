@@ -12,7 +12,7 @@ var mapClick = function(googleMaps, db){
     var lng = e.latLng.lng();
     //console.log("their style", lat, lng)
 
-    createFlame(googleMaps, lat, lng, gifs.cat, db/*, rootURL*/);
+    createFlame(googleMaps, lat, lng, gifs.flame, db/*, rootURL*/);
 
   });
 };

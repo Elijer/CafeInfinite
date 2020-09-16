@@ -23,8 +23,7 @@ var mapData = function(googleMaps, db){
     
       for (var i = 0; i < flames.length; i++){
         var flame = flames[i];
-        console.log(gifs.cat);
-        newMarker(googleMaps, flame.lat, flame.lng, gifs.cat, flame._id, i, scalingCoefficient);
+        newMarker(googleMaps, flame.lat, flame.lng, gifs.flame, flame._id, i, scalingCoefficient);
       }
      
       //onZoomChange(googleMaps);
