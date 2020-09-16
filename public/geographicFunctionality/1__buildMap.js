@@ -2,7 +2,6 @@ var loadGoogleMapsApi   = require ('load-google-maps-api-2'); //use googleMaps, 
 var getMapData          = require('./2__getMapData'); //has two underscores
 var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./geolocation');
-var geolocation2         = require ('./geolocation2');
 var createFlame         = require ('./createFlame')
 // var boundsPrinter       = require('./tools/boundsPrinter');
 // var $                   = require ('jquery');
