@@ -1,9 +1,9 @@
 var loadGoogleMapsApi   = require ('load-google-maps-api-2'); //use googleMaps, not google.maps w/ this module
-var getMapData          = require('./2__getMapData'); //has two underscores
+var getMapData          = require ('./2a__getMapData'); //has two underscores
+var createBeacon        = require ('./2b__createBeacon')
 var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./geolocation');
-var createBeacon        = require ('./2b__createBeacon')
-var { mainLoader }         = require('../utility/utility');
+var { mainLoader }      = require('../utility/utility');
 var gifs                = require('./common/gif_library');
 //var onZoomChange        = require('./onZoomChange');
 //var onBoundsChange      = require('./onBoundsChange_v2.0');
