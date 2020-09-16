@@ -2,9 +2,9 @@ var loadGoogleMapsApi   = require ('load-google-maps-api-2'); //use googleMaps, 
 var getMapData          = require('./2__getMapData'); //has two underscores
 var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./geolocation');
-var createBeacon         = require ('./createBeacon')
+var createBeacon        = require ('./createBeacon')
 var mapClick            = require ('./mapClick');
-var mainLoader = require('../utility/mainLoader');
+var mainLoader          = require('../utility/mainLoader');
 
 buildMap = function(db, key){
   

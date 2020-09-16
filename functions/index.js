@@ -25,6 +25,14 @@ exports.getFlames = functions.https.onCall (async(data, context) => {
     });
 
     return dataRay;
+
+    /* Use this https call on client like this:
+    var getFlames = firebase.functions().httpsCallable('getFlames');
+    getFlames({whatever: 'whatever'})
+    .then(function(flames){
+        console.log(flames);
+        //buildMap(flames, db);
+    }) */
 });
 
 // this returns the active googlemapsAPI key that is saved in the firebase functions environmental variables
