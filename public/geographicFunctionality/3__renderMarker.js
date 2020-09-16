@@ -1,7 +1,7 @@
 var scale               = require('./renderMarker/scale');
-var markerOnClick       = require('./renderMarker/markerOnClick');
+//var markerOnClick       = require('./renderMarker/markerOnClick');
 
-var renderMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoefficient){
+var renderMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoefficient, batch){
 
   masterArray[index] = new googleMaps.Marker({
     elijahPosition: {lat: lat, lng: lng},
@@ -32,7 +32,28 @@ var renderMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoeffi
     }
   });
 
-  scale(googleMaps, masterArray[index], scalingCoefficient);
+  if (batch){
+    // being called by onBoundsChange or getMapData
+    scale(googleMaps, masterArray[index], scalingCoefficient);
+  } else {
+    // being called by 2b__createBeacon and not onBoundsChange
+    var zoomLimit = 16;
+    var newZoom = map.getZoom();
+    var m = masterArray[index];
+    var g = gifArray[index];
+
+    if (newZoom >= zoomLimit){
+      // gif visible
+      m.setVisible(true);
+      g.setMap(null);
+      scale(googleMaps, m, scalingCoefficient);
+    } else {
+      // square visible
+      m.setVisible(false);
+      g.setMap(map);
+    }
+
+  }
 
 };
 

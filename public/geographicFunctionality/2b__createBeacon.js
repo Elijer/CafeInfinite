@@ -15,7 +15,7 @@ var createBeacon = function(googleMaps, lat, lng, icon, db /*, rootUrl*/){
     const position = masterArray.length;
     const zoomLvl = map.getZoom();
     const scalingCoefficient = scaleCalculator(zoomLvl);
-    renderMarker(googleMaps, lat, lng, icon, newID, position, scalingCoefficient);
+    renderMarker(googleMaps, lat, lng, icon, newID, position, scalingCoefficient, false);
 
   })
   .catch(function(error) {
