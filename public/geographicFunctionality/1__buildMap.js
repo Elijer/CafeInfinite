@@ -2,7 +2,7 @@ var loadGoogleMapsApi   = require ('load-google-maps-api-2'); //use googleMaps, 
 var getMapData          = require('./2__getMapData'); //has two underscores
 var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./geolocation');
-var createFlame         = require ('./createFlame')
+var createBeacon         = require ('./createBeacon')
 // var boundsPrinter       = require('./tools/boundsPrinter');
 // var $                   = require ('jquery');
 var mapClick            = require ('./mapClick');
@@ -14,13 +14,11 @@ buildMap = function(db, key){
   loader.style.visibility = "visible";
 
   loadGoogleMapsApi.key = key;
-  /* should asyncronously load googleMaps AND getMapData
-  so that they can load in either order, but for now I am not */
   loadGoogleMapsApi().then(function (googleMaps) {
 
     gMaps = googleMaps;
 
-    // create map
+    // CREATE MAP
     map = newMap(googleMaps); // googleMaps is definitely needed here
 
     //setup empty arrays
@@ -31,7 +29,7 @@ buildMap = function(db, key){
     mapClick(googleMaps, db); //marker gets added to map
     //boundsPrinter(googleMaps, 1); //tool for viewing the previous bounds of a screen
 
-    getMapData(googleMaps, db); // this is what should be done asynchronously independently of loading google maps
+    getMapData(googleMaps, db);
     geolocation(map);
     loader.style.visibility = "hidden";
 
@@ -47,13 +45,8 @@ buildMap = function(db, key){
       var lat = parseFloat(localStorage.getItem('lat'));
       var lng = parseFloat(localStorage.getItem('lng'));
       if (lat && lng){
-        //console.log("my style", lat, lng);
-        createFlame(googleMaps, lat, lng, db);
-
+        createBeacon(googleMaps, lat, lng, db);
       }
-      //console.log("New Marker!");
-      //createFlame(googleMaps)
-      //console.log(position);
     })
 
 
