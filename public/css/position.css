@@ -101,7 +101,7 @@ body {
   margin-top: 10%;
   margin: 1%;
   width: 98%;
-  height: 78.5%;
+  height: 77%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr; 
@@ -110,6 +110,7 @@ body {
 
   .selection-item {
     border-radius: 4px;
+    vertical-align: middle;
 /*     background-color: lightgrey; */
   }
   

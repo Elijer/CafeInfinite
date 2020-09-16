@@ -1,16 +1,13 @@
 var scale               = require('./scale');
 var markerOnClick       = require('./markerOnClick');
 
-//flame Gif
-var gif_FLAME = "./geographicFunctionality/gifs/flames/flame.gif"
-
-var newMarker = function(googleMaps, lat, lng, id, index, scalingCoefficient){
+var newMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoefficient){
 
   masterArray[index] = new googleMaps.Marker({
     elijahPosition: {lat: lat, lng: lng},
     position: {lat: lat, lng: lng},
     map: map,
-    icon: {url: gif_FLAME},
+    icon: {url: icon},
     iterationID: id,
     optimized: false,
     visible: false
