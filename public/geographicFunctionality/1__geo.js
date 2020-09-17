@@ -17,6 +17,8 @@ function geo(db, key){
   loadGoogleMapsApi.key = key;
   loadGoogleMapsApi().then(function (googleMaps) {
 
+    var testing = true;
+
     // CREATE GLOBALS: MAP AND ARRAYS
     map = newMap(googleMaps); // googleMaps is definitely needed here
     store = {};
@@ -68,7 +70,7 @@ function geo(db, key){
         markerMenu();
         let lat;
         let lng;
-        if (store.mapClick.active){
+        if (store.mapClick.active && testing == true){
           lat = store.mapClick.lat;
           lng = store.mapClick.lng
           store.mapClick.active = false;
