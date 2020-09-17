@@ -19,11 +19,17 @@ function geo(db, key){
 
     // CREATE GLOBALS: MAP AND ARRAYS
     map = newMap(googleMaps); // googleMaps is definitely needed here
+    store = {};
+    store.mapClick = {};
+    store.mapClick.active = false;
     masterArray = [];
     gifArray = [];
 
     // MAP CLICK
     map.addListener('click', function(e) {
+      store.mapClick.active = true;
+      store.mapClick.lat = e.latLng.lat();
+      store.mapClick.lng = e.latLng.lng();
       markerMenu();
     });
 
@@ -60,8 +66,16 @@ function geo(db, key){
       `
       item.addEventListener("click", function(){
         markerMenu();
-        var lat = parseFloat(localStorage.getItem('lat'));
-        var lng = parseFloat(localStorage.getItem('lng'));
+        let lat;
+        let lng;
+        if (store.mapClick.active){
+          lat = store.mapClick.lat;
+          lng = store.mapClick.lng
+          store.mapClick.active = false;
+        } else {
+          lat = parseFloat(localStorage.getItem('lat'));
+          lng = parseFloat(localStorage.getItem('lng'));
+        }
         if (lat && lng){
           createBeacon(googleMaps, lat, lng, value, db);
         }
