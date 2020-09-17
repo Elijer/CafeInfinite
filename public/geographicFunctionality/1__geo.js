@@ -21,11 +21,9 @@ function geo(db, key){
     gifArray = [];
 
     // MAP CLICK
-/*     map.addListener('click', function(e) {
-      var lat = e.latLng.lat();
-      var lng = e.latLng.lng();
-      createBeacon(googleMaps, lat, lng, gifs.cat, db);
-    }); */
+    map.addListener('click', function(e) {
+      markerMenu();
+    });
 
     getMapData(googleMaps, db);
 
@@ -48,6 +46,9 @@ function geo(db, key){
       markerMenu();
     })
 
+
+
+    /* POPULATE MARKER MENU */
     for (const [key, value] of Object.entries(gifs)) {
       const item = document.createElement('div');
       item.className = "selection-item";
@@ -56,15 +57,17 @@ function geo(db, key){
       <img src = ${value.url} class = "selection-img" width = "25px" alt = ${key}>
       `
       item.addEventListener("click", function(){
-        console.log(key);
+        markerMenu();
+        var lat = parseFloat(localStorage.getItem('lat'));
+        var lng = parseFloat(localStorage.getItem('lng'));
+        if (lat && lng){
+          createBeacon(googleMaps, lat, lng, value, db);
+        }
       })
-
       document.getElementById("grid-container").appendChild(item);
     }
-/*     var selectMarker = document.getElementById("new-marker");
-    newMarker.addEventListener("click", function(){
-      markerMenu();
-    }) */
+
+
 
   }).catch(function (err) {
     console.error("There was a problem in the geo file", err);
