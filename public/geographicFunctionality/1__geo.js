@@ -1,3 +1,5 @@
+// Okay so I saved a mapClick.js file to the desktop. I can use that in order to, well, use it again
+
 var loadGoogleMapsApi   = require ('load-google-maps-api-2'); //use googleMaps, not google.maps w/ this module
 var getMapData          = require ('./2a__getMapData'); //has two underscores
 var createBeacon        = require ('./2b__createBeacon')
