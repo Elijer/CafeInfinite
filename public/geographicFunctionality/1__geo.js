@@ -43,14 +43,11 @@ function geo(db, key){
     })
 
     /* CREATE NEW MARKER BUTTON LISTENER */
-    var newMarker = document.getElementById("new-marker");
-    newMarker.addEventListener("click", function(){
+    var openMenu = document.getElementById("new-marker");
+    openMenu.addEventListener("click", function(){
       markerMenu();
     })
 
-    var menuContainer = document.getElementById("grid-container");
-    //console.log(gifs);
-    //console.log(`${key}: ${value.url}`);
     for (const [key, value] of Object.entries(gifs)) {
       const item = document.createElement('div');
       item.className = "selection-item";
@@ -58,8 +55,11 @@ function geo(db, key){
       item.innerHTML = `
       <img src = ${value.url} class = "selection-img" width = "25px" alt = ${key}>
       `
-      console.log(item.id);
-      menuContainer.appendChild(item);
+      item.addEventListener("click", function(){
+        console.log(key);
+      })
+
+      document.getElementById("grid-container").appendChild(item);
     }
 /*     var selectMarker = document.getElementById("new-marker");
     newMarker.addEventListener("click", function(){
