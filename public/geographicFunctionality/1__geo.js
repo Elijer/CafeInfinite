@@ -85,6 +85,14 @@ function geo(db, key){
       document.getElementById("grid-container").appendChild(item);
     }
 
+    var textCreatePost = document.getElementById("text-create-post");
+    textCreatePost.addEventListener("click", function(){
+      var textBox = document.getElementById("post-description");
+      var text = textBox.value;
+
+      console.log(text);
+    });
+
 
 
   }).catch(function (err) {
