@@ -1,15 +1,60 @@
+var base = "./geographicFunctionality/gifs/menu/";
+var ext = ".gif";
+
 var gifs = {
 
     flame: {
-        url: "./geographicFunctionality/gifs/flames/flame.gif",
+        url: base + "flame" + ext,
         stroke: '#f9371c',
         fill: '#fed130'
     },
 
+    coffee: {
+        url: base + "coffee" + ext,
+        stroke: '#f9371c',
+        fill: '#fed130'
+    },
+
+    beer: {
+        url: base + "beer" + ext,
+        stroke: '#229260',
+        fill: '#5bd6a0'
+    },
+
+    taco: {
+        url: base + "taco" + ext,
+        stroke: '#77ff65',
+        fill: '#fed130'
+    },
+
     cat: {
-        url: "./geographicFunctionality/gifs/menu/cat.gif",
+        url: base + "cat" + ext,
         stroke: '#5a4a3f',
         fill: '#dcd7d1'
+    },
+
+    dog: {
+        url: base + "dog" + ext,
+        stroke: '#fff949',
+        fill: '#fffede'
+    },
+
+    cone: {
+        url: base + "cone" + ext,
+        stroke: '#ff3000',
+        fill: '#ffffff'
+    },
+
+    gold: {
+        url: base + "gold" + ext,
+        stroke: '#ffea00',
+        fill: '#ffea00'
+    },
+
+    music: {
+        url: base + "music" + ext,
+        stroke: '#368bff',
+        fill: '#add0ff'
     }
 }
 

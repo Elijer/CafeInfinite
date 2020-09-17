@@ -3,7 +3,7 @@ var getMapData          = require ('./2a__getMapData'); //has two underscores
 var createBeacon        = require ('./2b__createBeacon')
 var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./tools/geolocation');
-var { mainLoader }      = require('../utility/utility');
+var { mainLoader, markerMenu }      = require('../utility/utility');
 var gifs                = require('./renderMarker/gif_library');
 //var onZoomChange        = require('./onZoomChange');
 //var onBoundsChange      = require('./onBoundsChange_v2.0');
@@ -21,13 +21,12 @@ function geo(db, key){
     gifArray = [];
 
     // MAP CLICK
-    map.addListener('click', function(e) {
+/*     map.addListener('click', function(e) {
       var lat = e.latLng.lat();
       var lng = e.latLng.lng();
-      createBeacon(googleMaps, lat, lng, gifs.flame, db);
-    });
+      createBeacon(googleMaps, lat, lng, gifs.cat, db);
+    }); */
 
-    // populate map with beacons
     getMapData(googleMaps, db);
 
     // 
@@ -44,13 +43,9 @@ function geo(db, key){
     })
 
     /* CREATE NEW MARKER BUTTON LISTENER */
-    var centerMap = document.getElementById("new-marker");
-    centerMap.addEventListener("click", function(){
-      var lat = parseFloat(localStorage.getItem('lat'));
-      var lng = parseFloat(localStorage.getItem('lng'));
-      if (lat && lng){
-        createBeacon(googleMaps, lat, lng, gifs.flame, db);
-      }
+    var newMarker = document.getElementById("new-marker");
+    newMarker.addEventListener("click", function(){
+      markerMenu();
     })
 
   }).catch(function (err) {
@@ -58,6 +53,13 @@ function geo(db, key){
   });
 
 };
+
+/*       var lat = parseFloat(localStorage.getItem('lat'));
+      var lng = parseFloat(localStorage.getItem('lng'));
+      if (lat && lng){
+        createBeacon(googleMaps, lat, lng, gifs.flame, db);
+      }
+ */
 
 
 module.exports = geo;
