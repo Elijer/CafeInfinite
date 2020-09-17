@@ -20,17 +20,6 @@ function mainLoader(isOn){
 
 }
 
-function markerMenu(){
-    var box = document.getElementById("selection-box");
-
-    if (box.style.display == "inline"){
-        box.style.display = "none";
-    } else {
-        box.style.display = "inline";
-    }
-
-}
-
 function handleEmulators(_firebase, _db){
     if (window.location.hostname === "localhost") {
         console.log("localhost detected! Using functions and firestore emulators instead of live instances");
@@ -45,6 +34,5 @@ function handleEmulators(_firebase, _db){
 module.exports = {
     firebaseConfig,
     mainLoader,
-    handleEmulators,
-    markerMenu
+    handleEmulators
 }
