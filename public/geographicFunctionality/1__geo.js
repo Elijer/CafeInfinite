@@ -48,6 +48,24 @@ function geo(db, key){
       markerMenu();
     })
 
+    var menuContainer = document.getElementById("grid-container");
+    //console.log(gifs);
+    //console.log(`${key}: ${value.url}`);
+    for (const [key, value] of Object.entries(gifs)) {
+      const item = document.createElement('div');
+      item.className = "selection-item";
+      item.id = "menu-item-" + key;
+      item.innerHTML = `
+      <img src = ${value.url} class = "selection-img" width = "25px" alt = ${key}>
+      `
+      console.log(item.id);
+      menuContainer.appendChild(item);
+    }
+/*     var selectMarker = document.getElementById("new-marker");
+    newMarker.addEventListener("click", function(){
+      markerMenu();
+    }) */
+
   }).catch(function (err) {
     console.error("There was a problem in the geo file", err);
   });

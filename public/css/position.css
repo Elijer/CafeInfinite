@@ -152,13 +152,13 @@ body {
     row-gap: 3%;
   }
   
-  #selection-item {
+  .selection-item {
     height: 80%;
     padding: 20%;
     background: grey;
   }
   
-  #selection-item:hover {
+  .selection-item:hover {
     background: orange;
   }
 }
