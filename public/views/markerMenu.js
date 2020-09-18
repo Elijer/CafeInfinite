@@ -1,4 +1,4 @@
-var gifs                = require('../geographicfunctionality/renderMarker/gif_library');
+var gifs                = require('../geo/renderMarker/gif_library');
 
 /* store.mapClick = {};
 store.mapClick.active = false; */

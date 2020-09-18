@@ -5,7 +5,7 @@ const {firebaseConfig,
        handleEmulators,
        mainLoader}      = require('./utility/utility')
 
-var geo = require('./geographicFunctionality/1__geo');
+var geo = require('./geo/1__geo');
 
 document.addEventListener("DOMContentLoaded", event => {
 
