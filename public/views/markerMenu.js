@@ -2,7 +2,7 @@
 store.mapClick.active = false; */
 
 function markerMenu(){
-    var box = document.getElementById("selection-box");
+    var box = document.getElementById("icon-interface");
     if (box.style.display == "inline"){
         box.style.display = "none";
     } else {

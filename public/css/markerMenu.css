@@ -1,6 +1,6 @@
 /* ***** SELECTION BOX / INPUT BOX ***** */
 
-#selection-box, #input-box {
+#icon-interface, #text-interface {
     display: none;
     border-radius: 4px;
     position: fixed;
@@ -12,8 +12,8 @@
     background: white;
   }
   
-  #input-box {
-    display: none;
+  #text-interface {
+    display: inline;
   }
   
   #text-create-post {
@@ -74,7 +74,7 @@
     }
   
   @media (max-width: 745px) {
-    #selection-box, #input-box {
+    #icon-interface, #text-interface {
       position: fixed;
       z-index: 999;
       margin-top: 38%;
