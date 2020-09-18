@@ -6,7 +6,7 @@ var createBeacon        = require ('./2b__createBeacon')
 var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./tools/geolocation');
 var { mainLoader }      = require('../utility/utility');
-var { markerMenu }      = require('../views/markerMenu');
+var { iconInterface, populateIconInterface}      = require('../views/markerMenu');
 var gifs                = require('./renderMarker/gif_library');
 //var onZoomChange        = require('./onZoomChange');
 //var onBoundsChange      = require('./onBoundsChange_v2.0');
@@ -34,7 +34,7 @@ function geo(db, key){
       store.mapClick.active = true;
       store.mapClick.lat = e.latLng.lat();
       store.mapClick.lng = e.latLng.lng();
-      markerMenu();
+      iconInterface();
     });
 
     getMapData(googleMaps, db);
@@ -55,37 +55,10 @@ function geo(db, key){
     /* CREATE NEW MARKER BUTTON LISTENER */
     var openMenu = document.getElementById("new-marker");
     openMenu.addEventListener("click", function(){
-      markerMenu();
+      iconInterface();
     })
 
-
-
-    /* POPULATE MARKER MENU */
-    for (const [key, value] of Object.entries(gifs)) {
-      const item = document.createElement('div');
-      item.className = "selection-item";
-      item.id = "menu-item-" + key;
-      item.innerHTML = `
-      <img src = ${value.url} class = "selection-img" width = "25px" alt = ${key}>
-      `
-      item.addEventListener("click", function(){
-        markerMenu();
-        let lat;
-        let lng;
-        if (store.mapClick.active && testing == true){
-          lat = store.mapClick.lat;
-          lng = store.mapClick.lng
-          store.mapClick.active = false;
-        } else {
-          lat = parseFloat(localStorage.getItem('lat'));
-          lng = parseFloat(localStorage.getItem('lng'));
-        }
-        if (lat && lng){
-          createBeacon(googleMaps, lat, lng, value, db);
-        }
-      })
-      document.getElementById("grid-container").appendChild(item);
-    }
+    populateIconInterface();
 
     var textCreatePost = document.getElementById("text-create-post");
     textCreatePost.addEventListener("click", function(){
