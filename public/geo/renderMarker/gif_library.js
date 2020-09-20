@@ -1,4 +1,8 @@
-var base = "./geographicFunctionality/gifs/menu/";
+// I guess I need to code for the actual web address for some reason?
+// I didn't have a problem with this before, with the flame, idk why I do now.
+// But if I can find a reason, that means I know what's going on.
+
+var base = "https://cafe-infinite.web.app/geo/gifs/menu/";
 var ext = ".gif";
 
 var gifs = {

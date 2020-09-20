@@ -1,13 +1,17 @@
-// Okay so I saved a mapClick.js file to the desktop. I can use that in order to, well, use it again
+// Okay still can't access the gif library.
+// They might be getting bundled with everything else? I guess?
+// Research if that happens
+// However, I don't know if I want them to be bundled
+// Maybe I should configure the gulp file so that they are NOT bundled.
+// Instead, I can just optimize them myself.
+
 
 var loadGoogleMapsApi   = require ('load-google-maps-api-2'); //use googleMaps, not google.maps w/ this module
 var getMapData          = require ('./2a__getMapData'); //has two underscores
-var createBeacon        = require ('./2b__createBeacon')
 var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./tools/geolocation');
 var { mainLoader }      = require('../utility/utility');
 var { iconInterface, populateIconInterface}      = require('../views/markerMenu');
-var gifs                = require('./renderMarker/gif_library');
 //var onZoomChange        = require('./onZoomChange');
 //var onBoundsChange      = require('./onBoundsChange_v2.0');
 
@@ -23,8 +27,10 @@ function geo(db, key){
 
     // CREATE GLOBALS: MAP AND ARRAYS
     map = newMap(googleMaps); // googleMaps is definitely needed here
+    gMaps = googleMaps;
     store = {};
     store.mapClick = {};
+    store.db = db;
     store.mapClick.active = false;
     masterArray = [];
     gifArray = [];

@@ -1,3 +1,4 @@
+var createBeacon        = require ('../geo/2b__createBeacon')
 var gifs                = require('../geo/renderMarker/gif_library');
 
 /* store.mapClick = {};
@@ -14,7 +15,7 @@ function populateIconInterface(){
         <img src = ${value.url} class = "selection-img" width = "25px" alt = ${key}>
         `
         item.addEventListener("click", function(){
-            markerMenu();
+            iconInterface();
             let lat,
                 lng;
             if (store.mapClick.active && testing == true){
@@ -26,7 +27,7 @@ function populateIconInterface(){
                 lng = parseFloat(localStorage.getItem('lng'));
             }
             if (lat && lng){
-                createBeacon(googleMaps, lat, lng, value, db);
+                createBeacon(gMaps, lat, lng, value, store.db);
             }
         })
         document.getElementById("grid-container").appendChild(item);
