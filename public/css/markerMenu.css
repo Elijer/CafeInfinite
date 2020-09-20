@@ -13,17 +13,17 @@
   }
   
   #text-interface {
-    display: none;
+    display: inline;
   }
   
-  #text-create-post {
+  #text-interface-done {
     font-size: 30px;
     padding: 5%;
     border: none;
     background: grey;
   }
 
-  #text-create-post:hover{
+  #text-interface-done:hover{
       background: orange;
   }
   
@@ -115,7 +115,7 @@
       width: 70%;
     }
   
-    #text-create-post {
+    #text-interface-done {
       font-size: 30px;
       padding: 5%;
     }

@@ -9,6 +9,8 @@ var geo = require('./geo/1__geo');
 
 document.addEventListener("DOMContentLoaded", event => {
 
+    //testing = true;
+
     mainLoader(true);
 
     firebase.initializeApp(firebaseConfig);

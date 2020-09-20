@@ -66,7 +66,7 @@ function geo(db, key){
 
     populateIconInterface();
 
-    var textCreatePost = document.getElementById("text-create-post");
+    var textCreatePost = document.getElementById("text-interface-done");
     textCreatePost.addEventListener("click", function(){
       var textBox = document.getElementById("post-description");
       var text = textBox.value;
