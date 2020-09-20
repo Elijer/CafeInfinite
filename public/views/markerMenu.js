@@ -16,31 +16,82 @@ function populateIconInterface(){
         `
         item.addEventListener("click", function(){
             iconInterface();
-            let lat,
-                lng;
-            if (store.mapClick.active && testing == true){
-                lat = store.mapClick.lat;
-                lng = store.mapClick.lng
-                store.mapClick.active = false;
-            } else {
-                lat = parseFloat(localStorage.getItem('lat'));
-                lng = parseFloat(localStorage.getItem('lng'));
-            }
-            if (lat && lng){
-                createBeacon(gMaps, lat, lng, value, store.db);
-            }
+
+            iconInterface(false);
+            textInterface(true);
+            store.markerType = value;
+
         })
+
         document.getElementById("grid-container").appendChild(item);
+
     }
 }
 
-function iconInterface(){
-    var box = document.getElementById("icon-interface");
-    if (box.style.display == "inline"){
-        box.style.display = "none";
+function getCurrentCoords(){
+    let coords = {
+        lat: null,
+        lng: null
+    }
+    if (store.mapClick.active && testing == true){
+        coords.lat = store.mapClick.lat;
+        coords.lng = store.mapClick.lng
+        store.mapClick.active = false;
     } else {
+        coords.lat = parseFloat(localStorage.getItem('lat'));
+        coords.lng = parseFloat(localStorage.getItem('lng'));
+    }
+
+    return coords;
+}
+
+function iconInterface(isOn){
+    var box = document.getElementById("icon-interface");
+    if (isOn == true){
         box.style.display = "inline";
+    } else {
+        box.style.display = "none";
     }
 }
 
-module.exports = { iconInterface, populateIconInterface}
+function textInterface(isOn){
+    var box = document.getElementById("text-interface");
+    if (isOn){
+        box.style.display = "inline";
+        doneButton();
+    } else {
+        box.style.display = "none";
+    }
+}
+
+function doneButton(){
+    var textCreatePost = document.getElementById("text-interface-done");
+    textCreatePost.addEventListener("click", function(){
+        var textBox = document.getElementById("post-description");
+        var text = textBox.value;
+
+        var value;
+        if (store.markerType){
+            value = store.markerType;
+        } else {
+            value = null;
+        }
+
+        var media = {
+            text: text
+        }
+
+        console.log(media.text);
+
+        coords = getCurrentCoords();
+        console.log(coords);
+        if (coords){
+            createBeacon(gMaps, coords.lat, coords.lng, media, value, store.db);
+        } else {
+            console.log("huh sorry no coords to make this post");
+        }
+        textInterface(false);
+    });
+}
+
+module.exports = { iconInterface, populateIconInterface, doneButton}

@@ -30,6 +30,7 @@ function geo(db, key){
     gMaps = googleMaps;
     store = {};
     store.mapClick = {};
+    store.markerType = null;
     store.db = db;
     store.mapClick.active = false;
     masterArray = [];
@@ -61,20 +62,10 @@ function geo(db, key){
     /* CREATE NEW MARKER BUTTON LISTENER */
     var openMenu = document.getElementById("new-marker");
     openMenu.addEventListener("click", function(){
-      iconInterface();
+      iconInterface(true);
     })
 
     populateIconInterface();
-
-    var textCreatePost = document.getElementById("text-interface-done");
-    textCreatePost.addEventListener("click", function(){
-      var textBox = document.getElementById("post-description");
-      var text = textBox.value;
-
-      console.log(text);
-    });
-
-
 
   }).catch(function (err) {
     console.error("There was a problem in the geo file", err);
