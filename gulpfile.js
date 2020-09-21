@@ -27,6 +27,16 @@ async function css(){
     .pipe(gulp.dest(buildDirectory));
 }
 
+async function favicon(){
+    gulp.src(sourceDirectory + 'favicon.png', {allowEmpty: true})
+    .pipe(gulp.dest(buildDirectory));
+}
+
+async function gifs(){
+    gulp.src(sourceDirectory + '*/*.gif', {allowEmpty: true})
+    .pipe(gulp.dest(buildDirectory));
+}
+
 async function js(){
     gulp.src(sourceDirectory + 'bundle.js', {allowEmpty: true})
     .pipe(gulp.dest(buildDirectory));
@@ -72,7 +82,7 @@ async function minify(){
 }
 
 exports.scrap = scrap;
-exports.dist = series(scrap, html, css, js/* bundle, minify */);
+exports.dist = series(scrap, html, css, favicon, gifs, js/* bundle, minify */);
 exports.distTest = series(scrap, html, css, bundleAndMap, minify);
 
 
