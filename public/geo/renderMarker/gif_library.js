@@ -2,7 +2,7 @@
 // I didn't have a problem with this before, with the flame, idk why I do now.
 // But if I can find a reason, that means I know what's going on.
 //var base = "./geographicFunctionality/gifs/menu/";
-var base = "./geo/gifs/menu/";
+var base = "./gifs/";
 var ext = ".gif";
 
 var gifs = {

@@ -27,6 +27,11 @@ async function css(){
     .pipe(gulp.dest(buildDirectory));
 }
 
+async function js(){
+    gulp.src(sourceDirectory + 'bundle.js', {allowEmpty: true})
+    .pipe(gulp.dest(buildDirectory));
+}
+
 // Deletes Build Directory so we can start fresh with each build
 async function scrap(){
     return del(buildDirectory, {force:true});
@@ -67,7 +72,7 @@ async function minify(){
 }
 
 exports.scrap = scrap;
-exports.dist = series(scrap, html, css, bundle, minify);
+exports.dist = series(scrap, html, css, js/* bundle, minify */);
 exports.distTest = series(scrap, html, css, bundleAndMap, minify);
 
 
