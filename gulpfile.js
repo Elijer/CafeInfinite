@@ -83,7 +83,7 @@ async function minify(){
 
 exports.scrap = scrap;
 exports.dist = series(scrap, html, css, favicon, gifs, js/* bundle, minify */);
-exports.distTest = series(scrap, html, css, bundleAndMap, minify);
+//exports.distTest = series(scrap, html, css, bundleAndMap, minify);
 
 
 // Unused gulp modules
