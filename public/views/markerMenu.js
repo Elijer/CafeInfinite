@@ -41,7 +41,6 @@ function getCurrentCoords(){
         coords.lat = parseFloat(localStorage.getItem('lat'));
         coords.lng = parseFloat(localStorage.getItem('lng'));
     }
-
     return coords;
 }
 
@@ -84,7 +83,7 @@ function doneButton(){
         console.log(media.text);
 
         coords = getCurrentCoords();
-        console.log(coords);
+
         if (coords){
             createBeacon(gMaps, coords.lat, coords.lng, media, value, store.db);
         } else {
@@ -94,4 +93,4 @@ function doneButton(){
     });
 }
 
-module.exports = { iconInterface, populateIconInterface, doneButton}
+module.exports = { iconInterface, populateIconInterface}
