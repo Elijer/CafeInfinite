@@ -11,7 +11,7 @@ var getMapData          = require ('./2a__getMapData'); //has two underscores
 var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./tools/geolocation');
 var { mainLoader }      = require('../utility/utility');
-var { iconInterface, populateIconInterface}      = require('../views/markerMenu');
+var { iconInterface, toggleIconInterface, populateIconInterface}      = require('../views/markerMenu');
 //var onZoomChange        = require('./onZoomChange');
 //var onBoundsChange      = require('./onBoundsChange_v2.0');
 
@@ -41,7 +41,6 @@ function geo(db, key){
       store.mapClick.active = true;
       store.mapClick.lat = e.latLng.lat();
       store.mapClick.lng = e.latLng.lng();
-      iconInterface();
     });
 
     getMapData(googleMaps, db);
@@ -62,7 +61,7 @@ function geo(db, key){
     /* CREATE NEW MARKER BUTTON LISTENER */
     var openMenu = document.getElementById("new-marker");
     openMenu.addEventListener("click", function(){
-      iconInterface(true);
+      toggleIconInterface();
     })
 
     populateIconInterface();

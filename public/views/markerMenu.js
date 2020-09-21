@@ -44,6 +44,18 @@ function getCurrentCoords(){
     return coords;
 }
 
+function toggleIconInterface(){
+    var box = document.getElementById("icon-interface");
+    console.log(box.style.display);
+    if (box.style.display != "inline"){
+        console.log("is this ever getting called?1")
+        box.style.display = "inline";
+    } else if (box.style.display = "inline"){
+        console.log("is this ever getting called?")
+        box.style.display = "none";
+    }
+}
+
 function iconInterface(isOn){
     var box = document.getElementById("icon-interface");
     if (isOn == true){
@@ -93,4 +105,4 @@ function doneButton(){
     });
 }
 
-module.exports = { iconInterface, populateIconInterface}
+module.exports = { toggleIconInterface, populateIconInterface, iconInterface }
