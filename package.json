@@ -33,8 +33,8 @@
     "watchify": "^3.11.1"
   },
   "scripts": {
-    "test": "watchify --debug public/app.js -o dist/bundle.js ; firebase emulators:start ",
-    "test2": "gulp map; firebase emulators:start",
+    "test": "gulp map; watchify --debug public/app.js -o dist/bundle.js & firebase emulators:start ",
+    "rapidDev": "watchify --debug public/app.js -o public/bundle.js & firebase emulators:start ",
     "map": "gulp map; firebase deploy",
     "mini": "gulp mini; firebase deploy"
   },
