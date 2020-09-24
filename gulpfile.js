@@ -81,7 +81,7 @@ async function bundle2() {
     });
     
     return b.bundle()
-        .pipe(source('./public/app.js')) // destination file for browserify, relative to gulp.dest
+        .pipe(source('bundle.js')) // destination file for browserify, relative to gulp.dest
         .pipe(buffer())
         .pipe(uglify().on('error', function(e){
             console.log(e);
