@@ -5,49 +5,42 @@ var gulp = require('gulp'),
     gulp       = require('gulp'),
     buffer = require('vinyl-buffer'),
     source     = require('vinyl-source-stream'),
-    transform = require('vinyl-transform'),
-    // unused
-    //uglify = require('gulp-uglify'),
     uglify = require('gulp-uglify-es').default,
-    uglifyify = require('uglifyify'),
-    pipeline = require('readable-stream').pipeline,
-    babelify     = require('babelify'),
     strip = require('gulp-strip-comments');
  
 var buildDirectory = 'dist/';
 var sourceDirectory = 'public/'
 
+// move HTML to dist
 async function html(){
     gulp.src(sourceDirectory + '*.html', {allowEmpty: true})
     .pipe(gulp.dest(buildDirectory));
 }
 
-
+// move CSS to dist
 async function css(){
     gulp.src(sourceDirectory + '*/*.css', {allowEmpty: true})
     .pipe(gulp.dest(buildDirectory));
 }
 
+// move favicon to dist
 async function favicon(){
     gulp.src(sourceDirectory + 'favicon.png', {allowEmpty: true})
     .pipe(gulp.dest(buildDirectory));
 }
 
+// move gifs file to dist
 async function gifs(){
     gulp.src(sourceDirectory + '*/*.gif', {allowEmpty: true})
     .pipe(gulp.dest(buildDirectory));
 }
 
-/* async function js(){
-    gulp.src(sourceDirectory + 'bundle.js', {allowEmpty: true})
-    .pipe(gulp.dest(buildDirectory));
-} */
-
-// Deletes Build Directory so we can start fresh with each build
+// Deletes Build Directory so we start fresh with each build
 async function scrap(){
     return del(buildDirectory, {force:true});
 };
 
+// Bundles with sourcemaps, no minification
 async function testing() {
     var b = browserify({
       entries: 'public/app.js',
@@ -59,7 +52,8 @@ async function testing() {
       .pipe(gulp.dest('./dist/'));
 };
 
-async function minified() {
+// Bundles w/out sourcemaps, minifies, strips comments
+async function production() {
     var b = browserify({
         entries: './public/app.js', // Only need initial file, browserify finds the deps
         debug: false        // Enable sourcemaps
@@ -77,51 +71,4 @@ exports.scrap = scrap;
 // gulp map is for testing, and includes sourcemaps
 exports.map = series(scrap, html, css, favicon, gifs, testing);
 // gulp mini is for distribution: minifies, omits sourcemaps, strips comments
-exports.mini = series(scrap, html, css, favicon, gifs, minified);
-
-
-// Unused gulp modules
-//buffer     = require('vinyl-buffer'),
-//gutil      = require('gulp-util'),
-//livereload = require('gulp-livereload'),
-//merge      = require('merge'),
-//rename     = require('gulp-rename'),
-//sourceMaps = require('gulp-sourcemaps');
-//watchify   = require('watchify');
-
-
-
-/*
-Defunct pieces of shit:
-
-// Runs browserify to bundle the JS and save the bundle in build directory
-async function bundle(){
-    return browserify(sourceDirectory + 'app.js')
-        .transform(babelify, {presets: ["@babel/preset-env"]})
-        .transform('uglifyify', { global: true  })
-        .bundle()                    //Pass desired output filename to vinyl-source-stream
-        .pipe(source('bundle.js'))  // Start piping stream to tasks! Other stuff can go here
-        .pipe(gulp.dest(buildDirectory));
-};
-
-// Runs browserify to bundle the JS and save the bundle in build directory, + includes sourcemaps
-async function bundleAndMap(){
-    return browserify({
-        entries: sourceDirectory + 'app.js',
-        debug: false
-    })
-        .transform(babelify, {presets: ["@babel/preset-env"]})
-        .transform('uglifyify', { global: true  })
-        .bundle()                    //Pass desired output filename to vinyl-source-stream
-        .pipe(source('bundle.js'))  // Start piping stream to tasks! Other stuff can go here
-        .pipe(gulp.dest(buildDirectory));
-};
-
-// Minfies the bundle.js. Makes it tiny.
-async function minify(){
-    return pipeline(
-        gulp.src(sourceDirectory + 'bundle.js'),
-        uglify(),
-        gulp.dest(buildDirectory)
-  );
-*/
+exports.mini = series(scrap, html, css, favicon, gifs, production);
