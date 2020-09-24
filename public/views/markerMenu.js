@@ -1,9 +1,6 @@
 var createBeacon        = require ('../geo/2b__createBeacon')
 var gifs                = require('../geo/renderMarker/gif_library');
 
-/* store.mapClick = {};
-store.mapClick.active = false; */
-
 function populateIconInterface(){
     for (const [key, value] of Object.entries(gifs)) {
 
@@ -43,9 +40,9 @@ function getCurrentCoords(){
     }
     return coords;
 }
-
+//
 function toggleIconInterface(){
-    var box = document.getElementById("icon-interface");
+    var box = document.getElementById("marker-menu");
     console.log(box.style.display);
     if (box.style.display != "inline"){
         console.log("is this ever getting called?1")

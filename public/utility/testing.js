@@ -15,3 +15,11 @@ var mapClick = function(googleMaps, db){
 };
 
 module.exports = { mapClick }
+
+
+/*     // MAP CLICK
+    map.addListener('click', function(e) {
+      store.mapClick.active = true;
+      store.mapClick.lat = e.latLng.lat();
+      store.mapClick.lng = e.latLng.lng();
+    }); */
