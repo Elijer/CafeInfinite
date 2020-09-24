@@ -69,15 +69,15 @@ async function minified() {
         .pipe(source('bundle.js')) // destination file for browserify, relative to gulp.dest
         .pipe(buffer())
         .pipe(uglify())
+        .pipe(strip())
         .pipe(gulp.dest('./dist'));
 };
 
 exports.scrap = scrap;
 // gulp map is for testing, and includes sourcemaps
 exports.map = series(scrap, html, css, favicon, gifs, testing);
-// gulp mini is for distribution. It minifies bundle.js, does not include sourcemaps.
+// gulp mini is for distribution: minifies, omits sourcemaps, strips comments
 exports.mini = series(scrap, html, css, favicon, gifs, minified);
-//exports.distTest = series(scrap, html, css, bundleAndMap, minify);
 
 
 // Unused gulp modules
