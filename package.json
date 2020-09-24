@@ -11,8 +11,8 @@
     "uglifyify": "^5.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.1",
-    "@babel/preset-env": "^7.11.0",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
     "babelify": "^10.0.0",
     "browserify": "^16.5.2",
     "del": "^5.1.0",
@@ -30,12 +30,9 @@
     "watchify": "^3.11.1"
   },
   "scripts": {
-    "test": "watchify --debug public/app.js -o public/bundle.js & firebase emulators:start ",
-    "build": "browserify public/app.js -o public/bundle.js; gulp dist; firebase deploy",
-    "deploy": "gulp dist; firebase deploy --public dist",
-    "devploy": "gulp distTest; firebase deploy --public dist",
-    "quick": "gulp dist; firebase deploy --only hosting --public dist",
-    "dev": "gulp distTest; firebase deploy --only hosting --public dist"
+    "test": "watchify --debug public/app.js -o dist/bundle.js & firebase emulators:start ",
+    "test2": "gulp dist2 & firebase emulators:start",
+    "build": "browserify public/app.js -o public/bundle.js; gulp dist; firebase deploy"
   },
   "repository": {
     "type": "git",
