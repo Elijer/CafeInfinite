@@ -1,14 +1,17 @@
 var gulp = require('gulp'),
     { series } = require('gulp'),
     del = require('del'),
-    uglify = require('gulp-uglify'),
-    uglifyify = require('uglifyify'),
-    pipeline = require('readable-stream').pipeline,
-    babelify     = require('babelify'),
     browserify = require('browserify'),
     gulp       = require('gulp'),
     buffer = require('vinyl-buffer'),
     source     = require('vinyl-source-stream'),
+    transform = require('vinyl-transform'),
+    // unused
+    //uglify = require('gulp-uglify'),
+    uglify = require('gulp-uglify-es').default,
+    uglifyify = require('uglifyify'),
+    pipeline = require('readable-stream').pipeline,
+    babelify     = require('babelify'),
     strip = require('gulp-strip-comments');
  
 var buildDirectory = 'dist/';
@@ -57,11 +60,39 @@ async function bundle() {
       .pipe(buffer())
           //.pipe(uglify())
       .pipe(gulp.dest('./dist/'));
-  };
+};
+
+/* async function bundle2() {
+    return browserify('public/app.js')
+      .bundle()
+      //Pass desired output filename to vinyl-source-stream
+      .pipe(source('bundle.js'))
+      // Start piping stream to tasks!
+      .pipe(buffer()) // gives streaming vinyl file object
+      // but first add this 'buffer' thing converts from streaming to buffered vinyl file object
+      .pipe(uglify())
+      .pipe(gulp.dest('./dist/'));
+}; */
+
+async function bundle2() {
+    var b = browserify({
+        entries: './public/app.js', // Only need initial file, browserify finds the deps
+        debug: false        // Enable sourcemaps
+    });
+    
+    return b.bundle()
+        .pipe(source('./public/app.js')) // destination file for browserify, relative to gulp.dest
+        .pipe(buffer())
+        .pipe(uglify().on('error', function(e){
+            console.log(e);
+         }))
+        .pipe(gulp.dest('./dist'));
+};
 
 exports.scrap = scrap;
 exports.dist = series(scrap, html, css, favicon, gifs, js);
 exports.dist2 = series(scrap, html, css, favicon, gifs, bundle);
+exports.dist3 = series(scrap, html, css, favicon, gifs, bundle2);
 //exports.distTest = series(scrap, html, css, bundleAndMap, minify);
 
 
