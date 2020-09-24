@@ -34,8 +34,9 @@
   },
   "scripts": {
     "test": "watchify --debug public/app.js -o dist/bundle.js & firebase emulators:start ",
-    "test2": "gulp dist2 & firebase emulators:start",
-    "build": "browserify public/app.js -o public/bundle.js; gulp dist; firebase deploy"
+    "test2": "gulp map; firebase emulators:start",
+    "map": "gulp map; firebase deploy",
+    "mini": "gulp mini; firebase deploy"
   },
   "repository": {
     "type": "git",

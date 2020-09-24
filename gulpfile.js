@@ -38,43 +38,28 @@ async function gifs(){
     .pipe(gulp.dest(buildDirectory));
 }
 
-async function js(){
+/* async function js(){
     gulp.src(sourceDirectory + 'bundle.js', {allowEmpty: true})
     .pipe(gulp.dest(buildDirectory));
-}
+} */
 
 // Deletes Build Directory so we can start fresh with each build
 async function scrap(){
     return del(buildDirectory, {force:true});
 };
 
-async function bundle() {
-    // set up the browserify instance on a task basis
+async function testing() {
     var b = browserify({
       entries: 'public/app.js',
-      debug: false
+      debug: true
     });
-  
+
     return b.bundle()
       .pipe(source('bundle.js'))
-      .pipe(buffer())
-          //.pipe(uglify())
       .pipe(gulp.dest('./dist/'));
 };
 
-/* async function bundle2() {
-    return browserify('public/app.js')
-      .bundle()
-      //Pass desired output filename to vinyl-source-stream
-      .pipe(source('bundle.js'))
-      // Start piping stream to tasks!
-      .pipe(buffer()) // gives streaming vinyl file object
-      // but first add this 'buffer' thing converts from streaming to buffered vinyl file object
-      .pipe(uglify())
-      .pipe(gulp.dest('./dist/'));
-}; */
-
-async function bundle2() {
+async function minified() {
     var b = browserify({
         entries: './public/app.js', // Only need initial file, browserify finds the deps
         debug: false        // Enable sourcemaps
@@ -83,16 +68,15 @@ async function bundle2() {
     return b.bundle()
         .pipe(source('bundle.js')) // destination file for browserify, relative to gulp.dest
         .pipe(buffer())
-        .pipe(uglify().on('error', function(e){
-            console.log(e);
-         }))
+        .pipe(uglify())
         .pipe(gulp.dest('./dist'));
 };
 
 exports.scrap = scrap;
-exports.dist = series(scrap, html, css, favicon, gifs, js);
-exports.dist2 = series(scrap, html, css, favicon, gifs, bundle);
-exports.dist3 = series(scrap, html, css, favicon, gifs, bundle2);
+// gulp map is for testing, and includes sourcemaps
+exports.map = series(scrap, html, css, favicon, gifs, testing);
+// gulp mini is for distribution. It minifies bundle.js, does not include sourcemaps.
+exports.mini = series(scrap, html, css, favicon, gifs, minified);
 //exports.distTest = series(scrap, html, css, bundleAndMap, minify);
 
 
