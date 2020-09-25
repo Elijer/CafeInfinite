@@ -31,6 +31,14 @@ Whichever one you pick, just make sure that the firebase.json file reflects the
 folder you are using to serve the app. If you are sending the bundle.js file to the
 dist folder, make sure it reads "public":"dist", whereas if you are sending the
 bundle.js file to the public file, make sure it reads "public":"public". That's all.
+
+UPDATE: I am now using gulp-replace to change the "public" parameter in firebase.json
+to use the "public" folder when testing and the "dist" folder for distribution. It
+turned out that when making interface changes, the HTML is changed often enough
+that I would like it to change automatically on the localhost and not deploy
+gulp evertime :/ so I made the firebase.json file automatically switch directories
+using the commands gulp publicFolder and gulp distFolder
+
 */
 
 
