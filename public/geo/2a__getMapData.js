@@ -24,7 +24,7 @@ var getMapData = function(googleMaps, db){
     for (var i = 0; i < beacons.length; i++){
       var beacon = beacons[i];
       renderMarker(
-        googleMaps, beacon.lat, beacon.lng, gifs.cat, beacon._id, i, scalingCoefficient, true);
+        googleMaps, beacon.lat, beacon.lng, beacon.icon, beacon._id, i, scalingCoefficient, true);
     }
      
     onBoundsChange(googleMaps);

@@ -1,7 +1,8 @@
-var markerOnClick = function(thisMarker){
+var markerOnClick = function(thisMarker, ID){
+  console.log(thisMarker);
 
   thisMarker.addListener('click', function() {
-    console.log("this is where the text will be display in a box");
+    //console.log(thisMarker);
   });
 
 };
