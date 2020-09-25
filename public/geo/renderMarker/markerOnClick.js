@@ -1,8 +1,18 @@
 var markerOnClick = function(thisMarker, ID){
-  console.log(thisMarker);
 
   thisMarker.addListener('click', function() {
-    //console.log(thisMarker);
+    var db = store.db;
+    docRef.get(thisMarker.iterationID).then(function(doc) {
+      if (doc.exists) {
+          console.log("Document data:", doc.data().text);
+      } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+      }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+    //console.log(thisMarker.iterationID);
   });
 
 };
