@@ -1,5 +1,5 @@
 var scale               = require('./renderMarker/scale');
-//var markerOnClick       = require('./renderMarker/markerOnClick');
+var markerOnClick       = require('./renderMarker/markerOnClick');
 
 var renderMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoefficient, batch){
 
@@ -13,7 +13,9 @@ var renderMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoeffi
     visible: false
   });
 
-  
+  // add click event for marker
+  markerOnClick(masterArray[index]);
+
   var r = .00005;
   var h = r / .83333333333;
   gifArray[index] = new google.maps.Rectangle({

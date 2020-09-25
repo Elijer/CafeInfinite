@@ -35,7 +35,6 @@
   },
   "scripts": {
     "test": "gulp publicFolder; gulp map; watchify --debug public/app.js -o public/bundle.js & firebase emulators:start ",
-    "rapidDev": "gulp distFolder; watchify --debug public/app.js -o public/bundle.js & firebase emulators:start ",
     "map": "gulp distFolder; gulp map; firebase deploy",
     "mini": "gulp distFolder; gulp mini; firebase deploy"
   },

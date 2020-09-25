@@ -27,17 +27,10 @@ function populateIconInterface(){
 
 function getCurrentCoords(){
     let coords = {
-        lat: null,
-        lng: null
+        lat: parseFloat(localStorage.getItem('lat')),
+        lng: parseFloat(localStorage.getItem('lng'))
     }
-    if (store.mapClick.active && testing == true){
-        coords.lat = store.mapClick.lat;
-        coords.lng = store.mapClick.lng
-        store.mapClick.active = false;
-    } else {
-        coords.lat = parseFloat(localStorage.getItem('lat'));
-        coords.lng = parseFloat(localStorage.getItem('lng'));
-    }
+
     return coords;
 }
 //
@@ -98,8 +91,14 @@ function doneButton(){
         } else {
             console.log("huh sorry no coords to make this post");
         }
-        textInterface(false);
+        menuReset();
     });
+}
+
+function menuReset(){
+    document.getElementById("marker-menu").style.display = "none";
+    store.markerType = null;
+    store.markerText = null;
 }
 
 module.exports = { toggleIconInterface, populateIconInterface, iconInterface }

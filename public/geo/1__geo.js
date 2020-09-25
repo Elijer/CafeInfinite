@@ -18,8 +18,12 @@ function geo(db, key){
 
     store = {
       db: db,
+      testing: true,
       markerType: null,
-      markerText: null
+      markerText: null,
+      mapClick: {
+        active: true
+      }
     };
 
     masterArray = [];
