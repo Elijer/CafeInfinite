@@ -18,6 +18,7 @@
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.0.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-strip-comments": "^2.5.2",
     "gulp-uglify": "^3.0.2",
@@ -33,10 +34,10 @@
     "watchify": "^3.11.1"
   },
   "scripts": {
-    "test": "gulp map; watchify --debug public/app.js -o dist/bundle.js & firebase emulators:start ",
-    "rapidDev": "watchify --debug public/app.js -o public/bundle.js & firebase emulators:start ",
-    "map": "gulp map; firebase deploy",
-    "mini": "gulp mini; firebase deploy"
+    "test": "gulp publicFolder; gulp map; watchify --debug public/app.js -o public/bundle.js & firebase emulators:start ",
+    "rapidDev": "gulp distFolder; watchify --debug public/app.js -o public/bundle.js & firebase emulators:start ",
+    "map": "gulp distFolder; gulp map; firebase deploy",
+    "mini": "gulp distFolder; gulp mini; firebase deploy"
   },
   "repository": {
     "type": "git",

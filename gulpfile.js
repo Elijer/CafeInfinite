@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     buffer = require('vinyl-buffer'),
     source     = require('vinyl-source-stream'),
     uglify = require('gulp-uglify-es').default,
-    strip = require('gulp-strip-comments');
+    strip = require('gulp-strip-comments'),
+    replace = require('gulp-replace');
  
 var buildDirectory = 'dist/';
 var sourceDirectory = 'public/'
@@ -40,6 +41,18 @@ async function scrap(){
     return del(buildDirectory, {force:true});
 };
 
+async function publicFolder() {
+    gulp.src('firebase.json')
+    .pipe(replace('"public": "dist"', '"public": "public"')) // Replace 'html`' with just comment
+    .pipe(gulp.dest('./'));
+}
+
+async function distFolder() {
+    gulp.src('firebase.json')
+    .pipe(replace('"public": "public"', '"public": "dist"')) // Replace 'html`' with just comment
+    .pipe(gulp.dest('./'));
+}
+
 // Bundles with sourcemaps, no minification
 async function testing() {
     var b = browserify({
@@ -66,6 +79,9 @@ async function production() {
         .pipe(strip())
         .pipe(gulp.dest('./dist'));
 };
+
+exports.publicFolder = publicFolder;
+exports.distFolder = distFolder;
 
 exports.scrap = scrap;
 // gulp map is for testing, and includes sourcemaps
