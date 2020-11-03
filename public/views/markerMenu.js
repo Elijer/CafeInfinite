@@ -36,7 +36,8 @@ function getCurrentCoords(){
 //
 function toggleIconInterface(){
     var box = document.getElementById("marker-menu");
-    console.log(box.style.display);
+
+    
     if (box.style.display != "inline"){
         console.log("is this ever getting called?1")
         box.style.display = "inline";
@@ -72,6 +73,7 @@ function doneButton(){
         var text = textBox.value;
 
         var value;
+
         if (store.markerType){
             value = store.markerType;
         } else {
@@ -97,6 +99,8 @@ function doneButton(){
 
 function menuReset(){
     document.getElementById("marker-menu").style.display = "none";
+    textInterface(false);
+    iconInterface(true);
     store.markerType = null;
     store.markerText = null;
 }

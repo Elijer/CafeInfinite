@@ -11,6 +11,10 @@
   background: white;
 }
 
+#text-interface {
+  display: none;
+}
+
 #text-interface-done {
   font-size: 30px;
   padding: 5%;
@@ -68,14 +72,13 @@
     width: 30%;
   }
 
-@media (max-width: 745px) {
+/* @media (max-width: 745px) {
   #icon-interface, #text-interface {
     position: fixed;
     z-index: 999;
-    margin-top: 38%;
     margin-left: 10%;
     width: 80%;
-    height: 60%;
+    height: 100%;
     background: white;
   }
   
@@ -98,8 +101,9 @@
   }
   
   .selection-item {
-    height: 80%;
+    height: 100%;
     padding: 20%;
+    margin-bottom: 60%;
   }
   
   .selection-item:hover {
@@ -118,4 +122,4 @@
   .grid-footer {
       padding: 6%;
     }
-}
+} */
