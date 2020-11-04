@@ -42,9 +42,13 @@
 
 /* FOOTER */
 
+#new-marker, #center-map {
+  border-radius: 4px;
+}
+
 #center-map {
   border: 0px;
-  background: blue;
+  background: #ff6655;
   color: white;
 }
 
@@ -55,7 +59,7 @@
 
 #new-marker {
   border: 0px;
-  background: green;
+  background: #398e8a;
   color: white;
 }
 
