@@ -50,8 +50,6 @@ function geo(db, key){
       toggleIconInterface();
     })
 
-    toggleMarkerView();
-
 
 
   }).catch(function (err) {

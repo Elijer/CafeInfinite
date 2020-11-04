@@ -1,6 +1,6 @@
 /* ***** SELECTION BOX / INPUT BOX ***** */
 #marker-view-panel {
-  display: inline;
+  display: none;
   border-radius: 4px;
   position: fixed;
   z-index: 999;
