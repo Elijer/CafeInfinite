@@ -11,6 +11,7 @@ var mapConfig = {
     fullscreenControl: false,
     streetViewControl: false,
     disableDoubleClickZoom: true,
+    animatedZoom: false,
     disableDefaultUI: true //gets rid of all the buttons on the map
 };
 

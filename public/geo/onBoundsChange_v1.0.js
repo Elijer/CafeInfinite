@@ -6,10 +6,10 @@ var scaleCalculator     = require('./renderMarker/scaleCalculator');
 
 
 var onBoundsChange = function(googleMaps){
-  map.addListener('bounds_changed', function(){
+
     var currentBounds = map.getBounds();
     var renderLimit = 60;
-    var zoomLimit = 16;
+    var zoomLimit = 17;
     var mCount = 0;
     var underRenderLimit = true;
     var newZoom = map.getZoom();
@@ -59,7 +59,7 @@ var onBoundsChange = function(googleMaps){
         gifArray[i].setMap(map);
       }
     }
-  })
+
 }
 
 module.exports = onBoundsChange;

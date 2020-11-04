@@ -30,7 +30,11 @@ var getMapData = function(googleMaps, db){
       renderMarker(
         googleMaps, beacon.lat, beacon.lng, beacon.icon, beacon.id, i, scalingCoefficient, true);
     }
-     
+
+    map.addListener('bounds_changed', function(){
+      onBoundsChange(googleMaps);
+    });
+
     onBoundsChange(googleMaps);
 
   })
