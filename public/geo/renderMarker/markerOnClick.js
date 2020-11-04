@@ -2,36 +2,36 @@
 
 var markerOnClick = function(thisMarker){
 
-  thisMarker.addListener('click', function() {
-    //console.log(thisMarker);
+  // as of now, without zooming this function is not called. The problem is higher up though.
 
-    console.log(thisMarker);
-/*     var id = thisMarker.iterationID;
+  thisMarker.addListener('click', function() {
+    
+    console.log("click");
+
+    var id = thisMarker.iterationID;
     var db = store.db;
 
     var docRef = db.collection("flames").doc(id);
 
     docRef.get().then(function(doc) {
-      var current = doc.data();
-      if (current.text){
-        console.log("Text: " + current.text);
-      }
-      //https://dockyard.com/blog/2020/02/14/you-probably-don-t-need-moment-js-anymore
-      console.log(current.created_at.toLocaleDateString())
-    }); */
+      if (doc.exists){
+        var current = doc.data();
+
+        if (current.text){
+          console.log("Text: " + current.text);
+        }
+
+        var date = current.created_at.toDate().toLocaleDateString()
+        // firestore seems to convert js Date objects into their own weird thing, and you have to use their toDate() method to turn it back
+        console.log("Created at: " + date);
 
 
-/*     var db = store.db;
-    docRef.get(thisMarker.iterationID).then(function(doc) {
-      if (doc.exists) {
-          console.log("Document data:", doc.data().text);
       } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
+        console.log("No such document!");
       }
     }).catch(function(error) {
-        console.log("Error getting document:", error);
-    }); */
+      console.log("Error getting document:", error);
+  });
 
   });
 
