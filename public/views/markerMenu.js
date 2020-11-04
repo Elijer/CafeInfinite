@@ -89,6 +89,7 @@ function doneButton(){
         coords = getCurrentCoords();
 
         if (coords){
+            console.log(value);
             createBeacon(gMaps, coords.lat, coords.lng, media, value, store.db);
         } else {
             console.log("huh sorry no coords to make this post");

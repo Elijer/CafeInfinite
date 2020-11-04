@@ -3,6 +3,14 @@ var markerOnClick       = require('./renderMarker/markerOnClick');
 
 var renderMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoefficient, batch){
 
+  // Mysterious bug where sometimes things get added that don't have any url parameter to their icon argument
+  // which prevents ALL gifs from displaying. So this is a way to catch the error and prvent it from crashing.
+  if (!icon.url){
+    console.log("DA FUCK. The URL is missing from the icon. It should be icon.url but it's not here. Why does this happen, albeit very occasionally???")
+    icon.url = "./gifs/error.jpg"
+  }
+
+
   masterArray[index] = new googleMaps.Marker({
     elijahPosition: {lat: lat, lng: lng},
     position: {lat: lat, lng: lng},

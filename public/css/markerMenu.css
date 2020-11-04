@@ -87,8 +87,6 @@
 @media (max-width: 850px) {
 
   #marker-menu {
-
-    background: orange;
   }
 
   .marker-menu {
@@ -118,7 +116,6 @@
   #marker-menu {
     margin-left: 15%;
     width: 70%;
-    background: pink;
   }
 
   #marker-view-content, #marker-view-time {

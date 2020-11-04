@@ -23,10 +23,11 @@ var getMapData = function(googleMaps, db){
       beacons.push(beacon);
     });
       
+    //
     // then for each item in the new array, run renderMarker()
     for (var i = 0; i < beacons.length; i++){
       var beacon = beacons[i];
-      //console.log(beacon);
+
       renderMarker(
         googleMaps, beacon.lat, beacon.lng, beacon.icon, beacon.id, i, scalingCoefficient, true);
     }
