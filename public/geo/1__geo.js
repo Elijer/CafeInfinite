@@ -5,6 +5,7 @@ var geolocation         = require ('./tools/geolocation');
 var { mainLoader }      = require('../utility/utility');
 // just inspiration for creating a new helper file for viewPost
 var { iconInterface, toggleIconInterface, populateIconInterface}      = require('../views/markerMenu');
+var { toggleMarkerView }      = require('../views/markerView');
 
 function geo(db, key){
   
@@ -48,6 +49,10 @@ function geo(db, key){
     openMenu.addEventListener("click", function(){
       toggleIconInterface();
     })
+
+    toggleMarkerView();
+
+
 
   }).catch(function (err) {
     console.error("There was a problem in the geo file", err);
