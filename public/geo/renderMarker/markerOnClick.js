@@ -1,5 +1,3 @@
-//const moment          = require('moment');
-
 var markerOnClick = function(thisMarker){
 
   // as of now, without zooming this function is not called. The problem is higher up though.
@@ -25,13 +23,13 @@ var markerOnClick = function(thisMarker){
         // firestore seems to convert js Date objects into their own weird thing, and you have to use their toDate() method to turn it back
         console.log("Created at: " + date);
 
-
       } else {
         console.log("No such document!");
       }
+
     }).catch(function(error) {
-      console.log("Error getting document:", error);
-  });
+        console.log("Error getting document:", error);
+    });
 
   });
 
