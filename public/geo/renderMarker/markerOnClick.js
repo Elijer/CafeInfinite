@@ -1,10 +1,10 @@
+var { toggleMarkerView }      = require('../../views/markerView');
+
 var markerOnClick = function(thisMarker){
 
   // as of now, without zooming this function is not called. The problem is higher up though.
 
   thisMarker.addListener('click', function() {
-    
-    console.log("click");
 
     var id = thisMarker.iterationID;
     var db = store.db;
@@ -13,16 +13,18 @@ var markerOnClick = function(thisMarker){
 
     docRef.get().then(function(doc) {
       if (doc.exists){
+
+
         var current = doc.data();
 
-        if (current.text){
-          console.log("Text: " + current.text);
-        }
+        if (current.text) console.log("Text: " + current.text);
 
         var date = current.created_at.toDate().toLocaleDateString()
         // firestore seems to convert js Date objects into their own weird thing, and you have to use their toDate() method to turn it back
         console.log("Created at: " + date);
 
+
+        
       } else {
         console.log("No such document!");
       }

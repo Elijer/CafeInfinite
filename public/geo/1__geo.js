@@ -3,6 +3,7 @@ var getMapData          = require ('./2a__getMapData'); //has two underscores
 var newMap              = require('./createMap/newMap');
 var geolocation         = require ('./tools/geolocation');
 var { mainLoader }      = require('../utility/utility');
+// just inspiration for creating a new helper file for viewPost
 var { iconInterface, toggleIconInterface, populateIconInterface}      = require('../views/markerMenu');
 
 function geo(db, key){
