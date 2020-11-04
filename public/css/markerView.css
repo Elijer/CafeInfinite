@@ -12,12 +12,13 @@
 }
 
 .marker-view-header {
+  color: grey;
   font-size: 50px;
   padding-top: 10%;
 }
 
-.marker-view-content {
-  font-size: 30px;
+#marker-view-content {
+  font-size: 35px;
   text-align: left;
-  padding: 15%;
+  padding: 60px;
 }
