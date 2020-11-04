@@ -19,9 +19,9 @@ var markerOnClick = function(thisMarker){
         if (current.text) console.log("Text: " + current.text);
         toggleMarkerView(current);
 
-        var date = current.created_at.toDate().toLocaleDateString()
+        //var date = current.created_at.toDate().toLocaleDateString()
         // firestore seems to convert js Date objects into their own weird thing, and you have to use their toDate() method to turn it back
-        console.log("Created at: " + date);
+        //console.log("Created at: " + date);
 
 
         

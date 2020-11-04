@@ -2,16 +2,34 @@ function toggleMarkerView(data){
 
     var markerView = document.getElementById("marker-view-panel");
     var theText = document.getElementById("marker-view-content");
+    var theTime = document.getElementById("marker-view-time-actual");
 
 
     if (data){
         markerView.style.display = "inline";
         theText.innerHTML = data.text;
+
+        var date = data.created_at.toDate().toLocaleDateString();
+        var time = formatAMPM(data.created_at.toDate());
+
+        theTime.innerHTML = time + " on " + date;
+
     } else {
         markerView.style.display = "none";
         theText.innerHTML = "";
-        //console.log("The view should use this data " + data);
+        theTime.innerHTML = "";
     }
+}
+
+function formatAMPM(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + '' + ampm;
+    return strTime;
 }
 
 function markerViewListeners(){

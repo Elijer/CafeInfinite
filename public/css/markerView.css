@@ -1,6 +1,6 @@
 /* ***** SELECTION BOX / INPUT BOX ***** */
 #marker-view-panel {
-  display: none;
+  display: inline;
   border-radius: 4px;
   position: fixed;
   z-index: 999;
@@ -17,8 +17,14 @@
   padding-top: 10%;
 }
 
-#marker-view-content {
+#marker-view-content, #marker-view-time {
   font-size: 35px;
   text-align: left;
   padding: 60px;
+}
+
+#marker-view-time {
+  padding-top: 0px;
+  font-size: 20px;
+  color: grey;
 }
