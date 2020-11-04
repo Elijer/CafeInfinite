@@ -8,6 +8,7 @@
     "firebase": "^7.19.1",
     "jquery": "^3.5.1",
     "load-google-maps-api-2": "^1.0.2",
+    "moment": "^2.29.1",
     "uglifyify": "^5.0.2"
   },
   "devDependencies": {

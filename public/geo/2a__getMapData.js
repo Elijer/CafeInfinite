@@ -16,15 +16,19 @@ var getMapData = function(googleMaps, db){
 
     // load each beacon from db into an array called 'beacons'
     querySnapshot.forEach(function(doc) {
+      // Yo there we go!!!
+      console.log(doc.id);
       let beacon = doc.data();
+      beacon.id = doc.id;
       beacons.push(beacon);
     });
       
     // then for each item in the new array, run renderMarker()
     for (var i = 0; i < beacons.length; i++){
       var beacon = beacons[i];
+      //console.log(beacon);
       renderMarker(
-        googleMaps, beacon.lat, beacon.lng, beacon.icon, beacon._id, i, scalingCoefficient, true);
+        googleMaps, beacon.lat, beacon.lng, beacon.icon, beacon.id, i, scalingCoefficient, true);
     }
      
     onBoundsChange(googleMaps);

@@ -1,15 +1,24 @@
-var markerOnClick = function(thisMarker, ID){
+//const moment          = require('moment');
+
+var markerOnClick = function(thisMarker){
 
   thisMarker.addListener('click', function() {
     //console.log(thisMarker);
-    var id = thisMarker.iterationID;
+
+    console.log(thisMarker);
+/*     var id = thisMarker.iterationID;
     var db = store.db;
 
     var docRef = db.collection("flames").doc(id);
 
     docRef.get().then(function(doc) {
-      console.log(doc);
-    });
+      var current = doc.data();
+      if (current.text){
+        console.log("Text: " + current.text);
+      }
+      //https://dockyard.com/blog/2020/02/14/you-probably-don-t-need-moment-js-anymore
+      console.log(current.created_at.toLocaleDateString())
+    }); */
 
 
 /*     var db = store.db;
