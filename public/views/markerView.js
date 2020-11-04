@@ -14,4 +14,37 @@ function toggleMarkerView(data){
     }
 }
 
-module.exports = { toggleMarkerView }
+function markerViewListeners(){
+
+    // click anywhere to close markerView
+    document.addEventListener("click", function(){
+        toggleMarkerView();
+    })
+    
+/*     // if map is clicked, markerView goes away
+    var map = document.getElementById("map");
+    map.addEventListener("click", function(){
+        toggleMarkerView()
+    })
+
+    // if markerView is clicked, markerView goes away
+    var markerView = document.getElementById("marker-view-panel");
+    markerView.addEventListener("click", function(){
+        toggleMarkerView()
+    })
+
+    // if centerView is clicked, markerView goes away
+    var centerMap = document.getElementById("center-map");
+    centerMap.addEventListener("click", function(){
+        toggleMarkerView()
+    })
+
+    // if newMarker is clicked, markerView goes away
+    var openMenu = document.getElementById("new-marker");
+    openMenu.addEventListener("click", function(){
+        toggleMarkerView()
+    }) */
+
+}
+
+module.exports = { toggleMarkerView, markerViewListeners }

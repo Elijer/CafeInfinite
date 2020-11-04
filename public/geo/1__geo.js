@@ -5,7 +5,7 @@ var geolocation         = require ('./tools/geolocation');
 var { mainLoader }      = require('../utility/utility');
 // just inspiration for creating a new helper file for viewPost
 var { iconInterface, toggleIconInterface, populateIconInterface}      = require('../views/markerMenu');
-var { toggleMarkerView }      = require('../views/markerView');
+var { markerViewListeners }      = require('../views/markerView');
 
 function geo(db, key){
   
@@ -35,6 +35,8 @@ function geo(db, key){
     geolocation(map);
     mainLoader(false);
     populateIconInterface();
+
+    markerViewListeners();
 
     /* ***** HTML ELEMENT EVENTS **** */
 
