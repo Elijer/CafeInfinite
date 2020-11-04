@@ -16,14 +16,15 @@ var renderMarker = function(googleMaps, lat, lng, icon, id, index, scalingCoeffi
   // add click event for marker
   markerOnClick(masterArray[index]);
 
+  // control the size of the rectangle:
   var r = .00005;
   var h = r / .83333333333;
   gifArray[index] = new google.maps.Rectangle({
     elijahPosition: {lat: lat, lng: lng},
     strokeColor: icon.stroke,
     fillColor: icon.fill,
-    strokeOpacity: 0.8,
-    strokeWeight: 1.4,
+    strokeOpacity: 1,
+    strokeWeight: 28000 * .00005,
     fillOpacity: 1,
     map: map,
     bounds: {

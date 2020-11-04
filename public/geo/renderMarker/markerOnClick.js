@@ -1,7 +1,18 @@
 var markerOnClick = function(thisMarker, ID){
 
   thisMarker.addListener('click', function() {
+    //console.log(thisMarker);
+    var id = thisMarker.iterationID;
     var db = store.db;
+
+    var docRef = db.collection("flames").doc(id);
+
+    docRef.get().then(function(doc) {
+      console.log(doc);
+    });
+
+
+/*     var db = store.db;
     docRef.get(thisMarker.iterationID).then(function(doc) {
       if (doc.exists) {
           console.log("Document data:", doc.data().text);
@@ -11,8 +22,8 @@ var markerOnClick = function(thisMarker, ID){
       }
     }).catch(function(error) {
         console.log("Error getting document:", error);
-    });
-    //console.log(thisMarker.iterationID);
+    }); */
+
   });
 
 };
