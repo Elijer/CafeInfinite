@@ -1,23 +1,27 @@
 var geolocation = function(){
   var loader = document.getElementById("loading");
   loader.style.visibility = "visible";
-  //var x = document.getElementById("demo");
+  
+  // 
   getLocation();
 
+  // Set Options
   var options = {
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 0
   };
 
+  // Set Error
   function error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
-  function getLocation(map) {
+  function getLocation() {
     if (navigator.geolocation) {
-      console.log("geolocation is available");
-      navigator.geolocation.getCurrentPosition(success, error, options);
+      // so the way getCurrentPosition is set up, it already IS a promise that can be used by center map.
+      //navigator.geolocation.getCurrentPosition(success, error, options);
+      navigator.geolocation.watchPosition(success, error, options);
     } else {
       loader.style.visibility = "hidden";
       alert("Geolocation is not supported by this browser.");
@@ -28,22 +32,20 @@ var geolocation = function(){
     var lat = position.coords.latitude,
         lng = position.coords.longitude;
 
-    var data = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
-    }
+    console.log(lat, lng);
 
+    // why the hell would you do this
     localStorage.setItem('lat', position.coords.latitude);
     localStorage.setItem('lng', position.coords.longitude);
 
-    map.setCenter({lat: lat, lng: lng});
-    loader.style.visibility = "hidden";
-/*     console.log("Latitude: " + lat +
-    "<br>Longitude: " + lng); */
+    //map.setCenter({lat: lat, lng: lng});
+    //loader.style.visibility = "hidden";
 
-    return position.coords
+    // this should be the only thing it does.
+    //return position.coords
+
   }
 
 };
 
-module.exports = geolocation;
+module.exports = { geolocation };

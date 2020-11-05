@@ -1,7 +1,7 @@
 var loadGoogleMapsApi   = require ('load-google-maps-api-2'); //use googleMaps, not google.maps w/ this module
 var getMapData          = require ('./2a__getMapData'); //has two underscores
 var newMap              = require('./createMap/newMap');
-var geolocation         = require ('./tools/geolocation');
+var { geolocation }        = require ('./tools/geolocation');
 var { mainLoader }      = require('../utility/utility');
 // just inspiration for creating a new helper file for viewPost
 var { iconInterface, toggleIconInterface, populateIconInterface}      = require('../views/markerMenu');
