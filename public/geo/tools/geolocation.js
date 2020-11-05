@@ -62,7 +62,9 @@ var getPosition = function(callback){
   // It might be better to simply set the marker's position to whatever is in the store, and THEN change it to what
   // getPosition returns, for the best of both worlds.
   // Note: both getPosition and watchPosition should be used WITH centerMap() so that user is 'guided' to their current
-  // position when they make a post. OR, they could be guided there when they press the New Marker Button, instead.
+  // position when they make a post.
+  // Also, the position should be derived from the moment they click the "New Marker" button. Small thing, but important if
+  // you are in a moving vehicle and your position changes.
 }
 
 

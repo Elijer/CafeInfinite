@@ -3,6 +3,7 @@ var getMapData          = require ('./2a__getMapData'); //has two underscores
 var newMap              = require('./createMap/newMap');
 var { geolocation }        = require ('./tools/geolocation');
 var { mainLoader }      = require('../utility/utility');
+// var { mapClick }      = require('../utility/testing'); // this is unfortunately broken atm
 // just inspiration for creating a new helper file for viewPost
 var { iconInterface, toggleIconInterface, populateIconInterface}      = require('../views/markerMenu');
 var { markerViewListeners }      = require('../views/markerView');
@@ -49,6 +50,11 @@ function geo(db, key){
     /* CREATE NEW MARKER BUTTON LISTENER */
     var openMenu = document.getElementById("new-marker");
     openMenu.addEventListener("click", function(){
+
+      // reset the textBox to be empty
+      var textBox = document.getElementById("post-description");
+      textBox.value = "";
+
       toggleIconInterface();
     })
 

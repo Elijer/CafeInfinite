@@ -67,8 +67,13 @@ function textInterface(isOn){
 }
 
 function doneButton(){
+
+    // get the done button
     var textCreatePost = document.getElementById("text-interface-done");
+
+    // create click listener for it
     textCreatePost.addEventListener("click", function(){
+        
         var textBox = document.getElementById("post-description");
         var text = textBox.value;
 
