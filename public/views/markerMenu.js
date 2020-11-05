@@ -73,35 +73,65 @@ function doneButton(){
 
     // create click listener for it
     textCreatePost.addEventListener("click", function(){
+
+        ///////// GET GEOLOCATION
+
+        var options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
         
-        var textBox = document.getElementById("post-description");
-        var text = textBox.value;
+        // Set Error
+        function error(err) {
+            console.warn(`ERROR(${err.code}): ${err.message}`);
+            menuReset();
+        }
 
-        var value;
-
-        if (store.markerType){
-            value = store.markerType;
+        var loader = document.getElementById("loading");
+        loader.style.visibility = "visible";
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(success, error, options);
         } else {
-            value = null;
+            loader.style.visibility = "hidden";
+            alert("Geolocation is not supported by this browser.");
         }
+    
+        /* coords = getCurrentCoords();
+            if (coords){
+                console.log(value);
+                createBeacon(gMaps, coords.lat, coords.lng, media, value, store.db);
+            } else {
+                console.log("huh sorry no coords to make this post");
+            } */
 
-        var media = {
-            text: text
-        }
-
-        console.log(media.text);
-
-        coords = getCurrentCoords();
-
-        if (coords){
-            console.log(value);
-            createBeacon(gMaps, coords.lat, coords.lng, media, value, store.db);
-        } else {
-            console.log("huh sorry no coords to make this post");
-        }
-        menuReset();
     });
 }
+
+function success(position){
+
+    // make sure there is a markerType in the store.
+    if (store.markerType){
+        var icon = store.markerType;
+        console.log(icon);
+        
+        var text = document.getElementById("post-description").value;
+        var media = { text: text }
+
+        console.log(text);
+        var lat = position.coords.latitude,
+            lng = position.coords.longitude;
+        createBeacon(gMaps, lat, lng, media, icon, store.db);
+        var loader = document.getElementById("loading");
+        loader.style.visibility = "hidden";
+
+    } else {
+        console.log("Done button was clicked but there was no markerType saved")
+    }
+
+    menuReset();
+}
+
 
 function menuReset(){
     document.getElementById("marker-menu").style.display = "none";
@@ -110,5 +140,8 @@ function menuReset(){
     store.markerType = null;
     store.markerText = null;
 }
+
+
+
 
 module.exports = { toggleIconInterface, populateIconInterface, iconInterface }
