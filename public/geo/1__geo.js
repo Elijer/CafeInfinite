@@ -45,14 +45,21 @@ function geo(db, key){
     var centerMap = document.getElementById("center-map");
     centerMap.addEventListener("click", function(){
 
+      /* Okay some weird things at work here. For one, the lat and lng getting stored are a weird data type
+      and need to be wrapped with parseFloat. Another thing is that I am using watchPosition to save the 
+      new lat and lng to localStorage everytime they change. I would like to request them, but besides from being
+      slower, geolocation API apparently has a problem on chrome that prevents getCurrentLocation() form being called
+      more than once??? So watchLocation is ultimately more reliable (shrugs) */
+
       let lat = parseFloat(localStorage.getItem('lat'));
       let lng = parseFloat(localStorage.getItem('lng'));
 
-      if (typeof lat === number ){
+      if (typeof lat == 'number' ){
+        console.log('coords exist, going to use')
         map.setCenter({lat: lat, lng: lng});
-      } else {
-        centerIt();
       }
+
+      centerIt();
 
     })
 

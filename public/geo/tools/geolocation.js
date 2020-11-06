@@ -32,17 +32,13 @@ var geolocation = function(){
     var lat = position.coords.latitude,
         lng = position.coords.longitude;
 
-    console.log(lat, lng);
+    console.log("New position", lat, lng);
 
-    // why the hell would you do this
     localStorage.setItem('lat', position.coords.latitude);
     localStorage.setItem('lng', position.coords.longitude);
 
     map.setCenter({lat: lat, lng: lng});
-    //loader.style.visibility = "hidden";
-
-    // this should be the only thing it does.
-    //return position.coords
+    loader.style.visibility = "hidden";
 
   }
 
@@ -84,7 +80,7 @@ var centerIt = function(){
   }
 
   if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(setMap, error, options);
+    navigator.geolocation.getCurrentPosition(setMap, error, options);
   } else {
     loader.style.visibility = "hidden";
     alert("Geolocation is not supported by this browser.");
