@@ -21,7 +21,7 @@ var geolocation = function(){
     if (navigator.geolocation) {
       // so the way getCurrentPosition is set up, it already IS a promise that can be used by center map.
       //navigator.geolocation.getCurrentPosition(success, error, options);
-      navigator.geolocation.watchPosition(success, error, options);
+      navigator.geolocation.getCurrentPosition(success, error, options);
     } else {
       loader.style.visibility = "hidden";
       alert("Geolocation is not supported by this browser.");

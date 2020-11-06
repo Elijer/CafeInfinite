@@ -59,22 +59,35 @@ function textInterface(isOn){
 
 function doneButton(){
 
+    //var loader = document.getElementById("loading");
+    //loader.style.visibility = "visible";
+
     var textCreatePost = document.getElementById("text-interface-done");
 
     textCreatePost.addEventListener("click", function(){
-        //var loader = document.getElementById("loading");
-        //loader.style.visibility = "visible";
+        var textBox = document.getElementById("post-description");
+
+        var media = {
+            text: textBox.value
+        }
+
         let coords = {
             lat: parseFloat(localStorage.getItem('lat')),
             lng: parseFloat(localStorage.getItem('lng'))
         }
 
-        if (coords){
-            console.log(value);
-            createBeacon(gMaps, coords.lat, coords.lng, media, value, store.db);
+        var icon = store.markerType;
+
+        if (store.markerType){
+
+            createBeacon(gMaps, coords.lat, coords.lng, media, icon, store.db);
+
         } else {
-            console.log("huh sorry no coords to make this post");
+            console.log("tried to make post but no icon type exists");
         }
+
+        map.setCenter({lat: coords.lat, lng: coords.lng});
+        menuReset();
 
     });
 }
