@@ -85,5 +85,4 @@ function geo(db, key){
 
 };
 
-
 module.exports = geo;

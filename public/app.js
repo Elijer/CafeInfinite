@@ -1,6 +1,7 @@
 const firebase          = require('firebase/app')
 const firestore         = require('firebase/firestore'); // yes this is needed
 const functions         = require('firebase/functions');
+const storage           = require('firebase/storage');
 const {firebaseConfig,
        handleEmulators,
        mainLoader}      = require('./utility/utility')
@@ -28,4 +29,26 @@ document.addEventListener("DOMContentLoaded", event => {
 
     })
 
+
+    var storage = firebase.storage();
+    var storageRef = storage.ref();
+    var inputImage = document.getElementById("inputImage");
+    inputImage.onchange = function(){uploadFile(this.files, storageRef)};
+
 });
+
+var uploadFile = function (files, storageRef){
+    const horseRef = storageRef.child('horse.jpg');
+  
+    const file = files.item(0);
+    const task = horseRef.put(file);
+  
+    task.then(snapshot => {
+      console.log(snapshot)
+      const url = snapshot.downloadURL;
+      document.getElementById('imgUpload').setAttribute('src', url);
+  
+    })
+
+}
+  
