@@ -25,15 +25,6 @@ function populateIconInterface(){
     }
 }
 
-function getCurrentCoords(){
-    let coords = {
-        lat: parseFloat(localStorage.getItem('lat')),
-        lng: parseFloat(localStorage.getItem('lng'))
-    }
-
-    return coords;
-}
-//
 function toggleIconInterface(){
     var box = document.getElementById("marker-menu");
 
@@ -68,47 +59,27 @@ function textInterface(isOn){
 
 function doneButton(){
 
-    // get the done button
     var textCreatePost = document.getElementById("text-interface-done");
 
-    // create click listener for it
     textCreatePost.addEventListener("click", function(){
-
-        ///////// GET GEOLOCATION
-
-        var options = {
-            enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 0
-        };
-        
-        // Set Error
-        function error(err) {
-            console.warn(`ERROR(${err.code}): ${err.message}`);
-            menuReset();
+        //var loader = document.getElementById("loading");
+        //loader.style.visibility = "visible";
+        let coords = {
+            lat: parseFloat(localStorage.getItem('lat')),
+            lng: parseFloat(localStorage.getItem('lng'))
         }
 
-        var loader = document.getElementById("loading");
-        loader.style.visibility = "visible";
-        if (navigator.geolocation) {
-            navigator.geolocation.watchPosition(success, error, options);
+        if (coords){
+            console.log(value);
+            createBeacon(gMaps, coords.lat, coords.lng, media, value, store.db);
         } else {
-            loader.style.visibility = "hidden";
-            alert("Geolocation is not supported by this browser.");
+            console.log("huh sorry no coords to make this post");
         }
-    
-        /* coords = getCurrentCoords();
-            if (coords){
-                console.log(value);
-                createBeacon(gMaps, coords.lat, coords.lng, media, value, store.db);
-            } else {
-                console.log("huh sorry no coords to make this post");
-            } */
 
     });
 }
 
-function success(position){
+/* function success(position){
 
     // make sure there is a markerType in the store.
     if (store.markerType){
@@ -130,7 +101,7 @@ function success(position){
     }
 
     menuReset();
-}
+} */
 
 
 function menuReset(){
