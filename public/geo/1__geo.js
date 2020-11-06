@@ -59,6 +59,9 @@ function geo(db, key){
         map.setCenter({lat: lat, lng: lng});
       }
 
+      // this function doesn't work because of the bug I mentioned above. You should read up on geolocation and make sure
+      // that you are following best practices, because ideally, new coordinates should be found, right?
+      // Unless watchPosition is accurate and frequent enough, but I don't think it updates that frequently. Worth testing.
       centerIt();
 
     })
