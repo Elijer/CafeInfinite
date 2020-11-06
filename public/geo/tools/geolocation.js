@@ -5,6 +5,17 @@ var geolocation = function(){
   // 
   getLocation();
 
+  currentPositionCircle = new google.maps.Circle({
+    strokeColor: "#FF0000",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#FF0000",
+    fillOpacity: 0.35,
+    map,
+/*     center: citymap[city].center, */
+    radius: .2,
+  });
+
   // Set Options
   var options = {
     enableHighAccuracy: true,
@@ -38,6 +49,7 @@ var geolocation = function(){
     localStorage.setItem('lng', position.coords.longitude);
 
     map.setCenter({lat: lat, lng: lng});
+    currentPositionCircle.center = {lat, lng};
     loader.style.visibility = "hidden";
 
   }

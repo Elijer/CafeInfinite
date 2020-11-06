@@ -1,3 +1,7 @@
+img {
+  border: none;
+}
+
 #banner-title, #banner-login {
     background: black;
     font-family: 'Caveat', Tahoma;
@@ -72,3 +76,6 @@
   color: orange;
 }
 
+.gm-style div {
+  -webkit-transform: scale(1.002);
+}

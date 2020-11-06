@@ -1,5 +1,5 @@
 /* ***** SELECTION BOX / INPUT BOX ******* */
-#marker-menu {
+#marker-menu, #marker-view-panel {
   display: none;
   border-radius: 4px;
   position: fixed;
@@ -7,7 +7,8 @@
   margin-top: 175px;
   margin-left: 30%;
   width: 40%;
-  background: white;
+  background: rgb(213, 206, 215);
+/*   opacity: .87; */
 }
 
 #text-interface {
@@ -22,6 +23,7 @@
   margin-top: 20px;
   padding: 20px;
   border: none;
+  color: #194a48;
 }
 
 #text-interface-done:hover{
@@ -47,6 +49,7 @@
   font-size: 15px;
   padding-top: 5%;
   padding-bottom: 5%;
+  color: rgb(112, 103, 115);
 }
 
 #grid-container {
@@ -69,25 +72,41 @@
   }
   
   .selection-item:hover {
-    background: lightgrey;
+    background: rgb(171, 166, 173);
   }
 
   .selection-img {
     width: 60px;
   }
 
+  #marker-view-content, #marker-view-time {
+    font-size: 35px;
+    text-align: left;
+    padding: 60px;
+  }
+  
+  #marker-view-time {
+    padding-top: 0px;
+    font-size: 20px;
+    color: grey;
+  }
+
 @media (max-width: 1100px) {
+
   .selection-img {
     width: 50px;
   }
+
+  #marker-view-panel {
+    margin-left: 12%;
+    width: 76%;
+  }
+  
 }
 
 
 
 @media (max-width: 850px) {
-
-  #marker-menu {
-  }
 
   .marker-menu {
     font-size: 30px;
@@ -113,10 +132,12 @@
 
 @media (max-width: 600px) {
 
-  #marker-menu {
+  #marker-menu, #marker-view-panel {
     margin-left: 15%;
     width: 70%;
   }
+
+  /******* MENU */
 
   #marker-view-content, #marker-view-time {
     font-size: 25px;
@@ -129,13 +150,37 @@
     padding-top: 0px;
     font-size: 20px;
   }
+
+  /******* VIEW */
+
+  #marker-view-content, #marker-view-time {
+    font-size: 25px;
+    text-align: left;
+    padding: 50px;
+    padding-bottom: 20px;
+  }
+
+  #marker-view-time {
+    padding-top: 0px;
+    font-size: 20px;
+  }
+
 }
 
 @media (max-width: 400px) {
 
-  #marker-menu {
+  /******* SHARED */
+
+  #marker-menu, #marker-view-panel {
     margin-top: 160px;
   }
+
+  h1 {
+    font-size: 18px;
+    padding-bottom: 0px;
+  }
+
+  /****** MENU */
 
   h1 {
     font-size: 18px;
@@ -162,6 +207,12 @@
     margin-bottom: 20px;
 
   }
-  
 
+  /******* VIEW */
+
+  #marker-view-panel {
+    overflow-y: auto;
+    height: 48%;
+  }
+  
 }

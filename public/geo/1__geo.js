@@ -33,7 +33,7 @@ function geo(db, key){
     gifArray = [];
 
     getMapData(googleMaps, db);
-    geolocation(map);
+    geolocation();
     mainLoader(false);
     populateIconInterface();
 

@@ -12,6 +12,7 @@
     <link async defer href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 
     <!--CSS LINKS-->
+    <link href = "css/reset.css" rel = "stylesheet" type = "text/css" />
     <link href = "css/position.css" rel = "stylesheet" type = "text/css" />
     <link href = "css/style.css" rel = "stylesheet" type = "text/css" />
     <link href = "css/markerMenu.css" rel = "stylesheet" type = "text/css" />
@@ -24,11 +25,18 @@
 
   <body>
 
+
+
+    <!-- Image Upload test -->
+    <input type = "file" onchange = "uploadFile(this.files)">
+    <img id="imgUpload" src=" width="100vw">
+
+
     <!--HTML-->
     <div id="banner">
       <button id="banner-title" class = "top">
         <input id = "uploadInput" type = "file">
-        <span id = "fade-in"> cafe infinite </span>
+        <span id = "fade-in"> Hide & Seek</span>
       </button>
       <button id="banner-login" class = "top" onclick = "googleLogin()">
         <span id = "fade-in"> login </span>
@@ -43,7 +51,9 @@
     <i id = "loading" class="fa fa-circle-o-notch fa-spin"></i>
 
     <div id = "marker-view-panel">
-      <div id = "marker-view-header" class = "marker-view-header"> View Post </div>
+      <div class = "grid-header">
+        <h1> View Post </h1>
+      </div>
       <div id = "marker-view-content"> Here is some mock content for you to chew on you. Just for testing purposes. Porpoises. You know. </div>
       <div id = "marker-view-time"> posted at <span id = "marker-view-time-actual"> Some time </span></div>
     </div>
