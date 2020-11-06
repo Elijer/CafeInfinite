@@ -1,7 +1,7 @@
 var loadGoogleMapsApi   = require ('load-google-maps-api-2'); //use googleMaps, not google.maps w/ this module
 var getMapData          = require ('./2a__getMapData'); //has two underscores
 var newMap              = require('./createMap/newMap');
-var { geolocation }        = require ('./tools/geolocation');
+var { geolocation, centerIt }        = require ('./tools/geolocation');
 var { mainLoader }      = require('../utility/utility');
 // var { mapClick }      = require('../utility/testing'); // this is unfortunately broken atm
 // just inspiration for creating a new helper file for viewPost
@@ -44,7 +44,16 @@ function geo(db, key){
     /* CREATE CENTER MAP LISTENER */
     var centerMap = document.getElementById("center-map");
     centerMap.addEventListener("click", function(){
-      geolocation();
+
+      let lat = parseFloat(localStorage.getItem('lat'));
+      let lng = parseFloat(localStorage.getItem('lng'));
+
+      if (typeof lat === number ){
+        map.setCenter({lat: lat, lng: lng});
+      } else {
+        centerIt();
+      }
+
     })
 
     /* CREATE NEW MARKER BUTTON LISTENER */

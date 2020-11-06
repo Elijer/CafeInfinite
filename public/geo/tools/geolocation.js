@@ -38,7 +38,7 @@ var geolocation = function(){
     localStorage.setItem('lat', position.coords.latitude);
     localStorage.setItem('lng', position.coords.longitude);
 
-    //map.setCenter({lat: lat, lng: lng});
+    map.setCenter({lat: lat, lng: lng});
     //loader.style.visibility = "hidden";
 
     // this should be the only thing it does.
@@ -68,8 +68,42 @@ var getPosition = function(callback){
 }
 
 
-var centerMap = function(){
+var centerIt = function(){
+
+  console.log("center map called")
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+
+  // Set Error
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(setMap, error, options);
+  } else {
+    loader.style.visibility = "hidden";
+    alert("Geolocation is not supported by this browser.");
+  }
 
 }
 
-module.exports = { geolocation };
+var setMap = function(position){
+
+  var lat = position.coords.latitude,
+      lng = position.coords.longitude;
+
+  console.log(lat, lng);
+
+  localStorage.setItem('lat', position.coords.latitude);
+  localStorage.setItem('lng', position.coords.longitude);
+
+  map.setCenter({lat: lat, lng: lng});
+
+}
+
+module.exports = { geolocation, centerIt };
