@@ -76,6 +76,4 @@ img {
   color: orange;
 }
 
-.gm-style div {
-  -webkit-transform: scale(1.002);
-}
+@media (max-width: 1100px) {
