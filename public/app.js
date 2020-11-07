@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", event => {
         mapClick: {
           active: true
         }
-      };
+    };
       
     handleEmulators(firebase, db);
 
@@ -40,13 +40,14 @@ document.addEventListener("DOMContentLoaded", event => {
     })
 
 
-
     // Storage Bucket Example
     var storage = firebase.storage();
     var storageRef = storage.ref();
 
     var inputImage = document.getElementById("inputImage");
-    inputImage.onchange = function(){uploadFile(this.files, storageRef)};
+    inputImage.onchange = function(){
+        uploadFile(this.files, storageRef)
+    };
 
     var uploadFile = function (files, storageRef){
 
@@ -55,6 +56,9 @@ document.addEventListener("DOMContentLoaded", event => {
       
         const file = files.item(0);
         const task = horseRef.put(file);
+        task.on("state_changed", function progress(snapshot) {
+            console.log(snapshot.totalBytes - snapshot.bytesTransferred/*snapshot.totalBytes*/); // progress of upload
+         });
         
         // how to get downloadURL from a snapshot
         // https://stackoverflow.com/questions/43911080/return-the-download-url-of-a-file-uploaded-to-firebase/50448571#50448571
