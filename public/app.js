@@ -30,31 +30,31 @@ document.addEventListener("DOMContentLoaded", event => {
     })
 
 
+
+    // Storage Bucket Example
     var storage = firebase.storage();
     var storageRef = storage.ref();
-
-
 
     var inputImage = document.getElementById("inputImage");
     inputImage.onchange = function(){uploadFile(this.files, storageRef)};
 
+    var uploadFile = function (files, storageRef){
+
+        const newRefName = Math.random().toString(36).slice(2);
+        const horseRef = storageRef.child(newRefName);
+      
+        const file = files.item(0);
+        const task = horseRef.put(file);
+      
+        task.then(snapshot => {
+          console.log(snapshot)
+          const url = snapshot.downloadURL
+          console.log(url);
+          document.getElementById('imgUpload').setAttribute('src', url);
+      
+        })
+    
+    }
+
 });
-
-var uploadFile = function (files, storageRef){
-
-    const newRefName = Math.random().toString(36).slice(2);
-    const horseRef = storageRef.child(newRefName);
-  
-    const file = files.item(0);
-    const task = horseRef.put(file);
-  
-    task.then(snapshot => {
-      console.log(snapshot)
-      const url = snapshot.downloadURL
-      console.log(url);
-      document.getElementById('imgUpload').setAttribute('src', url);
-  
-    })
-
-}
   

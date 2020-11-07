@@ -1,6 +1,6 @@
 /* ***** SELECTION BOX / INPUT BOX ******* */
 #marker-menu, #marker-view-panel {
-  display: none;
+  display: inline;
   border-radius: 4px;
   position: fixed;
   z-index: 999;
@@ -46,7 +46,7 @@
 }
 
 .grid-header {
-  font-size: 15px;
+  font-size: 30px;
   padding-top: 5%;
   padding-bottom: 5%;
   color: rgb(112, 103, 115);

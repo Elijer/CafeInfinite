@@ -1,6 +1,6 @@
 //var darkStyle = require('./mapStyles/dark');
 //https://mapstyle.withgoogle.com/
-var mapStyle = require('./mapStyles/dark_cities');
+var mapStyle = require('./mapStyles/normal1');
 
 var mapConfig = {
     center: {lat: 38.875854, lng: -77.0981069},

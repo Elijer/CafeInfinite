@@ -30,10 +30,8 @@ function toggleIconInterface(){
 
     
     if (box.style.display != "inline"){
-        console.log("is this ever getting called?1")
         box.style.display = "inline";
     } else if (box.style.display = "inline"){
-        console.log("is this ever getting called?")
         box.style.display = "none";
     }
 }
