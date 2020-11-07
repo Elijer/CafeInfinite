@@ -121,6 +121,15 @@ function menuReset(){
     iconInterface(true);
     store.markerType = null;
     store.markerText = null;
+
+    var imgUpload = document.getElementById("imgUpload");
+    imgUpload.src = "";
+
+    var inputField = document.getElementById("inputImage");
+    inputField.style.display = "inline";
+
+/*     var imgUpload = document.getElementById("imgUpload");
+    var inputField = document.getElementById("inputImage"); */
 }
 
 

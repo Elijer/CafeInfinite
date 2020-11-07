@@ -38,12 +38,14 @@
 }
 
 #imgUpload {
-
+  display: block;
+  padding: 15px;
+  margin: auto;
+  width: 380px;
 }
 
 .grid-footer {
   padding: 0px;
-  margin: 26px;
 }
 
 #button {
@@ -202,7 +204,7 @@
   /******* SHARED */
 
   #marker-menu, #marker-view-panel {
-    margin-top: 100px;
+    margin-top: 75px;
   }
 
   h1 {
@@ -240,6 +242,11 @@
     margin-top: 20px;
     margin-bottom: 20px;
 
+  }
+
+  #imgUpload {
+    padding: 15px;
+    width: 200px;
   }
 
   /******* VIEW */

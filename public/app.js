@@ -54,6 +54,8 @@ document.addEventListener("DOMContentLoaded", event => {
         .then(downloadURL => {
             console.log(downloadURL)
             document.getElementById('imgUpload').setAttribute('src', downloadURL);
+            var inputField = document.getElementById("inputImage");
+            inputField.style.display = "none";
         })
 
 /* 
