@@ -56,8 +56,19 @@ document.addEventListener("DOMContentLoaded", event => {
       
         const file = files.item(0);
         const task = horseRef.put(file);
+
+        // hide input
+        var inputField = document.getElementById("inputImage");
+        inputField.style.display = "none";
+
+        // show loader, load progress into bar
+        var loader = document.getElementById("loadingPanel");
+        var loadProgress = document.getElementById("loadingProgress");
+        loader.style.display = "block";
+
         task.on("state_changed", function progress(snapshot) {
-            console.log(snapshot.totalBytes - snapshot.bytesTransferred/*snapshot.totalBytes*/); // progress of upload
+            var percentageLoaded = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            loadProgress.style.width = percentageLoaded + "%";
          });
         
         // how to get downloadURL from a snapshot
@@ -68,10 +79,20 @@ document.addEventListener("DOMContentLoaded", event => {
         .then(downloadURL => {
             console.log(downloadURL)
             document.getElementById('imgUpload').setAttribute('src', downloadURL);
-            var inputField = document.getElementById("inputImage");
             store.markerPhoto = downloadURL;
-            inputField.style.display = "none";
+        }).then( () => {
+            //loader.style.display = "none";
         })
+
+        var imgUpload = document.getElementById('imgUpload');
+        imgUpload.onload = function(){
+            var loader = document.getElementById("loadingPanel");
+            loader.style.display = "none";
+        }
+
+
+        // The hard part is that we are waiting for two different things
+        // Uploading.............. => get link => downloading.......... => done
 
 /* 
           console.log(snapshot)

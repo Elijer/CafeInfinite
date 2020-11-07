@@ -8,6 +8,7 @@
   margin-left: 30%;
   width: 40%;
   background: rgb(213, 206, 215);
+  border: 1px solid rgb(112, 103, 115);
 /*   opacity: .87; */
 }
 
@@ -24,7 +25,8 @@
   background: #398e8a;
   border-radius: 4px;
   font-size: 30px;
-  padding: 20px;
+  padding: 18px;
+  margin: 12px;
   border: none;
   color: #194a48;
 }
@@ -61,9 +63,24 @@
   width: 92%;
 }
 
-#loadingBar {
-  height: 20px;
+#loadingPanel {
+  display: none;
+/*   display: block; */
   margin: 10px 14px 10px;
+}
+
+/* #loadingText {
+  display: inline;
+  color: rgb(112, 103, 115);;
+  text-align: right;
+  left: 10px;
+  top: 12px;
+  position: absolute;
+} */
+
+#loadingBar {
+  display: block;
+  height: 40px;
   background: rgb(112, 103, 115);
 }
 
@@ -71,8 +88,8 @@
   position: relative;
   float: left;
   text-align: left;
-  width: 80%;
-  height: 20px;
+  width: 0%;
+  height: 40px;
   background: orange;
 }
 
