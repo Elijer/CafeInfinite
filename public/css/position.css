@@ -77,3 +77,60 @@ body {
   top: 145px;
   visibility: hidden;
 }
+
+@media (max-width: 1100px) {
+
+  .top {
+    /*this controls the height of the banner*/
+    height: 100px;
+    background: orange !important;
+  }
+
+  #banner-title, #banner-login {
+    font-size: 40px;
+  }
+
+  #banner-title {
+    padding-left: 50px;
+  }
+  
+}
+
+@media (max-width: 850px) {
+
+}
+
+@media (max-width: 600px) {
+
+  .top {
+    /*this controls the height of the banner*/
+    height: 85px;
+    background: orange !important;
+  }
+
+  #banner-title, #banner-login {
+    font-size: 30px;
+  }
+
+  #banner-title {
+    padding-left: 20px;
+  }
+  
+}
+
+@media (max-width: 400px) {
+
+  .top {
+    height: 62px;
+    background: orange !important;
+  }
+
+  #banner-title, #banner-login {
+    font-size: 24px;
+  }
+
+  #banner-title {
+    padding-left: 32px;
+  }
+
+}

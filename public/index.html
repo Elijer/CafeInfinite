@@ -25,16 +25,6 @@
 
   <body>
 
-
-
-    <!-- Image Upload test -->
-    <input id = "inputImage" type = "file" >
-    <img id = "imgUpload" src = "" width = "100vw">
-    <!--
-      <input id = "uploadInput" type="file" onchange="previewFile()">
-    -->
-
-
     <!--HTML-->
     <div id="banner">
       <button id="banner-title" class = "top">
@@ -45,8 +35,6 @@
         <span id = "fade-in"> login </span>
       </button>
     </div>
-
-    <img id = "imgUpload" src = "" width = "100">
 
     <div id="map">
     </div>
@@ -72,8 +60,14 @@
       </div>
       <div id = "text-interface">
         <div class = "grid-header">
-          <h1> Description (optional) </h1> 
+          <h1> Create Post </h1> 
         </div>
+
+        <div id = "imageDiv">
+          <input id = "inputImage" type = "file" >
+          <img id = "imgUpload" src = "" width = "100vw">
+        </div>
+
         <textarea
         id = "post-description"
         class = "post-description"

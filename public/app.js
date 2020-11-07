@@ -45,14 +45,26 @@ document.addEventListener("DOMContentLoaded", event => {
       
         const file = files.item(0);
         const task = horseRef.put(file);
-      
+        
+        // how to get downloadURL from a snapshot
+        // https://stackoverflow.com/questions/43911080/return-the-download-url-of-a-file-uploaded-to-firebase/50448571#50448571
         task.then(snapshot => {
+            return snapshot.ref.getDownloadURL();
+        })
+        .then(downloadURL => {
+            console.log(downloadURL)
+            document.getElementById('imgUpload').setAttribute('src', downloadURL);
+        })
+
+/* 
           console.log(snapshot)
-          const url = snapshot.downloadURL
+          // https://stackoverflow.com/questions/43911080/return-the-download-url-of-a-file-uploaded-to-firebase/50448571#50448571
+          const url = snapshot.ref.getDownloadURL();
+          url.
           console.log(url);
           document.getElementById('imgUpload').setAttribute('src', url);
       
-        })
+        }) */
     
     }
 
