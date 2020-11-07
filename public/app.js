@@ -74,17 +74,34 @@ document.addEventListener("DOMContentLoaded", event => {
         // how to get downloadURL from a snapshot
         // https://stackoverflow.com/questions/43911080/return-the-download-url-of-a-file-uploaded-to-firebase/50448571#50448571
         task.then(snapshot => {
-            return snapshot.ref.getDownloadURL();
+            var info = {
+                url: snapshot.ref.getDownloadURL(),
+                type: snapshot.metadata.contentType
+            }
+            return info;
         })
-        .then(downloadURL => {
-            console.log(downloadURL)
-            document.getElementById('imgUpload').setAttribute('src', downloadURL);
-            store.markerPhoto = downloadURL;
+        .then(info => {
+            if (info.type === "image/jpg"){
+                document.getElementById('imgUpload').setAttribute('src', info.url);
+            } else if (info.type === "video/mp4"){
+                console.log("yo!");
+                console.log(info.url)
+                document.getElementById('video-upload').setAttribute('src', info.url);
+            }
+
+            store.markerPhoto = info.url;
+
         }).then( () => {
             //loader.style.display = "none";
         })
 
         var imgUpload = document.getElementById('imgUpload');
+        imgUpload.onload = function(){
+            var loader = document.getElementById("loadingPanel");
+            loader.style.display = "none";
+        }
+
+        var videoUpload = document.getElementById('videoUpload');
         imgUpload.onload = function(){
             var loader = document.getElementById("loadingPanel");
             loader.style.display = "none";
