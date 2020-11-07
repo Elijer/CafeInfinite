@@ -2,14 +2,21 @@ var scaleCalculator     = require('./renderMarker/scaleCalculator');
 var renderMarker           = require('./3__renderMarker');
 
 var createBeacon = function(googleMaps, lat, lng, media, icon, db){
-///
-  db.collection("flames").add({
+
+  var newData = {
     lat: lat,
     lng: lng,
     icon: icon,
     text: media.text,
     created_at: new Date()
-  })
+  }
+
+  if (media.image){
+    newData.image = media.image;
+  }
+
+///
+  db.collection("flames").add(newData)
   .then(function(docRef) {
     // Render onto Map
     const newID =  docRef.id

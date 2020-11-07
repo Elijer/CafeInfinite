@@ -66,7 +66,11 @@ function doneButton(){
         var textBox = document.getElementById("post-description");
 
         var media = {
-            text: textBox.value
+            text: textBox.value,
+        }
+
+        if (store.markerPhoto){
+            media.image = store.markerPhoto;
         }
 
         let coords = {
@@ -116,6 +120,9 @@ function doneButton(){
 
 
 function menuReset(){
+
+    store.markerPhoto = null;
+
     document.getElementById("marker-menu").style.display = "none";
     textInterface(false);
     iconInterface(true);

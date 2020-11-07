@@ -10,13 +10,23 @@ var geo = require('./geo/1__geo');
 
 document.addEventListener("DOMContentLoaded", event => {
 
-    //testing = true;
-
     mainLoader(true);
 
     firebase.initializeApp(firebaseConfig);
 
     var db = firebase.firestore();
+
+    store = {
+        db: db,
+        testing: true,
+        markerType: null,
+        markerText: null,
+        markerPhoto: null,
+        mapClick: {
+          active: true
+        }
+      };
+      
     handleEmulators(firebase, db);
 
     // get googleMaps API key where it is saved on server in order to use googleMaps
@@ -55,6 +65,7 @@ document.addEventListener("DOMContentLoaded", event => {
             console.log(downloadURL)
             document.getElementById('imgUpload').setAttribute('src', downloadURL);
             var inputField = document.getElementById("inputImage");
+            store.markerPhoto = downloadURL;
             inputField.style.display = "none";
         })
 

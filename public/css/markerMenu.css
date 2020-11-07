@@ -1,10 +1,10 @@
 /* ***** SELECTION BOX / INPUT BOX ******* */
 #marker-menu, #marker-view-panel {
-  display: inline;
+  display: none;
   border-radius: 4px;
   position: fixed;
   z-index: 999;
-  margin-top: 175px;
+  margin-top: 170px;
   margin-left: 30%;
   width: 40%;
   background: rgb(213, 206, 215);
@@ -37,7 +37,7 @@
 
 }
 
-#imgUpload {
+#imgUpload, #imgUploadView {
   display: block;
   padding: 15px;
   margin: auto;
@@ -101,12 +101,12 @@
 
   #marker-view-content, #marker-view-time {
     font-size: 35px;
-    text-align: left;
-    padding: 60px;
+    text-align: center;
+    padding: 12px;
+    margin-bottom: 18px;
   }
   
   #marker-view-time {
-    padding-top: 0px;
     font-size: 20px;
     color: grey;
   }
@@ -134,8 +134,6 @@
 
   #marker-view-content, #marker-view-time {
     font-size: 25px;
-    text-align: left;
-    padding: 60px;
   }
   
   #marker-view-time {
@@ -173,9 +171,6 @@
 
   #marker-view-content, #marker-view-time {
     font-size: 25px;
-    text-align: left;
-    padding: 50px;
-    padding-bottom: 20px;
   }
 
   #marker-view-time {
@@ -187,9 +182,6 @@
 
   #marker-view-content, #marker-view-time {
     font-size: 25px;
-    text-align: left;
-    padding: 50px;
-    padding-bottom: 20px;
   }
 
   #marker-view-time {

@@ -19,16 +19,6 @@ function geo(db, key){
     map = newMap(googleMaps); // googleMaps is definitely needed here
     gMaps = googleMaps;
 
-    store = {
-      db: db,
-      testing: true,
-      markerType: null,
-      markerText: null,
-      mapClick: {
-        active: true
-      }
-    };
-
     masterArray = [];
     gifArray = [];
 

@@ -4,15 +4,26 @@ function toggleMarkerView(data){
     var theText = document.getElementById("marker-view-content");
     var theTime = document.getElementById("marker-view-time-actual");
 
+    var imageView = document.getElementById("imgUploadView");
+        imageView.src = ""
 
     if (data){
+
         markerView.style.display = "inline";
         theText.innerHTML = data.text;
-
         var date = data.created_at.toDate().toLocaleDateString();
         var time = formatAMPM(data.created_at.toDate());
 
         theTime.innerHTML = time + " on " + date;
+
+        // Image
+        if (data.image){
+            imageView.style.display = "block";
+            imageView.src = data.image;
+        } else {
+            imageView.src = ""
+            imageView.style.display = "none";
+        }
 
     } else {
         markerView.style.display = "none";
