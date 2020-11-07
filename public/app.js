@@ -1,4 +1,4 @@
-const firebase          = require('firebase/app')
+const firebase          = require('firebase/app');
 const firestore         = require('firebase/firestore'); // yes this is needed
 const functions         = require('firebase/functions');
 const storage           = require('firebase/storage');
@@ -32,20 +32,26 @@ document.addEventListener("DOMContentLoaded", event => {
 
     var storage = firebase.storage();
     var storageRef = storage.ref();
+
+
+
     var inputImage = document.getElementById("inputImage");
     inputImage.onchange = function(){uploadFile(this.files, storageRef)};
 
 });
 
 var uploadFile = function (files, storageRef){
-    const horseRef = storageRef.child('horse.jpg');
+
+    const newRefName = Math.random().toString(36).slice(2);
+    const horseRef = storageRef.child(newRefName);
   
     const file = files.item(0);
     const task = horseRef.put(file);
   
     task.then(snapshot => {
       console.log(snapshot)
-      const url = snapshot.downloadURL;
+      const url = snapshot.downloadURL
+      console.log(url);
       document.getElementById('imgUpload').setAttribute('src', url);
   
     })
