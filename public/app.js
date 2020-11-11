@@ -81,18 +81,21 @@ document.addEventListener("DOMContentLoaded", event => {
             return info;
         })
         .then(info => {
+
+            console.log(info.url);
+
             if (info.type === "image/jpg"){
                 document.getElementById('imgUpload').setAttribute('src', info.url);
             } else if (info.type === "video/mp4"){
-                console.log("yo!");
-                console.log(info.url)
                 document.getElementById('video-upload').setAttribute('src', info.url);
             }
+             
+            return info.url
 
-            store.markerPhoto = info.url;
+        }).then( url => {
 
-        }).then( () => {
-            //loader.style.display = "none";
+            store.markerPhoto = url;
+
         })
 
         var imgUpload = document.getElementById('imgUpload');
