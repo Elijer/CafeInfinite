@@ -51,47 +51,52 @@ document.addEventListener("DOMContentLoaded", event => {
 
     var uploadFile = function (files, storageRef){
 
-        const newRefName = Math.random().toString(36).slice(2);
-        const horseRef = storageRef.child(newRefName);
-      
         const file = files.item(0);
-        const task = horseRef.put(file);
-
-        // hide input
-        var inputField = document.getElementById("inputImage");
-        inputField.style.display = "none";
-
-        // show loader, load progress into bar
-        var loader = document.getElementById("loadingPanel");
-        var loadProgress = document.getElementById("loadingProgress");
-        loader.style.display = "block";
-
-        task.on("state_changed", function progress(snapshot) {
-            var percentageLoaded = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            loadProgress.style.width = percentageLoaded + "%";
-         });
+        console.log(file);
+        var accepted = fileAccepted(file);
+            
+        if (accepted === true){
+            const newRefName = Math.random().toString(36).slice(2);
+            const horseRef = storageRef.child(newRefName);
         
-        // how to get downloadURL from a snapshot
-        // https://stackoverflow.com/questions/43911080/return-the-download-url-of-a-file-uploaded-to-firebase/50448571#50448571
-        task.then(snapshot => {
-            const info = uploadMedia(snapshot);
-            return info;
-        })
-        .then(info => {
-            console.log(info);
-        })
+            const task = horseRef.put(file);
 
-        
-        var imgUpload = document.getElementById('imgUpload');
-        imgUpload.onload = function(){
-            var loader = document.getElementById("loadingPanel");
-            loader.style.display = "none";
-        }
+            // hide input
+            var inputField = document.getElementById("inputImage");
+            inputField.style.display = "none";
 
-        var videoUpload = document.getElementById('videoUpload');
-        imgUpload.onload = function(){
+            // show loader, load progress into bar
             var loader = document.getElementById("loadingPanel");
-            loader.style.display = "none";
+            var loadProgress = document.getElementById("loadingProgress");
+            loader.style.display = "block";
+
+            task.on("state_changed", function progress(snapshot) {
+
+                var percentageLoaded = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                loadProgress.style.width = percentageLoaded + "%";
+            });
+            
+            // how to get downloadURL from a snapshot
+            // https://stackoverflow.com/questions/43911080/return-the-download-url-of-a-file-uploaded-to-firebase/50448571#50448571
+            task.then(snapshot => {
+                //const info = uploadMedia(snapshot);
+                return info;
+            })
+
+            
+            var imgUpload = document.getElementById('imgUpload');
+            imgUpload.onload = function(){
+                var loader = document.getElementById("loadingPanel");
+                loader.style.display = "none";
+            }
+
+            var videoUpload = document.getElementById('videoUpload');
+            imgUpload.onload = function(){
+                var loader = document.getElementById("loadingPanel");
+                loader.style.display = "none";
+            }
+        } else {
+            console.log("file not accepted.");
         }
     
     }
@@ -99,15 +104,62 @@ document.addEventListener("DOMContentLoaded", event => {
 });
   
 const uploadMedia = async(snapshot) => {
+
     try {
+
         const type = snapshot.metadata.contentType;
         const url = snapshot.ref.getDownloadURL();
         const result = await Promise.all([type, url]);
         return result;
+
     } catch(err){
-        console.error(Err);
+        console.log(err);
+        return false;
     }
 }
+
+// As soon as file selection finishes, this has to run. Should also check for file size, and maybe even dimensions
+// and other stuff.
+/* var isAccepted = false;
+
+for (var i = 0; i < accepted.length; i++){
+    if (accepted[i] === type){
+        isAccepted = true;
+    }
+} */
+
+const fileAccepted = function(file){
+    var isAccepted = false;
+    const message = "Sorry dude, upload is not an accepted filetype";
+    var type = file.type;
+
+    for (var i = 0; i < accepted.length; i++){
+        if (accepted[i] === type){
+            isAccepted = true;
+        }
+    }
+
+    if (file.size > 30000000){
+        isAccepted = false;
+        message = message + ", file is too big";
+    }
+
+    if (isAccepted === true){
+        message = "file is acceptable!";
+    }
+
+    console.log(message);
+
+    return (isAccepted ? true : false);
+
+}
+
+const accepted = [
+    'image/png',
+    'image/jpeg',
+    'video/mp4',
+    'video/quicktime'
+]
 
 
 /*             store.mediaType = snapshot.metadata.contentType;
