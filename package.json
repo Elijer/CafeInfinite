@@ -4,9 +4,9 @@
   "description": "Cafe Infinite is the working title I have for a project I've been thinking about for a long time. It's a simple platform I'd like to build to help connect people with their local businesses. With COVID, I don't see that being useful anytime soon, but hopefully I'll have it done by the time things return to normal, or to a new-normal.",
   "main": "inspo.js",
   "dependencies": {
-    "@firebase/storage": "^0.4.1",
+    "@firebase/firestore": "^2.0.2",
     "es-abstract": "^1.17.6",
-    "firebase": "^7.19.1",
+    "firebase": "^7.24.0",
     "jquery": "^3.5.1",
     "load-google-maps-api-2": "^1.0.2",
     "moment": "^2.29.1",

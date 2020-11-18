@@ -79,18 +79,25 @@ document.addEventListener("DOMContentLoaded", event => {
 
             return snapshot.ref.getDownloadURL();
 
-/*             var info = {};
-            info.type = snapshot.metadata.contentType;
-            info.url = snapshot.ref.getDownloadURL();
-
-            return info; */
         })
-        .then(url => {
+
+
+        
+/* Deleted this stuff
+var info = {};
+info.type = snapshot.metadata.contentType;
+info.url = snapshot.ref.getDownloadURL();
+
+return info; */
+
+/// Deleted this block
+/*         .then(url => {
             store.markerPhoto = url;
             console.log(url);
-
             //document.getElementById('imgUpload').setAttribute('src', info.url);
-        })
+
+
+        }) */
 
         
         var imgUpload = document.getElementById('imgUpload');
