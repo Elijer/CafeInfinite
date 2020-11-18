@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", event => {
         var accepted = fileAccepted(file);
             
         if (accepted === true){
+
             const newRefName = Math.random().toString(36).slice(2);
             const horseRef = storageRef.child(newRefName);
         
@@ -79,8 +80,11 @@ document.addEventListener("DOMContentLoaded", event => {
             // how to get downloadURL from a snapshot
             // https://stackoverflow.com/questions/43911080/return-the-download-url-of-a-file-uploaded-to-firebase/50448571#50448571
             task.then(snapshot => {
-                //const info = uploadMedia(snapshot);
+                const info = uploadMedia(snapshot);
                 return info;
+            })
+            .then(info => {
+                console.log(info);
             })
 
             
@@ -95,6 +99,8 @@ document.addEventListener("DOMContentLoaded", event => {
                 var loader = document.getElementById("loadingPanel");
                 loader.style.display = "none";
             }
+
+
         } else {
             console.log("file not accepted.");
         }
@@ -113,6 +119,7 @@ const uploadMedia = async(snapshot) => {
         return result;
 
     } catch(err){
+        
         console.log(err);
         return false;
     }
@@ -130,8 +137,8 @@ for (var i = 0; i < accepted.length; i++){
 
 const fileAccepted = function(file){
     var isAccepted = false;
-    const message = "Sorry dude, upload is not an accepted filetype";
-    var type = file.type;
+    var message = "Sorry dude, upload is not an accepted filetype";
+    const type = file.type;
 
     for (var i = 0; i < accepted.length; i++){
         if (accepted[i] === type){
