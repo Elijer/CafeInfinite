@@ -84,7 +84,9 @@ document.addEventListener("DOMContentLoaded", event => {
                 return info;
             })
             .then(info => {
-                console.log(info);
+                const type = info[0];
+                const url = info[1];
+                console.log(url);
             })
 
             
