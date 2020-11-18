@@ -125,16 +125,6 @@ const uploadMedia = async(snapshot) => {
     }
 }
 
-// As soon as file selection finishes, this has to run. Should also check for file size, and maybe even dimensions
-// and other stuff.
-/* var isAccepted = false;
-
-for (var i = 0; i < accepted.length; i++){
-    if (accepted[i] === type){
-        isAccepted = true;
-    }
-} */
-
 const fileAccepted = function(file){
     var isAccepted = false;
     var message = "Sorry dude, upload is not an accepted filetype";
@@ -167,6 +157,9 @@ const accepted = [
     'video/mp4',
     'video/quicktime'
 ]
+
+
+
 
 
 /*             store.mediaType = snapshot.metadata.contentType;
