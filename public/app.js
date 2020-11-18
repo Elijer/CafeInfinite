@@ -86,7 +86,14 @@ document.addEventListener("DOMContentLoaded", event => {
             .then(info => {
                 const type = info[0];
                 const url = info[1];
-                console.log(url);
+
+                if (type.includes('video')){
+                    console.log("Media type is a video");
+                } else if (type.includes('image')){
+                    console.log("media type is an image")
+                } else {
+                    console.log("media type is not a photo or a video!")
+                }
             })
 
             
