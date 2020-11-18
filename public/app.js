@@ -74,15 +74,46 @@ document.addEventListener("DOMContentLoaded", event => {
         // how to get downloadURL from a snapshot
         // https://stackoverflow.com/questions/43911080/return-the-download-url-of-a-file-uploaded-to-firebase/50448571#50448571
         task.then(snapshot => {
-
-            store.mediaType = snapshot.metadata.contentType;
-
-            return snapshot.ref.getDownloadURL();
-
+            const info = uploadMedia(snapshot);
+            return info;
+        })
+        .then(info => {
+            console.log(info);
         })
 
-
         
+        var imgUpload = document.getElementById('imgUpload');
+        imgUpload.onload = function(){
+            var loader = document.getElementById("loadingPanel");
+            loader.style.display = "none";
+        }
+
+        var videoUpload = document.getElementById('videoUpload');
+        imgUpload.onload = function(){
+            var loader = document.getElementById("loadingPanel");
+            loader.style.display = "none";
+        }
+    
+    }
+
+});
+  
+const uploadMedia = async(snapshot) => {
+    try {
+        const type = snapshot.metadata.contentType;
+        const url = snapshot.ref.getDownloadURL();
+        const result = await Promise.all([type, url]);
+        return result;
+    } catch(err){
+        console.error(Err);
+    }
+}
+
+
+/*             store.mediaType = snapshot.metadata.contentType;
+
+            return snapshot.ref.getDownloadURL(); */
+
 /* Deleted this stuff
 var info = {};
 info.type = snapshot.metadata.contentType;
@@ -99,18 +130,7 @@ return info; */
 
         }) */
 
-        
-        var imgUpload = document.getElementById('imgUpload');
-        imgUpload.onload = function(){
-            var loader = document.getElementById("loadingPanel");
-            loader.style.display = "none";
-        }
 
-        var videoUpload = document.getElementById('videoUpload');
-        imgUpload.onload = function(){
-            var loader = document.getElementById("loadingPanel");
-            loader.style.display = "none";
-        }
 
 
         // The hard part is that we are waiting for two different things
@@ -125,8 +145,3 @@ return info; */
           document.getElementById('imgUpload').setAttribute('src', url);
       
         }) */
-    
-    }
-
-});
-  
