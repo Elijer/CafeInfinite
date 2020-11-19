@@ -196,6 +196,19 @@ const setPic = function(url){
     pic.setAttribute('src', url);
 }
 
+const resetMedia = function(){
+    resetLoadBar();
+
+    var vid = document.getElementById('vidUpload');
+    vid.setAttribute('src', '');
+    vid.style.display = 'none';
+
+    var pic = document.getElementById('imgUpload');
+    pic.setAttribute('src', '');
+    pic.style.display = 'none';
+
+}
+
 const mediaElements = [
     '#vidUpload',
     '#imgUpload',
