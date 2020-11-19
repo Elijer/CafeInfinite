@@ -87,10 +87,20 @@ document.addEventListener("DOMContentLoaded", event => {
                 const type = info[0];
                 const url = info[1];
 
-                if (type.includes('video')){
-                    console.log("Media type is a video");
-                } else if (type.includes('image')){
-                    console.log("media type is an image")
+                if (type.includes('video') || type.includes('image')){
+
+                    resetLoadBar();
+
+                    if (type.includes('video')){
+
+                        setVid(url);
+
+                    } else {
+
+                        setPic(url);
+
+                    }
+
                 } else {
                     console.log("media type is not a photo or a video!")
                 }
@@ -166,6 +176,41 @@ const accepted = [
     'video/mp4',
     'video/quicktime'
 ]
+
+const resetLoadBar = function(){
+    var loadBar = document.getElementById('loadingPanel');
+    var progress = document.getElementById('loadingProgress');
+    progress.style.width = '0px;'
+    loadBar.style.display = 'none';
+}
+
+const setVid = function(url){
+    var vid = document.getElementById('vidUpload');
+    vid.style.display = 'inline';
+    vid.setAttribute('src', url);
+}
+
+const setPic = function(url){
+    var pic = document.getElementById('imgUpload');
+    pic.style.display = 'inline';
+    pic.setAttribute('src', url);
+}
+
+const mediaElements = [
+    '#vidUpload',
+    '#imgUpload',
+    '#inputImage',
+    '#loadingPanel',
+    '#loadingProgress'
+]
+
+// #vidUpload
+// #imgUpload
+// #inputImage
+// #loadingPanel
+    // #loadingProgress
+
+
 
 
 
