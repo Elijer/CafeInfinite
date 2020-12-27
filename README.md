@@ -1,5 +1,5 @@
 ### About
-Cafe Infinite is the working title I have for a project I've been thinking about for a long time. It's a simple platform I'd like to build to help connect people with their local businesses. With COVID, I don't see that being useful anytime soon, but hopefully I'll have it done by the time things return to normal, or to a new-normal.
+Cafe Infinite is the working title I have for a social project I've been interested in a long time. The idea is to create a map-based social network in which people can share interesting features of their environment using icons on a map that, when clicked, will open the photo or video saved to them. I've actually noticed that the idea of a geographic or map-based feed is pretty popular, used by Instagram, Craiglist, Strava, Geocaching, Snapchat and a variety of other tools. It's fascinating to me that an interface can be so popular without ever being the main show. I'd like to give the idea more attention. [Check out the live (and very unfinished) version here.](https://cafe-infinite.web.app/)
 
 ### FireBase
 After seeing [this introduction](https://www.youtube.com/watch?v=9kRgVxULbag), I wanted to make a project using firebase.
